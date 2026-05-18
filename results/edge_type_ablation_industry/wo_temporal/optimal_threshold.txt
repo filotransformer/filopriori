@@ -1,0 +1,5 @@
+Optimal Threshold: 0.0968
+Strategy: f_beta
+Validation F1 Macro: 0.0000
+Validation Recall (Not-Pass): 0.0000
+Validation Recall (Pass): 0.0000

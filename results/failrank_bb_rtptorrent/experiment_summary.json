@@ -1,0 +1,24 @@
+{
+  "method": "FailRank-BB",
+  "config": {
+    "data_dir": "datasets/02_rtptorrent/raw/MSR2",
+    "seed": 42,
+    "output_dir": "results/failrank_bb_rtptorrent",
+    "method_name": "FailRank-BB",
+    "train_ratio": 0.8,
+    "sbert_model_name": "google-bert/bert-base-uncased",
+    "max_iter": 1000,
+    "use_historical_features": false,
+    "batch_size": 64
+  },
+  "summary": {
+    "mean_apfd": 0.8217751140997273,
+    "std_apfd": 0.09199670169832096,
+    "n_projects": 20,
+    "n_builds": 2937
+  },
+  "timing": {
+    "total_time_seconds": 178.1005494594574
+  },
+  "timestamp": "2026-03-31T22:38:10.796309"
+}

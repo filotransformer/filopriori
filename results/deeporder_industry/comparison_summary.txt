@@ -1,0 +1,44 @@
+======================================================================
+DeepOrder - Industry Dataset Results
+======================================================================
+
+Total builds analyzed: 277
+
+APFD Statistics:
+  Mean APFD:   0.6890 (PRIMARY METRIC)
+  Std:         0.2661
+  Median:      0.7500
+  Min:         0.0312
+  Max:         1.0000
+
+APFD Distribution:
+  APFD = 1.0:  23 builds
+  APFD >= 0.7: 156 builds
+  APFD >= 0.5: 216 builds
+  APFD < 0.5:  61 builds
+
+Timing:
+  Training:    711.92s
+  Evaluation:  8.05s
+  Total:       744.34s
+
+======================================================================
+Configuration:
+======================================================================
+  train_path: datasets/01_industry/train.csv
+  test_path: datasets/01_industry/test.csv
+  build_col: Build_ID
+  test_col: TC_Key
+  result_col: TE_Test_Result
+  duration_col: None
+  hidden_dims: [64, 32, 16]
+  dropout: 0.2
+  learning_rate: 0.001
+  epochs: 50
+  batch_size: 32
+  history_window: 10
+  device: cuda
+  seed: 42
+  output_dir: results/deeporder_industry
+  method_name: DeepOrder
+  test_scenario: industry_dataset

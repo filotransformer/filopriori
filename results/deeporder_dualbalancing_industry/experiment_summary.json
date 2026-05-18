@@ -1,0 +1,73 @@
+{
+  "config": {
+    "train_path": "datasets/01_industry/train.csv",
+    "test_path": "datasets/01_industry/test.csv",
+    "build_col": "Build_ID",
+    "test_col": "TC_Key",
+    "result_col": "TE_Test_Result",
+    "duration_col": null,
+    "hidden_dims": [
+      64,
+      32,
+      16
+    ],
+    "dropout": 0.2,
+    "learning_rate": 0.001,
+    "epochs": 50,
+    "batch_size": 32,
+    "history_window": 10,
+    "device": "cuda",
+    "sample_weight_positive": 1.0,
+    "sample_weight_negative": 0.035,
+    "focal_alpha": 0.75,
+    "focal_gamma": 2.0,
+    "seed": 42,
+    "output_dir": "results/deeporder_dualbalancing_industry"
+  },
+  "results": {
+    "balanced_sampling": {
+      "method": "DeepOrder + Balanced Sampling",
+      "use_focal_loss": false,
+      "summary": {
+        "mean_apfd": 0.6872841222776915,
+        "std_apfd": 0.2666474648809854,
+        "median_apfd": 0.75,
+        "min_apfd": 0.017241379310344827,
+        "max_apfd": 1.0,
+        "n_builds": 277,
+        "builds_apfd_1.0": 23,
+        "builds_apfd_gte_0.7": 160,
+        "builds_apfd_gte_0.5": 220,
+        "builds_apfd_lt_0.5": 57
+      },
+      "timing": {
+        "train_time_seconds": 490.7870671749115,
+        "eval_time_seconds": 3.690169334411621,
+        "total_time_seconds": 499.662495136261
+      },
+      "timestamp": "2026-04-01T15:24:12.423792"
+    },
+    "dual_balancing": {
+      "method": "DeepOrder + Dual Balancing",
+      "use_focal_loss": true,
+      "summary": {
+        "mean_apfd": 0.6754625656242177,
+        "std_apfd": 0.27447033323183656,
+        "median_apfd": 0.75,
+        "min_apfd": 0.013513513513513514,
+        "max_apfd": 1.0,
+        "n_builds": 277,
+        "builds_apfd_1.0": 23,
+        "builds_apfd_gte_0.7": 156,
+        "builds_apfd_gte_0.5": 212,
+        "builds_apfd_lt_0.5": 65
+      },
+      "timing": {
+        "train_time_seconds": 646.1869604587555,
+        "eval_time_seconds": 4.0347511768341064,
+        "total_time_seconds": 655.3491561412811
+      },
+      "timestamp": "2026-04-01T15:35:07.777105"
+    }
+  }
+}

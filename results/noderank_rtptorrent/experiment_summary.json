@@ -1,0 +1,28 @@
+{
+  "method": "NodeRank",
+  "config": {
+    "data_dir": "datasets/02_rtptorrent/raw/MSR2",
+    "seed": 42,
+    "output_dir": "results/noderank_rtptorrent",
+    "method_name": "NodeRank",
+    "train_ratio": 0.8,
+    "n_gsm_mutations": 5,
+    "n_nfm_mutations": 5,
+    "n_gmm_variants": 4,
+    "gsm_edges": 3,
+    "nfm_alpha": 0.1,
+    "k_neighbors": 5,
+    "history_window": 10,
+    "use_ensemble": true
+  },
+  "summary": {
+    "mean_apfd": 0.8090363572741491,
+    "std_apfd": 0.11395252812604895,
+    "n_projects": 20,
+    "n_builds": 2937
+  },
+  "timing": {
+    "total_time_seconds": 2337.3684334754944
+  },
+  "timestamp": "2026-03-31T23:46:04.707211"
+}

@@ -1,0 +1,7 @@
+variant,label,edge_types,num_edge_types,mean_apfd,median_apfd,std_apfd,num_builds,delta_vs_full
+full,Full (all 5 edge types),co_failure+co_success+semantic+temporal+component,5,0.7538,0.7827,0.1946,277,+0.0000
+wo_cosuccess,w/o Co-Success,co_failure+semantic+temporal+component,4,0.7470,0.7857,0.1981,277,-0.0068
+wo_component,w/o Component,co_failure+co_success+semantic+temporal,4,0.7495,0.7797,0.1971,277,-0.0043
+wo_semantic,w/o Semantic,co_failure+co_success+temporal+component,4,0.7464,0.7750,0.1932,277,-0.0074
+wo_temporal,w/o Temporal,co_failure+co_success+semantic+component,4,0.7530,0.7955,0.1950,277,-0.0007
+cofailure_only,Co-failure only,co_failure,1,0.7628,0.7860,0.1877,277,+0.0090

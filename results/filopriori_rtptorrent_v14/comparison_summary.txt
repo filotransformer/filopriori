@@ -1,0 +1,34 @@
+======================================================================
+Filo-Priori V14 (GATv2 + DeepOrder DNN) - RTPTorrent Results
+======================================================================
+
+Projects analyzed: 20
+Total builds with failures: 2937
+
+Grand Mean APFD: 0.8384 (PRIMARY METRIC)
+Grand Std APFD:  0.1124
+
+Per-project results:
+  CloudifySource@cloudify                  APFD=0.9042 (n=96, alpha=0.0)
+  DSpace@DSpace                            APFD=0.6375 (n=51, alpha=0.4)
+  Graylog2@graylog2-server                 APFD=0.8899 (n=51, alpha=0.0)
+  SonarSource@sonarqube                    APFD=0.8713 (n=636, alpha=0.0)
+  adamfisk@LittleProxy                     APFD=0.7297 (n=17, alpha=0.0)
+  apache@sling                             APFD=0.9713 (n=982, alpha=0.9)
+  brettwooldridge@HikariCP                 APFD=0.6422 (n=21, alpha=0.0)
+  deeplearning4j@deeplearning4j            APFD=0.8373 (n=117, alpha=0.0)
+  doanduyhai@Achilles                      APFD=0.8787 (n=13, alpha=0.0)
+  dynjs@dynjs                              APFD=0.7960 (n=11, alpha=0.0)
+  eclipse@jetty.project                    APFD=0.9698 (n=61, alpha=0.9)
+  facebook@buck                            APFD=0.9830 (n=94, alpha=0.9)
+  jOOQ@jOOQ                                APFD=0.9388 (n=127, alpha=0.0)
+  jcabi@jcabi-github                       APFD=0.9108 (n=93, alpha=0.7)
+  jsprit@jsprit                            APFD=0.8195 (n=10, alpha=0.0)
+  julianhyde@optiq                         APFD=0.9237 (n=28, alpha=0.0)
+  l0rdn1kk0n@wicket-bootstrap              APFD=0.6112 (n=87, alpha=0.5)
+  neuland@jade4j                           APFD=0.7081 (n=27, alpha=0.0)
+  square@okhttp                            APFD=0.8920 (n=354, alpha=0.6)
+  thinkaurelius@titan                      APFD=0.8527 (n=61, alpha=0.0)
+
+Total time: 11234.14s
+======================================================================

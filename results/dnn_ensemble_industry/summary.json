@@ -1,0 +1,10 @@
+{
+  "gnn_apfd": 0.7611,
+  "dnn_apfd": 0.6860921080590932,
+  "dnn_std": 0.26782801557336067,
+  "dnn_median": 0.75,
+  "n_builds": 277,
+  "delta": -0.07500789194090685,
+  "train_time_s": 52.856059312820435,
+  "conclusion": "DNN redundant"
+}

@@ -1,0 +1,388 @@
+{
+  "conditions": {
+    "sbert": [
+      {
+        "project": "CloudifySource@cloudify",
+        "mean_apfd": 0.87306291810738,
+        "n_builds": 96,
+        "time": 2.379812002182007
+      },
+      {
+        "project": "DSpace@DSpace",
+        "mean_apfd": 0.7026816644087737,
+        "n_builds": 51,
+        "time": 1.0242273807525635
+      },
+      {
+        "project": "Graylog2@graylog2-server",
+        "mean_apfd": 0.7707960296113944,
+        "n_builds": 51,
+        "time": 4.163360595703125
+      },
+      {
+        "project": "SonarSource@sonarqube",
+        "mean_apfd": 0.6934117734653971,
+        "n_builds": 636,
+        "time": 36.489134550094604
+      },
+      {
+        "project": "adamfisk@LittleProxy",
+        "mean_apfd": 0.7807445534261213,
+        "n_builds": 17,
+        "time": 0.35487985610961914
+      },
+      {
+        "project": "apache@sling",
+        "mean_apfd": 0.942676455623185,
+        "n_builds": 982,
+        "time": 8.493333578109741
+      },
+      {
+        "project": "brettwooldridge@HikariCP",
+        "mean_apfd": 0.7520362395970535,
+        "n_builds": 21,
+        "time": 0.4688100814819336
+      },
+      {
+        "project": "deeplearning4j@deeplearning4j",
+        "mean_apfd": 0.8443547576344006,
+        "n_builds": 117,
+        "time": -5.219581127166748
+      },
+      {
+        "project": "doanduyhai@Achilles",
+        "mean_apfd": 0.7738573888717948,
+        "n_builds": 13,
+        "time": 1.336549997329712
+      },
+      {
+        "project": "dynjs@dynjs",
+        "mean_apfd": 0.8294203484298198,
+        "n_builds": 11,
+        "time": 0.3823277950286865
+      },
+      {
+        "project": "eclipse@jetty.project",
+        "mean_apfd": 0.9487251786136607,
+        "n_builds": 61,
+        "time": 1.470050573348999
+      },
+      {
+        "project": "facebook@buck",
+        "mean_apfd": 0.912504576049958,
+        "n_builds": 94,
+        "time": 2.613844394683838
+      },
+      {
+        "project": "jOOQ@jOOQ",
+        "mean_apfd": 0.9249745971564222,
+        "n_builds": 127,
+        "time": 0.45714497566223145
+      },
+      {
+        "project": "jcabi@jcabi-github",
+        "mean_apfd": 0.8703982711146193,
+        "n_builds": 93,
+        "time": 1.51458740234375
+      },
+      {
+        "project": "jsprit@jsprit",
+        "mean_apfd": 0.8958699279793908,
+        "n_builds": 10,
+        "time": 0.6028573513031006
+      },
+      {
+        "project": "julianhyde@optiq",
+        "mean_apfd": 0.8987328753852066,
+        "n_builds": 28,
+        "time": 0.5238409042358398
+      },
+      {
+        "project": "l0rdn1kk0n@wicket-bootstrap",
+        "mean_apfd": 0.608447622487039,
+        "n_builds": 87,
+        "time": 0.5465624332427979
+      },
+      {
+        "project": "neuland@jade4j",
+        "mean_apfd": 0.7141198202985862,
+        "n_builds": 27,
+        "time": 0.4280054569244385
+      },
+      {
+        "project": "square@okhttp",
+        "mean_apfd": 0.8680454621426444,
+        "n_builds": 354,
+        "time": 9.193618297576904
+      },
+      {
+        "project": "thinkaurelius@titan",
+        "mean_apfd": 0.8350288641540029,
+        "n_builds": 61,
+        "time": 0.7075936794281006
+      }
+    ],
+    "random_fixed": [
+      {
+        "project": "CloudifySource@cloudify",
+        "mean_apfd": 0.9234987334844841,
+        "n_builds": 96,
+        "time": 1.4861924648284912
+      },
+      {
+        "project": "DSpace@DSpace",
+        "mean_apfd": 0.7276173450194318,
+        "n_builds": 51,
+        "time": 0.9383265972137451
+      },
+      {
+        "project": "Graylog2@graylog2-server",
+        "mean_apfd": 0.9068855286283958,
+        "n_builds": 51,
+        "time": 3.6565678119659424
+      },
+      {
+        "project": "SonarSource@sonarqube",
+        "mean_apfd": 0.7957478143417471,
+        "n_builds": 636,
+        "time": 42.24045920372009
+      },
+      {
+        "project": "adamfisk@LittleProxy",
+        "mean_apfd": 0.7847906162957136,
+        "n_builds": 17,
+        "time": 0.20070791244506836
+      },
+      {
+        "project": "apache@sling",
+        "mean_apfd": 0.966350509970816,
+        "n_builds": 982,
+        "time": 6.809563159942627
+      },
+      {
+        "project": "brettwooldridge@HikariCP",
+        "mean_apfd": 0.7575437057414058,
+        "n_builds": 21,
+        "time": 0.3780088424682617
+      },
+      {
+        "project": "deeplearning4j@deeplearning4j",
+        "mean_apfd": 0.847506475010657,
+        "n_builds": 117,
+        "time": 0.31787562370300293
+      },
+      {
+        "project": "doanduyhai@Achilles",
+        "mean_apfd": 0.8303744583749377,
+        "n_builds": 13,
+        "time": 1.0870859622955322
+      },
+      {
+        "project": "dynjs@dynjs",
+        "mean_apfd": 0.8404098957979941,
+        "n_builds": 11,
+        "time": 5.750363826751709
+      },
+      {
+        "project": "eclipse@jetty.project",
+        "mean_apfd": 0.9646805058312733,
+        "n_builds": 61,
+        "time": 1.6738836765289307
+      },
+      {
+        "project": "facebook@buck",
+        "mean_apfd": 0.9710514149216466,
+        "n_builds": 94,
+        "time": 2.516726016998291
+      },
+      {
+        "project": "jOOQ@jOOQ",
+        "mean_apfd": 0.9441142817606081,
+        "n_builds": 127,
+        "time": 0.7899379730224609
+      },
+      {
+        "project": "jcabi@jcabi-github",
+        "mean_apfd": 0.911822456128827,
+        "n_builds": 93,
+        "time": 6.824335813522339
+      },
+      {
+        "project": "jsprit@jsprit",
+        "mean_apfd": 0.9564060870488469,
+        "n_builds": 10,
+        "time": 0.3605210781097412
+      },
+      {
+        "project": "julianhyde@optiq",
+        "mean_apfd": 0.9196011419960666,
+        "n_builds": 28,
+        "time": 0.47515082359313965
+      },
+      {
+        "project": "l0rdn1kk0n@wicket-bootstrap",
+        "mean_apfd": 0.6136955385616651,
+        "n_builds": 87,
+        "time": 5.751688480377197
+      },
+      {
+        "project": "neuland@jade4j",
+        "mean_apfd": 0.7303994576098491,
+        "n_builds": 27,
+        "time": 0.26404261589050293
+      },
+      {
+        "project": "square@okhttp",
+        "mean_apfd": 0.8874522380669908,
+        "n_builds": 354,
+        "time": -2.0789542198181152
+      },
+      {
+        "project": "thinkaurelius@titan",
+        "mean_apfd": 0.844404246472585,
+        "n_builds": 61,
+        "time": 0.35568785667419434
+      }
+    ],
+    "random_shuffled": [
+      {
+        "project": "CloudifySource@cloudify",
+        "mean_apfd": 0.536557326397547,
+        "n_builds": 96,
+        "time": 1.047182559967041
+      },
+      {
+        "project": "DSpace@DSpace",
+        "mean_apfd": 0.4912218811416546,
+        "n_builds": 51,
+        "time": 1.030094861984253
+      },
+      {
+        "project": "Graylog2@graylog2-server",
+        "mean_apfd": 0.5897957316054177,
+        "n_builds": 51,
+        "time": 9.578805685043335
+      },
+      {
+        "project": "SonarSource@sonarqube",
+        "mean_apfd": 0.6311533609053487,
+        "n_builds": 636,
+        "time": 47.299020528793335
+      },
+      {
+        "project": "adamfisk@LittleProxy",
+        "mean_apfd": 0.45083545646806056,
+        "n_builds": 17,
+        "time": 0.16861987113952637
+      },
+      {
+        "project": "apache@sling",
+        "mean_apfd": 0.5021499907140307,
+        "n_builds": 982,
+        "time": 11.573304414749146
+      },
+      {
+        "project": "brettwooldridge@HikariCP",
+        "mean_apfd": 0.5547375427903957,
+        "n_builds": 21,
+        "time": 5.744211912155151
+      },
+      {
+        "project": "deeplearning4j@deeplearning4j",
+        "mean_apfd": 0.5288950953961481,
+        "n_builds": 117,
+        "time": 0.3681645393371582
+      },
+      {
+        "project": "doanduyhai@Achilles",
+        "mean_apfd": 0.4461620165768811,
+        "n_builds": 13,
+        "time": 1.142148733139038
+      },
+      {
+        "project": "dynjs@dynjs",
+        "mean_apfd": 0.4652988480107021,
+        "n_builds": 11,
+        "time": -5.477860689163208
+      },
+      {
+        "project": "eclipse@jetty.project",
+        "mean_apfd": 0.4319664423364527,
+        "n_builds": 61,
+        "time": 1.5524189472198486
+      },
+      {
+        "project": "facebook@buck",
+        "mean_apfd": 0.5122969304550626,
+        "n_builds": 94,
+        "time": 5.072014331817627
+      },
+      {
+        "project": "jOOQ@jOOQ",
+        "mean_apfd": 0.5348279235428339,
+        "n_builds": 127,
+        "time": 0.9115476608276367
+      },
+      {
+        "project": "jcabi@jcabi-github",
+        "mean_apfd": 0.6819829015822774,
+        "n_builds": 93,
+        "time": -4.083435297012329
+      },
+      {
+        "project": "jsprit@jsprit",
+        "mean_apfd": 0.43486002212760366,
+        "n_builds": 10,
+        "time": 0.39049863815307617
+      },
+      {
+        "project": "julianhyde@optiq",
+        "mean_apfd": 0.5099728600139198,
+        "n_builds": 28,
+        "time": 0.5238804817199707
+      },
+      {
+        "project": "l0rdn1kk0n@wicket-bootstrap",
+        "mean_apfd": 0.48833308501457706,
+        "n_builds": 87,
+        "time": -5.315155982971191
+      },
+      {
+        "project": "neuland@jade4j",
+        "mean_apfd": 0.4757179293492279,
+        "n_builds": 27,
+        "time": 0.3129904270172119
+      },
+      {
+        "project": "square@okhttp",
+        "mean_apfd": 0.48624911481516586,
+        "n_builds": 354,
+        "time": 3.7057104110717773
+      },
+      {
+        "project": "thinkaurelius@titan",
+        "mean_apfd": 0.5353604236572643,
+        "n_builds": 61,
+        "time": 0.4326913356781006
+      }
+    ]
+  },
+  "summary": {
+    "sbert": {
+      "mean": 0.8219944662278426,
+      "std": 0.09168075480937139,
+      "n": 20
+    },
+    "random_fixed": {
+      "mean": 0.8562176225531971,
+      "std": 0.09508840836553845,
+      "n": 20
+    },
+    "random_shuffled": {
+      "mean": 0.5144187441450286,
+      "std": 0.06264741126793517,
+      "n": 20
+    }
+  },
+  "timestamp": "2026-03-31T22:43:31.287155"
+}

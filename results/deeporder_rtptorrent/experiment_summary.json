@@ -1,0 +1,31 @@
+{
+  "method": "DeepOrder",
+  "config": {
+    "data_dir": "datasets/02_rtptorrent/raw/MSR2",
+    "seed": 42,
+    "output_dir": "results/deeporder_rtptorrent",
+    "method_name": "DeepOrder",
+    "train_ratio": 0.8,
+    "device": "cuda",
+    "hidden_dims": [
+      64,
+      32,
+      16
+    ],
+    "dropout": 0.2,
+    "learning_rate": 0.001,
+    "epochs": 10,
+    "batch_size": 128,
+    "history_window": 10
+  },
+  "summary": {
+    "mean_apfd": 0.8136327009100238,
+    "std_apfd": 0.10452294568663037,
+    "n_projects": 20,
+    "n_builds": 2937
+  },
+  "timing": {
+    "total_time_seconds": 9755.170475006104
+  },
+  "timestamp": "2026-03-08T10:53:27.066940"
+}

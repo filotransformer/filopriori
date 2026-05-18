@@ -1,0 +1,34 @@
+======================================================================
+TCP-Net - RTPTorrent Dataset Results
+======================================================================
+
+Projects analyzed: 20
+Total builds with failures: 2937
+
+Grand Mean APFD: 0.8253 (PRIMARY METRIC)
+Grand Std APFD:  0.1104
+
+Per-project results:
+  CloudifySource@cloudify                  APFD=0.9096 (n=96)
+  DSpace@DSpace                            APFD=0.6425 (n=51)
+  Graylog2@graylog2-server                 APFD=0.8585 (n=51)
+  SonarSource@sonarqube                    APFD=0.8371 (n=636)
+  adamfisk@LittleProxy                     APFD=0.7302 (n=17)
+  apache@sling                             APFD=0.9589 (n=982)
+  brettwooldridge@HikariCP                 APFD=0.6497 (n=21)
+  deeplearning4j@deeplearning4j            APFD=0.8369 (n=117)
+  doanduyhai@Achilles                      APFD=0.8242 (n=13)
+  dynjs@dynjs                              APFD=0.6961 (n=11)
+  eclipse@jetty.project                    APFD=0.9673 (n=61)
+  facebook@buck                            APFD=0.9149 (n=94)
+  jOOQ@jOOQ                                APFD=0.9311 (n=127)
+  jcabi@jcabi-github                       APFD=0.8431 (n=93)
+  jsprit@jsprit                            APFD=0.9586 (n=10)
+  julianhyde@optiq                         APFD=0.9122 (n=28)
+  l0rdn1kk0n@wicket-bootstrap              APFD=0.5993 (n=87)
+  neuland@jade4j                           APFD=0.7285 (n=27)
+  square@okhttp                            APFD=0.8679 (n=354)
+  thinkaurelius@titan                      APFD=0.8394 (n=61)
+
+Total time: 40097.39s
+======================================================================

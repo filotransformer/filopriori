@@ -1,0 +1,22 @@
+{
+  "method": "RETECS",
+  "config": {
+    "data_dir": "datasets/02_rtptorrent/raw/MSR2",
+    "seed": 42,
+    "output_dir": "results/retecs_rtptorrent",
+    "method_name": "RETECS",
+    "agent_type": "network",
+    "reward_func": "tcfail",
+    "train_ratio": 0.8
+  },
+  "summary": {
+    "mean_apfd": 0.6791135241476585,
+    "std_apfd": 0.13557053288177387,
+    "n_projects": 20,
+    "n_builds": 2937
+  },
+  "timing": {
+    "total_time_seconds": 1261.6261456012726
+  },
+  "timestamp": "2026-03-07T21:02:23.535859"
+}

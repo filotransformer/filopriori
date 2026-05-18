@@ -1,0 +1,34 @@
+======================================================================
+FailRank-BB - RTPTorrent Dataset Results
+======================================================================
+
+Projects analyzed: 20
+Total builds with failures: 2937
+
+Grand Mean APFD: 0.8218 (PRIMARY METRIC)
+Grand Std APFD:  0.0920
+
+Per-project results:
+  CloudifySource@cloudify                  APFD=0.8731 (n=96)
+  DSpace@DSpace                            APFD=0.7027 (n=51)
+  Graylog2@graylog2-server                 APFD=0.7708 (n=51)
+  SonarSource@sonarqube                    APFD=0.6934 (n=636)
+  adamfisk@LittleProxy                     APFD=0.7807 (n=17)
+  apache@sling                             APFD=0.9427 (n=982)
+  brettwooldridge@HikariCP                 APFD=0.7520 (n=21)
+  deeplearning4j@deeplearning4j            APFD=0.8428 (n=117)
+  doanduyhai@Achilles                      APFD=0.7739 (n=13)
+  dynjs@dynjs                              APFD=0.8294 (n=11)
+  eclipse@jetty.project                    APFD=0.9487 (n=61)
+  facebook@buck                            APFD=0.9125 (n=94)
+  jOOQ@jOOQ                                APFD=0.9250 (n=127)
+  jcabi@jcabi-github                       APFD=0.8704 (n=93)
+  jsprit@jsprit                            APFD=0.8959 (n=10)
+  julianhyde@optiq                         APFD=0.8987 (n=28)
+  l0rdn1kk0n@wicket-bootstrap              APFD=0.6056 (n=87)
+  neuland@jade4j                           APFD=0.7141 (n=27)
+  square@okhttp                            APFD=0.8680 (n=354)
+  thinkaurelius@titan                      APFD=0.8350 (n=61)
+
+Total time: 178.10s
+======================================================================

@@ -1,0 +1,2530 @@
+{
+  "method": "RETECS",
+  "config": {
+    "train_path": "datasets/01_industry/train.csv",
+    "test_path": "datasets/01_industry/test.csv",
+    "build_col": "Build_ID",
+    "test_col": "TC_Key",
+    "result_col": "TE_Test_Result",
+    "duration_col": null,
+    "seed": 42,
+    "output_dir": "results/retecs_industry",
+    "method_name": "RETECS",
+    "test_scenario": "industry_dataset",
+    "agent_type": "network",
+    "reward_func": "tcfail"
+  },
+  "summary": {
+    "mean_apfd": 0.6405372721763314,
+    "std_apfd": 0.28206621611668237,
+    "median_apfd": 0.7222222222222222,
+    "min_apfd": 0.03125,
+    "max_apfd": 1.0,
+    "n_builds": 277,
+    "builds_apfd_1.0": 23,
+    "builds_apfd_gte_0.7": 144,
+    "builds_apfd_gte_0.5": 194,
+    "builds_apfd_lt_0.5": 83
+  },
+  "build_results": [
+    {
+      "method_name": "RETECS",
+      "build_id": "S2SD32.21-85-3-2-1",
+      "test_scenario": "industry_dataset",
+      "count_tc": 15,
+      "count_commits": 0,
+      "apfd": 0.7666666666666667,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "S3RO32.16",
+      "test_scenario": "industry_dataset",
+      "count_tc": 15,
+      "count_commits": 0,
+      "apfd": 0.7222222222222222,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "S3RW32.138-29-5",
+      "test_scenario": "industry_dataset",
+      "count_tc": 110,
+      "count_commits": 0,
+      "apfd": 0.5954545454545453,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "S3RYA32.16",
+      "test_scenario": "industry_dataset",
+      "count_tc": 10,
+      "count_commits": 0,
+      "apfd": 0.55,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "S3RYA32.35",
+      "test_scenario": "industry_dataset",
+      "count_tc": 5,
+      "count_commits": 0,
+      "apfd": 0.6,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "S3RYA32.49-7",
+      "test_scenario": "industry_dataset",
+      "count_tc": 12,
+      "count_commits": 0,
+      "apfd": 0.2916666666666667,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "S3RYA32.49-8",
+      "test_scenario": "industry_dataset",
+      "count_tc": 12,
+      "count_commits": 0,
+      "apfd": 0.6666666666666666,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "S3SG32.39-90-1",
+      "test_scenario": "industry_dataset",
+      "count_tc": 40,
+      "count_commits": 0,
+      "apfd": 0.2375,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T1RD33.116-13",
+      "test_scenario": "industry_dataset",
+      "count_tc": 40,
+      "count_commits": 0,
+      "apfd": 0.73125,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T1RD33.116-15",
+      "test_scenario": "industry_dataset",
+      "count_tc": 12,
+      "count_commits": 0,
+      "apfd": 0.37500000000000006,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T1RG33.135-109-1",
+      "test_scenario": "industry_dataset",
+      "count_tc": 25,
+      "count_commits": 0,
+      "apfd": 0.98,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T1RG33.135-56",
+      "test_scenario": "industry_dataset",
+      "count_tc": 18,
+      "count_commits": 0,
+      "apfd": 0.4444444444444444,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T1RG33.135-89",
+      "test_scenario": "industry_dataset",
+      "count_tc": 12,
+      "count_commits": 0,
+      "apfd": 0.041666666666666664,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T1RM33.1-110-4",
+      "test_scenario": "industry_dataset",
+      "count_tc": 19,
+      "count_commits": 0,
+      "apfd": 0.8684210526315789,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T1RM33.1-54",
+      "test_scenario": "industry_dataset",
+      "count_tc": 27,
+      "count_commits": 0,
+      "apfd": 0.9814814814814815,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T1RM33.1-89",
+      "test_scenario": "industry_dataset",
+      "count_tc": 25,
+      "count_commits": 0,
+      "apfd": 0.98,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T1RM33.1-92",
+      "test_scenario": "industry_dataset",
+      "count_tc": 10,
+      "count_commits": 0,
+      "apfd": 0.35000000000000003,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T1SJC33.51-6",
+      "test_scenario": "industry_dataset",
+      "count_tc": 8,
+      "count_commits": 0,
+      "apfd": 0.8125,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T1SQ33.15-11-77",
+      "test_scenario": "industry_dataset",
+      "count_tc": 26,
+      "count_commits": 0,
+      "apfd": 0.9807692307692308,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T1SQ33.15-11-80",
+      "test_scenario": "industry_dataset",
+      "count_tc": 10,
+      "count_commits": 0,
+      "apfd": 0.05,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T1SQ33.15-11-85",
+      "test_scenario": "industry_dataset",
+      "count_tc": 47,
+      "count_commits": 0,
+      "apfd": 0.851063829787234,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T1SSM33.1-100",
+      "test_scenario": "industry_dataset",
+      "count_tc": 2,
+      "count_commits": 0,
+      "apfd": 0.75,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T1SSM33.1-49",
+      "test_scenario": "industry_dataset",
+      "count_tc": 7,
+      "count_commits": 0,
+      "apfd": 0.9285714285714286,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T1SU33.1-124-4",
+      "test_scenario": "industry_dataset",
+      "count_tc": 25,
+      "count_commits": 0,
+      "apfd": 0.78,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T1TGN33.60-23",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 0,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T1TH33.75-12-6",
+      "test_scenario": "industry_dataset",
+      "count_tc": 10,
+      "count_commits": 0,
+      "apfd": 0.35000000000000003,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T1TH33.75-2",
+      "test_scenario": "industry_dataset",
+      "count_tc": 42,
+      "count_commits": 0,
+      "apfd": 0.3095238095238096,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T1TH33.75-3",
+      "test_scenario": "industry_dataset",
+      "count_tc": 6,
+      "count_commits": 0,
+      "apfd": 0.9166666666666667,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T1TR33.4-30-75",
+      "test_scenario": "industry_dataset",
+      "count_tc": 15,
+      "count_commits": 0,
+      "apfd": 0.09999999999999998,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T1TR33.43-20-24",
+      "test_scenario": "industry_dataset",
+      "count_tc": 4,
+      "count_commits": 0,
+      "apfd": 0.875,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T1TR33.43-40",
+      "test_scenario": "industry_dataset",
+      "count_tc": 50,
+      "count_commits": 0,
+      "apfd": 0.6699999999999999,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T1TZ33.3-50",
+      "test_scenario": "industry_dataset",
+      "count_tc": 16,
+      "count_commits": 0,
+      "apfd": 0.84375,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T1TZ33.3-52",
+      "test_scenario": "industry_dataset",
+      "count_tc": 23,
+      "count_commits": 0,
+      "apfd": 0.8768115942028986,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T1TZ33.3-60",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 0,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T1TZ33.3-62-29",
+      "test_scenario": "industry_dataset",
+      "count_tc": 16,
+      "count_commits": 0,
+      "apfd": 0.9375,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2RK33.71",
+      "test_scenario": "industry_dataset",
+      "count_tc": 20,
+      "count_commits": 0,
+      "apfd": 0.4,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2SA33.9",
+      "test_scenario": "industry_dataset",
+      "count_tc": 6,
+      "count_commits": 0,
+      "apfd": 0.9166666666666667,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2SD33.21",
+      "test_scenario": "industry_dataset",
+      "count_tc": 9,
+      "count_commits": 0,
+      "apfd": 0.05555555555555555,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2SD33.26",
+      "test_scenario": "industry_dataset",
+      "count_tc": 32,
+      "count_commits": 0,
+      "apfd": 0.31770833333333337,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2SD33.27",
+      "test_scenario": "industry_dataset",
+      "count_tc": 41,
+      "count_commits": 0,
+      "apfd": 0.8902439024390244,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2SE33.73-8",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 0,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2SR33.35",
+      "test_scenario": "industry_dataset",
+      "count_tc": 12,
+      "count_commits": 0,
+      "apfd": 0.12500000000000003,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2SR33.54",
+      "test_scenario": "industry_dataset",
+      "count_tc": 6,
+      "count_commits": 0,
+      "apfd": 0.4166666666666667,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2ST33.105-15",
+      "test_scenario": "industry_dataset",
+      "count_tc": 45,
+      "count_commits": 0,
+      "apfd": 0.9222222222222222,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2ST33.92",
+      "test_scenario": "industry_dataset",
+      "count_tc": 28,
+      "count_commits": 0,
+      "apfd": 0.6250000000000001,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2SV33.40",
+      "test_scenario": "industry_dataset",
+      "count_tc": 16,
+      "count_commits": 0,
+      "apfd": 0.28125,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2SV33.42",
+      "test_scenario": "industry_dataset",
+      "count_tc": 12,
+      "count_commits": 0,
+      "apfd": 0.4583333333333333,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2TT33.60-3",
+      "test_scenario": "industry_dataset",
+      "count_tc": 119,
+      "count_commits": 0,
+      "apfd": 0.9558823529411764,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2TT33.60-5",
+      "test_scenario": "industry_dataset",
+      "count_tc": 9,
+      "count_commits": 0,
+      "apfd": 0.9444444444444444,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2TT33.60-7",
+      "test_scenario": "industry_dataset",
+      "count_tc": 12,
+      "count_commits": 0,
+      "apfd": 0.875,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2TV33.10",
+      "test_scenario": "industry_dataset",
+      "count_tc": 73,
+      "count_commits": 0,
+      "apfd": 0.547945205479452,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2TV33.11",
+      "test_scenario": "industry_dataset",
+      "count_tc": 26,
+      "count_commits": 0,
+      "apfd": 0.5576923076923077,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2TV33.12",
+      "test_scenario": "industry_dataset",
+      "count_tc": 70,
+      "count_commits": 0,
+      "apfd": 0.8071428571428572,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2TV33.13",
+      "test_scenario": "industry_dataset",
+      "count_tc": 88,
+      "count_commits": 0,
+      "apfd": 0.5965909090909091,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2TV33.14",
+      "test_scenario": "industry_dataset",
+      "count_tc": 66,
+      "count_commits": 0,
+      "apfd": 0.755050505050505,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2TV33.31",
+      "test_scenario": "industry_dataset",
+      "count_tc": 48,
+      "count_commits": 0,
+      "apfd": 0.09375000000000004,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2TV33.32",
+      "test_scenario": "industry_dataset",
+      "count_tc": 9,
+      "count_commits": 0,
+      "apfd": 0.9444444444444444,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2TV33.33",
+      "test_scenario": "industry_dataset",
+      "count_tc": 16,
+      "count_commits": 0,
+      "apfd": 0.65625,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2TV33.34",
+      "test_scenario": "industry_dataset",
+      "count_tc": 27,
+      "count_commits": 0,
+      "apfd": 0.05555555555555561,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2TV33.35",
+      "test_scenario": "industry_dataset",
+      "count_tc": 3,
+      "count_commits": 0,
+      "apfd": 0.5,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2TV33.45-10-20",
+      "test_scenario": "industry_dataset",
+      "count_tc": 21,
+      "count_commits": 0,
+      "apfd": 0.9761904761904762,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2TV33.45-10-4",
+      "test_scenario": "industry_dataset",
+      "count_tc": 10,
+      "count_commits": 0,
+      "apfd": 0.9,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2TV33.45-10-5",
+      "test_scenario": "industry_dataset",
+      "count_tc": 4,
+      "count_commits": 0,
+      "apfd": 0.75,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2TV33.45-110",
+      "test_scenario": "industry_dataset",
+      "count_tc": 8,
+      "count_commits": 0,
+      "apfd": 0.8125,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2TV33.45-31",
+      "test_scenario": "industry_dataset",
+      "count_tc": 15,
+      "count_commits": 0,
+      "apfd": 0.6333333333333333,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2TV33.45-5",
+      "test_scenario": "industry_dataset",
+      "count_tc": 13,
+      "count_commits": 0,
+      "apfd": 0.7307692307692307,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2TV33.45-74",
+      "test_scenario": "industry_dataset",
+      "count_tc": 4,
+      "count_commits": 0,
+      "apfd": 0.875,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2TV33.45-8",
+      "test_scenario": "industry_dataset",
+      "count_tc": 53,
+      "count_commits": 0,
+      "apfd": 0.869811320754717,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2TV33.45-9",
+      "test_scenario": "industry_dataset",
+      "count_tc": 52,
+      "count_commits": 0,
+      "apfd": 0.798076923076923,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2TV33.7",
+      "test_scenario": "industry_dataset",
+      "count_tc": 8,
+      "count_commits": 0,
+      "apfd": 0.5,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2TV33.8",
+      "test_scenario": "industry_dataset",
+      "count_tc": 6,
+      "count_commits": 0,
+      "apfd": 0.24999999999999994,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2TZ33.10",
+      "test_scenario": "industry_dataset",
+      "count_tc": 62,
+      "count_commits": 0,
+      "apfd": 0.6790322580645161,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2TZ33.18-16-17",
+      "test_scenario": "industry_dataset",
+      "count_tc": 2,
+      "count_commits": 0,
+      "apfd": 0.75,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T2TZ33.18-59",
+      "test_scenario": "industry_dataset",
+      "count_tc": 13,
+      "count_commits": 0,
+      "apfd": 0.9615384615384616,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T3SG33.102",
+      "test_scenario": "industry_dataset",
+      "count_tc": 19,
+      "count_commits": 0,
+      "apfd": 0.3421052631578947,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T3SG33.92",
+      "test_scenario": "industry_dataset",
+      "count_tc": 12,
+      "count_commits": 0,
+      "apfd": 0.875,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T3SL33.16",
+      "test_scenario": "industry_dataset",
+      "count_tc": 62,
+      "count_commits": 0,
+      "apfd": 0.967741935483871,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T3SL33.16-11",
+      "test_scenario": "industry_dataset",
+      "count_tc": 15,
+      "count_commits": 0,
+      "apfd": 0.5888888888888889,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T3SL33.16-9",
+      "test_scenario": "industry_dataset",
+      "count_tc": 80,
+      "count_commits": 0,
+      "apfd": 0.48124999999999996,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T3SL33.5",
+      "test_scenario": "industry_dataset",
+      "count_tc": 26,
+      "count_commits": 0,
+      "apfd": 0.826923076923077,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T3SL33.8",
+      "test_scenario": "industry_dataset",
+      "count_tc": 9,
+      "count_commits": 0,
+      "apfd": 0.33333333333333337,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T3TB33.2-24",
+      "test_scenario": "industry_dataset",
+      "count_tc": 4,
+      "count_commits": 0,
+      "apfd": 0.875,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T3TB33.2-5",
+      "test_scenario": "industry_dataset",
+      "count_tc": 17,
+      "count_commits": 0,
+      "apfd": 0.7647058823529412,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T3TC33.10",
+      "test_scenario": "industry_dataset",
+      "count_tc": 8,
+      "count_commits": 0,
+      "apfd": 0.0625,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T3TD33.10",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 0,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T3TDC33.16-12",
+      "test_scenario": "industry_dataset",
+      "count_tc": 23,
+      "count_commits": 0,
+      "apfd": 0.608695652173913,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T3TDC33.16-14",
+      "test_scenario": "industry_dataset",
+      "count_tc": 13,
+      "count_commits": 0,
+      "apfd": 0.8846153846153846,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T3TDC33.3",
+      "test_scenario": "industry_dataset",
+      "count_tc": 2,
+      "count_commits": 0,
+      "apfd": 0.75,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T3TF33.11",
+      "test_scenario": "industry_dataset",
+      "count_tc": 21,
+      "count_commits": 0,
+      "apfd": 0.8333333333333334,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T3TF33.13",
+      "test_scenario": "industry_dataset",
+      "count_tc": 22,
+      "count_commits": 0,
+      "apfd": 0.11363636363636367,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T3TF33.14",
+      "test_scenario": "industry_dataset",
+      "count_tc": 12,
+      "count_commits": 0,
+      "apfd": 0.2083333333333333,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T3TF33.19",
+      "test_scenario": "industry_dataset",
+      "count_tc": 5,
+      "count_commits": 0,
+      "apfd": 0.4,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T3TF33.36",
+      "test_scenario": "industry_dataset",
+      "count_tc": 5,
+      "count_commits": 0,
+      "apfd": 0.1,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T3TF33.66-56",
+      "test_scenario": "industry_dataset",
+      "count_tc": 16,
+      "count_commits": 0,
+      "apfd": 0.40625,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T3TM33.23-10",
+      "test_scenario": "industry_dataset",
+      "count_tc": 20,
+      "count_commits": 0,
+      "apfd": 0.975,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T3TM33.7",
+      "test_scenario": "industry_dataset",
+      "count_tc": 6,
+      "count_commits": 0,
+      "apfd": 0.5833333333333334,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "T3TP33.2",
+      "test_scenario": "industry_dataset",
+      "count_tc": 5,
+      "count_commits": 0,
+      "apfd": 0.5,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "TSH33.179",
+      "test_scenario": "industry_dataset",
+      "count_tc": 27,
+      "count_commits": 0,
+      "apfd": 0.9074074074074073,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "TTC33.18",
+      "test_scenario": "industry_dataset",
+      "count_tc": 47,
+      "count_commits": 0,
+      "apfd": 0.5638297872340425,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "TTC33.19",
+      "test_scenario": "industry_dataset",
+      "count_tc": 15,
+      "count_commits": 0,
+      "apfd": 0.16666666666666663,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "TTD33.16",
+      "test_scenario": "industry_dataset",
+      "count_tc": 12,
+      "count_commits": 0,
+      "apfd": 0.6249999999999999,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "TTD33.20",
+      "test_scenario": "industry_dataset",
+      "count_tc": 25,
+      "count_commits": 0,
+      "apfd": 0.78,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "TTD33.21",
+      "test_scenario": "industry_dataset",
+      "count_tc": 57,
+      "count_commits": 0,
+      "apfd": 0.7236842105263158,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "TTDC33.16",
+      "test_scenario": "industry_dataset",
+      "count_tc": 24,
+      "count_commits": 0,
+      "apfd": 0.06249999999999996,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "TTM33.1",
+      "test_scenario": "industry_dataset",
+      "count_tc": 17,
+      "count_commits": 0,
+      "apfd": 0.4411764705882353,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "TTM33.15",
+      "test_scenario": "industry_dataset",
+      "count_tc": 12,
+      "count_commits": 0,
+      "apfd": 0.9583333333333333,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U1RD34.43",
+      "test_scenario": "industry_dataset",
+      "count_tc": 3,
+      "count_commits": 0,
+      "apfd": 0.5,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U1SH34.15",
+      "test_scenario": "industry_dataset",
+      "count_tc": 8,
+      "count_commits": 0,
+      "apfd": 0.875,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U1SJ34.2-54",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 0,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U1SQ34.53-12",
+      "test_scenario": "industry_dataset",
+      "count_tc": 4,
+      "count_commits": 0,
+      "apfd": 0.875,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U1SQ34.53-14",
+      "test_scenario": "industry_dataset",
+      "count_tc": 6,
+      "count_commits": 0,
+      "apfd": 0.4166666666666667,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U1TC34.22-12",
+      "test_scenario": "industry_dataset",
+      "count_tc": 9,
+      "count_commits": 0,
+      "apfd": 0.6666666666666667,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U1TC34.42",
+      "test_scenario": "industry_dataset",
+      "count_tc": 4,
+      "count_commits": 0,
+      "apfd": 0.875,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U1TD34.100-7",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 0,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U1TD34.74",
+      "test_scenario": "industry_dataset",
+      "count_tc": 6,
+      "count_commits": 0,
+      "apfd": 0.4166666666666667,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U1TDC34.9-2",
+      "test_scenario": "industry_dataset",
+      "count_tc": 25,
+      "count_commits": 0,
+      "apfd": 0.8200000000000001,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U1TDC34.9-34",
+      "test_scenario": "industry_dataset",
+      "count_tc": 21,
+      "count_commits": 0,
+      "apfd": 0.7380952380952381,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U1TF34.44",
+      "test_scenario": "industry_dataset",
+      "count_tc": 37,
+      "count_commits": 0,
+      "apfd": 0.31081081081081074,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U1TF34.67",
+      "test_scenario": "industry_dataset",
+      "count_tc": 7,
+      "count_commits": 0,
+      "apfd": 0.9285714285714286,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U1TGN34.42-19",
+      "test_scenario": "industry_dataset",
+      "count_tc": 61,
+      "count_commits": 0,
+      "apfd": 0.3524590163934427,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U1TGN34.42-67",
+      "test_scenario": "industry_dataset",
+      "count_tc": 7,
+      "count_commits": 0,
+      "apfd": 0.21428571428571433,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U1TM34.81",
+      "test_scenario": "industry_dataset",
+      "count_tc": 11,
+      "count_commits": 0,
+      "apfd": 0.4090909090909091,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U1TM34.84",
+      "test_scenario": "industry_dataset",
+      "count_tc": 25,
+      "count_commits": 0,
+      "apfd": 0.21999999999999995,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U1TM34.85",
+      "test_scenario": "industry_dataset",
+      "count_tc": 2,
+      "count_commits": 0,
+      "apfd": 0.5,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U1TO34.1-33",
+      "test_scenario": "industry_dataset",
+      "count_tc": 4,
+      "count_commits": 0,
+      "apfd": 0.875,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U1TP34.29-18",
+      "test_scenario": "industry_dataset",
+      "count_tc": 5,
+      "count_commits": 0,
+      "apfd": 0.9,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U1TPN34.18",
+      "test_scenario": "industry_dataset",
+      "count_tc": 6,
+      "count_commits": 0,
+      "apfd": 0.5833333333333334,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U1TR34.8-30",
+      "test_scenario": "industry_dataset",
+      "count_tc": 41,
+      "count_commits": 0,
+      "apfd": 0.6951219512195121,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U1TR34.8-7",
+      "test_scenario": "industry_dataset",
+      "count_tc": 40,
+      "count_commits": 0,
+      "apfd": 0.08749999999999995,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U1TT34.126",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 0,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U1UD34.11",
+      "test_scenario": "industry_dataset",
+      "count_tc": 5,
+      "count_commits": 0,
+      "apfd": 0.1,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U1UD34.16-7",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 0,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U1UFN34.18",
+      "test_scenario": "industry_dataset",
+      "count_tc": 5,
+      "count_commits": 0,
+      "apfd": 0.9,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U1UFN34.36",
+      "test_scenario": "industry_dataset",
+      "count_tc": 2,
+      "count_commits": 0,
+      "apfd": 0.5,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U1UFN34.41-23",
+      "test_scenario": "industry_dataset",
+      "count_tc": 22,
+      "count_commits": 0,
+      "apfd": 0.43181818181818177,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U1UG34.23-23-5",
+      "test_scenario": "industry_dataset",
+      "count_tc": 3,
+      "count_commits": 0,
+      "apfd": 0.16666666666666666,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U1UG34.23-55",
+      "test_scenario": "industry_dataset",
+      "count_tc": 2,
+      "count_commits": 0,
+      "apfd": 0.75,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U1UG34.23-85",
+      "test_scenario": "industry_dataset",
+      "count_tc": 2,
+      "count_commits": 0,
+      "apfd": 0.75,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U2SL34.1-17",
+      "test_scenario": "industry_dataset",
+      "count_tc": 3,
+      "count_commits": 0,
+      "apfd": 0.8333333333333334,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U2SL34.1-4",
+      "test_scenario": "industry_dataset",
+      "count_tc": 26,
+      "count_commits": 0,
+      "apfd": 0.9615384615384616,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U2TB34.26",
+      "test_scenario": "industry_dataset",
+      "count_tc": 16,
+      "count_commits": 0,
+      "apfd": 0.03125,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U2TR34.23",
+      "test_scenario": "industry_dataset",
+      "count_tc": 4,
+      "count_commits": 0,
+      "apfd": 0.625,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U2UAN34.72-35",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 0,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U2UB34.42",
+      "test_scenario": "industry_dataset",
+      "count_tc": 6,
+      "count_commits": 0,
+      "apfd": 0.9166666666666667,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U2UB34.43",
+      "test_scenario": "industry_dataset",
+      "count_tc": 12,
+      "count_commits": 0,
+      "apfd": 0.9166666666666666,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U2UB34.44-20",
+      "test_scenario": "industry_dataset",
+      "count_tc": 5,
+      "count_commits": 0,
+      "apfd": 0.7,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U2UB34.44-42",
+      "test_scenario": "industry_dataset",
+      "count_tc": 10,
+      "count_commits": 0,
+      "apfd": 0.75,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U2UB34.44-71",
+      "test_scenario": "industry_dataset",
+      "count_tc": 7,
+      "count_commits": 0,
+      "apfd": 0.3571428571428571,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U2UM34.12",
+      "test_scenario": "industry_dataset",
+      "count_tc": 4,
+      "count_commits": 0,
+      "apfd": 0.875,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U2UM34.27-8",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 0,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U2UU34.1",
+      "test_scenario": "industry_dataset",
+      "count_tc": 2,
+      "count_commits": 0,
+      "apfd": 0.5,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U2UU34.17",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 0,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U2UU34.2",
+      "test_scenario": "industry_dataset",
+      "count_tc": 5,
+      "count_commits": 0,
+      "apfd": 0.5,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U2UU34.40-14-1",
+      "test_scenario": "industry_dataset",
+      "count_tc": 3,
+      "count_commits": 0,
+      "apfd": 0.8333333333333334,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U2UU34.40-5",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 0,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U2UUI34.40-6",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 0,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3TB34.26",
+      "test_scenario": "industry_dataset",
+      "count_tc": 8,
+      "count_commits": 0,
+      "apfd": 0.8125,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3TR34.8",
+      "test_scenario": "industry_dataset",
+      "count_tc": 6,
+      "count_commits": 0,
+      "apfd": 0.4166666666666667,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3TV34.1-19",
+      "test_scenario": "industry_dataset",
+      "count_tc": 94,
+      "count_commits": 0,
+      "apfd": 0.3741134751773049,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3TV34.1-43",
+      "test_scenario": "industry_dataset",
+      "count_tc": 5,
+      "count_commits": 0,
+      "apfd": 0.9,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3TV34.1-48",
+      "test_scenario": "industry_dataset",
+      "count_tc": 32,
+      "count_commits": 0,
+      "apfd": 0.765625,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3TV34.1-51",
+      "test_scenario": "industry_dataset",
+      "count_tc": 9,
+      "count_commits": 0,
+      "apfd": 0.5185185185185185,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3TZ34.2-18",
+      "test_scenario": "industry_dataset",
+      "count_tc": 109,
+      "count_commits": 0,
+      "apfd": 0.5581039755351681,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3TZ34.2-20",
+      "test_scenario": "industry_dataset",
+      "count_tc": 52,
+      "count_commits": 0,
+      "apfd": 0.798076923076923,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3TZ34.2-22",
+      "test_scenario": "industry_dataset",
+      "count_tc": 19,
+      "count_commits": 0,
+      "apfd": 0.9210526315789473,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3TZ34.2-38",
+      "test_scenario": "industry_dataset",
+      "count_tc": 31,
+      "count_commits": 0,
+      "apfd": 0.9516129032258065,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3TZ34.2-58",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 0,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3TZ34.4",
+      "test_scenario": "industry_dataset",
+      "count_tc": 22,
+      "count_commits": 0,
+      "apfd": 0.43181818181818177,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3TZ34.5",
+      "test_scenario": "industry_dataset",
+      "count_tc": 28,
+      "count_commits": 0,
+      "apfd": 0.7321428571428572,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3TZ34.6",
+      "test_scenario": "industry_dataset",
+      "count_tc": 133,
+      "count_commits": 0,
+      "apfd": 0.7180451127819549,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3TZ34.67",
+      "test_scenario": "industry_dataset",
+      "count_tc": 9,
+      "count_commits": 0,
+      "apfd": 0.38888888888888895,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UC34.32",
+      "test_scenario": "industry_dataset",
+      "count_tc": 24,
+      "count_commits": 0,
+      "apfd": 0.7847222222222222,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UC34.33",
+      "test_scenario": "industry_dataset",
+      "count_tc": 9,
+      "count_commits": 0,
+      "apfd": 0.9444444444444444,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UC34.56",
+      "test_scenario": "industry_dataset",
+      "count_tc": 22,
+      "count_commits": 0,
+      "apfd": 0.5227272727272727,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UC34.63-23",
+      "test_scenario": "industry_dataset",
+      "count_tc": 13,
+      "count_commits": 0,
+      "apfd": 0.9615384615384616,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UC34.63-24",
+      "test_scenario": "industry_dataset",
+      "count_tc": 28,
+      "count_commits": 0,
+      "apfd": 0.44642857142857145,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UC34.63-26",
+      "test_scenario": "industry_dataset",
+      "count_tc": 41,
+      "count_commits": 0,
+      "apfd": 0.5975609756097562,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UC34.63-31",
+      "test_scenario": "industry_dataset",
+      "count_tc": 19,
+      "count_commits": 0,
+      "apfd": 0.8684210526315789,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UC34.8",
+      "test_scenario": "industry_dataset",
+      "count_tc": 52,
+      "count_commits": 0,
+      "apfd": 0.43269230769230776,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UC34.9",
+      "test_scenario": "industry_dataset",
+      "count_tc": 64,
+      "count_commits": 0,
+      "apfd": 0.0390625,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UFN34.1",
+      "test_scenario": "industry_dataset",
+      "count_tc": 4,
+      "count_commits": 0,
+      "apfd": 0.375,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UO34.49-15",
+      "test_scenario": "industry_dataset",
+      "count_tc": 17,
+      "count_commits": 0,
+      "apfd": 0.5588235294117647,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UO34.49-36",
+      "test_scenario": "industry_dataset",
+      "count_tc": 9,
+      "count_commits": 0,
+      "apfd": 0.9444444444444444,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UV34.26-2",
+      "test_scenario": "industry_dataset",
+      "count_tc": 64,
+      "count_commits": 0,
+      "apfd": 0.1171875,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UV34.26-25",
+      "test_scenario": "industry_dataset",
+      "count_tc": 19,
+      "count_commits": 0,
+      "apfd": 0.8070175438596491,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UV34.26-27",
+      "test_scenario": "industry_dataset",
+      "count_tc": 14,
+      "count_commits": 0,
+      "apfd": 0.8690476190476191,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UV34.26-3",
+      "test_scenario": "industry_dataset",
+      "count_tc": 15,
+      "count_commits": 0,
+      "apfd": 0.7666666666666667,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UV34.26-5",
+      "test_scenario": "industry_dataset",
+      "count_tc": 14,
+      "count_commits": 0,
+      "apfd": 0.8214285714285714,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UW34.19",
+      "test_scenario": "industry_dataset",
+      "count_tc": 7,
+      "count_commits": 0,
+      "apfd": 0.7857142857142857,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UW34.27",
+      "test_scenario": "industry_dataset",
+      "count_tc": 18,
+      "count_commits": 0,
+      "apfd": 0.3055555555555556,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UW34.44",
+      "test_scenario": "industry_dataset",
+      "count_tc": 9,
+      "count_commits": 0,
+      "apfd": 0.7222222222222223,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UW34.67-6",
+      "test_scenario": "industry_dataset",
+      "count_tc": 32,
+      "count_commits": 0,
+      "apfd": 0.734375,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UX34.1",
+      "test_scenario": "industry_dataset",
+      "count_tc": 29,
+      "count_commits": 0,
+      "apfd": 0.396551724137931,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UX34.29",
+      "test_scenario": "industry_dataset",
+      "count_tc": 6,
+      "count_commits": 0,
+      "apfd": 0.7500000000000001,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UX34.3",
+      "test_scenario": "industry_dataset",
+      "count_tc": 18,
+      "count_commits": 0,
+      "apfd": 0.3055555555555556,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UX34.30",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 0,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UX34.5",
+      "test_scenario": "industry_dataset",
+      "count_tc": 52,
+      "count_commits": 0,
+      "apfd": 0.6698717948717948,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UX34.54",
+      "test_scenario": "industry_dataset",
+      "count_tc": 34,
+      "count_commits": 0,
+      "apfd": 0.7426470588235294,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UX34.56",
+      "test_scenario": "industry_dataset",
+      "count_tc": 7,
+      "count_commits": 0,
+      "apfd": 0.7857142857142857,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UX34.56-1",
+      "test_scenario": "industry_dataset",
+      "count_tc": 76,
+      "count_commits": 0,
+      "apfd": 0.881578947368421,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UX34.56-17",
+      "test_scenario": "industry_dataset",
+      "count_tc": 13,
+      "count_commits": 0,
+      "apfd": 0.9615384615384616,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UX34.56-19",
+      "test_scenario": "industry_dataset",
+      "count_tc": 13,
+      "count_commits": 0,
+      "apfd": 0.5,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UX34.56-2",
+      "test_scenario": "industry_dataset",
+      "count_tc": 57,
+      "count_commits": 0,
+      "apfd": 0.8894736842105263,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UX34.56-20",
+      "test_scenario": "industry_dataset",
+      "count_tc": 9,
+      "count_commits": 0,
+      "apfd": 0.2777777777777778,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UX34.56-22",
+      "test_scenario": "industry_dataset",
+      "count_tc": 4,
+      "count_commits": 0,
+      "apfd": 0.375,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UX34.56-23",
+      "test_scenario": "industry_dataset",
+      "count_tc": 13,
+      "count_commits": 0,
+      "apfd": 0.6692307692307692,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UX34.56-3",
+      "test_scenario": "industry_dataset",
+      "count_tc": 38,
+      "count_commits": 0,
+      "apfd": 0.8973684210526316,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UX34.56-37",
+      "test_scenario": "industry_dataset",
+      "count_tc": 4,
+      "count_commits": 0,
+      "apfd": 0.875,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UX34.7",
+      "test_scenario": "industry_dataset",
+      "count_tc": 69,
+      "count_commits": 0,
+      "apfd": 0.5628019323671498,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UX34.8",
+      "test_scenario": "industry_dataset",
+      "count_tc": 13,
+      "count_commits": 0,
+      "apfd": 0.7692307692307693,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "U3UX34.9",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 0,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "USH34.104",
+      "test_scenario": "industry_dataset",
+      "count_tc": 9,
+      "count_commits": 0,
+      "apfd": 0.9444444444444444,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "USH34.151",
+      "test_scenario": "industry_dataset",
+      "count_tc": 24,
+      "count_commits": 0,
+      "apfd": 0.6458333333333334,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "USQ34.227",
+      "test_scenario": "industry_dataset",
+      "count_tc": 14,
+      "count_commits": 0,
+      "apfd": 0.4642857142857143,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "USQ34.230",
+      "test_scenario": "industry_dataset",
+      "count_tc": 5,
+      "count_commits": 0,
+      "apfd": 0.7,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UST34.30",
+      "test_scenario": "industry_dataset",
+      "count_tc": 21,
+      "count_commits": 0,
+      "apfd": 0.7380952380952381,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UST34.88",
+      "test_scenario": "industry_dataset",
+      "count_tc": 13,
+      "count_commits": 0,
+      "apfd": 0.7307692307692307,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UST34.90",
+      "test_scenario": "industry_dataset",
+      "count_tc": 11,
+      "count_commits": 0,
+      "apfd": 0.045454545454545456,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UTB34.291",
+      "test_scenario": "industry_dataset",
+      "count_tc": 31,
+      "count_commits": 0,
+      "apfd": 0.3924731182795699,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UTB34.292",
+      "test_scenario": "industry_dataset",
+      "count_tc": 22,
+      "count_commits": 0,
+      "apfd": 0.1818181818181818,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UTB34.309",
+      "test_scenario": "industry_dataset",
+      "count_tc": 27,
+      "count_commits": 0,
+      "apfd": 0.6481481481481481,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UTO34.163",
+      "test_scenario": "industry_dataset",
+      "count_tc": 5,
+      "count_commits": 0,
+      "apfd": 0.29999999999999993,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UTO34.265",
+      "test_scenario": "industry_dataset",
+      "count_tc": 20,
+      "count_commits": 0,
+      "apfd": 0.6083333333333333,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UTO34.266",
+      "test_scenario": "industry_dataset",
+      "count_tc": 28,
+      "count_commits": 0,
+      "apfd": 0.7321428571428572,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UTP34.79",
+      "test_scenario": "industry_dataset",
+      "count_tc": 17,
+      "count_commits": 0,
+      "apfd": 0.7941176470588235,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UTP34.83",
+      "test_scenario": "industry_dataset",
+      "count_tc": 47,
+      "count_commits": 0,
+      "apfd": 0.03191489361702131,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UTP34.84",
+      "test_scenario": "industry_dataset",
+      "count_tc": 19,
+      "count_commits": 0,
+      "apfd": 0.6578947368421052,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UTPN34.116",
+      "test_scenario": "industry_dataset",
+      "count_tc": 63,
+      "count_commits": 0,
+      "apfd": 0.7380952380952381,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UTPN34.141",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 0,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UTPN34.147",
+      "test_scenario": "industry_dataset",
+      "count_tc": 16,
+      "count_commits": 0,
+      "apfd": 0.53125,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UTPN34.176",
+      "test_scenario": "industry_dataset",
+      "count_tc": 3,
+      "count_commits": 0,
+      "apfd": 0.5,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UTR34.116",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 0,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UTR34.153",
+      "test_scenario": "industry_dataset",
+      "count_tc": 23,
+      "count_commits": 0,
+      "apfd": 0.4130434782608695,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UTR34.173",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 0,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UTR34.88",
+      "test_scenario": "industry_dataset",
+      "count_tc": 19,
+      "count_commits": 0,
+      "apfd": 0.9736842105263158,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UTR34.92",
+      "test_scenario": "industry_dataset",
+      "count_tc": 24,
+      "count_commits": 0,
+      "apfd": 0.3958333333333333,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UTR34.93",
+      "test_scenario": "industry_dataset",
+      "count_tc": 66,
+      "count_commits": 0,
+      "apfd": 0.38636363636363635,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UTR34.96",
+      "test_scenario": "industry_dataset",
+      "count_tc": 52,
+      "count_commits": 0,
+      "apfd": 0.7067307692307692,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UTT34.104",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 0,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UTZ34.31",
+      "test_scenario": "industry_dataset",
+      "count_tc": 5,
+      "count_commits": 0,
+      "apfd": 0.9,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUB34.22",
+      "test_scenario": "industry_dataset",
+      "count_tc": 7,
+      "count_commits": 0,
+      "apfd": 0.9285714285714286,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUB34.24",
+      "test_scenario": "industry_dataset",
+      "count_tc": 50,
+      "count_commits": 0,
+      "apfd": 0.65,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUB34.27",
+      "test_scenario": "industry_dataset",
+      "count_tc": 53,
+      "count_commits": 0,
+      "apfd": 0.2924528301886793,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUB34.30",
+      "test_scenario": "industry_dataset",
+      "count_tc": 11,
+      "count_commits": 0,
+      "apfd": 0.1363636363636364,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUB34.31",
+      "test_scenario": "industry_dataset",
+      "count_tc": 12,
+      "count_commits": 0,
+      "apfd": 0.5833333333333334,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUB34.4",
+      "test_scenario": "industry_dataset",
+      "count_tc": 4,
+      "count_commits": 0,
+      "apfd": 0.875,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUC34.37",
+      "test_scenario": "industry_dataset",
+      "count_tc": 24,
+      "count_commits": 0,
+      "apfd": 0.7083333333333334,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUC34.59",
+      "test_scenario": "industry_dataset",
+      "count_tc": 9,
+      "count_commits": 0,
+      "apfd": 0.11111111111111113,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUC34.7",
+      "test_scenario": "industry_dataset",
+      "count_tc": 3,
+      "count_commits": 0,
+      "apfd": 0.8333333333333334,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUFN34.11",
+      "test_scenario": "industry_dataset",
+      "count_tc": 36,
+      "count_commits": 0,
+      "apfd": 0.04166666666666668,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUFN34.170",
+      "test_scenario": "industry_dataset",
+      "count_tc": 4,
+      "count_commits": 0,
+      "apfd": 0.375,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUFN34.192",
+      "test_scenario": "industry_dataset",
+      "count_tc": 9,
+      "count_commits": 0,
+      "apfd": 0.7222222222222223,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUFN34.24",
+      "test_scenario": "industry_dataset",
+      "count_tc": 7,
+      "count_commits": 0,
+      "apfd": 0.3571428571428571,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUFN34.25",
+      "test_scenario": "industry_dataset",
+      "count_tc": 8,
+      "count_commits": 0,
+      "apfd": 0.0625,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUFN34.26",
+      "test_scenario": "industry_dataset",
+      "count_tc": 15,
+      "count_commits": 0,
+      "apfd": 0.5666666666666667,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUFN34.27",
+      "test_scenario": "industry_dataset",
+      "count_tc": 8,
+      "count_commits": 0,
+      "apfd": 0.9375,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUG34.20",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 0,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUG34.23",
+      "test_scenario": "industry_dataset",
+      "count_tc": 13,
+      "count_commits": 0,
+      "apfd": 0.7307692307692307,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUG34.27",
+      "test_scenario": "industry_dataset",
+      "count_tc": 11,
+      "count_commits": 0,
+      "apfd": 0.1363636363636364,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUI34.31",
+      "test_scenario": "industry_dataset",
+      "count_tc": 7,
+      "count_commits": 0,
+      "apfd": 0.21428571428571433,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUI34.32",
+      "test_scenario": "industry_dataset",
+      "count_tc": 6,
+      "count_commits": 0,
+      "apfd": 0.49999999999999994,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUI34.37",
+      "test_scenario": "industry_dataset",
+      "count_tc": 2,
+      "count_commits": 0,
+      "apfd": 0.25,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUM34.23",
+      "test_scenario": "industry_dataset",
+      "count_tc": 18,
+      "count_commits": 0,
+      "apfd": 0.75,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUM34.28",
+      "test_scenario": "industry_dataset",
+      "count_tc": 5,
+      "count_commits": 0,
+      "apfd": 0.9,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUU34.15",
+      "test_scenario": "industry_dataset",
+      "count_tc": 6,
+      "count_commits": 0,
+      "apfd": 0.49999999999999994,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUU34.21",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 0,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUU34.25",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 0,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUV34.54",
+      "test_scenario": "industry_dataset",
+      "count_tc": 12,
+      "count_commits": 0,
+      "apfd": 0.5916666666666667,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUV34.57",
+      "test_scenario": "industry_dataset",
+      "count_tc": 20,
+      "count_commits": 0,
+      "apfd": 0.07500000000000004,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUV34.58",
+      "test_scenario": "industry_dataset",
+      "count_tc": 27,
+      "count_commits": 0,
+      "apfd": 0.6481481481481481,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUV34.59",
+      "test_scenario": "industry_dataset",
+      "count_tc": 36,
+      "count_commits": 0,
+      "apfd": 0.4166666666666667,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUV34.63",
+      "test_scenario": "industry_dataset",
+      "count_tc": 25,
+      "count_commits": 0,
+      "apfd": 0.45999999999999996,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUV34.66",
+      "test_scenario": "industry_dataset",
+      "count_tc": 10,
+      "count_commits": 0,
+      "apfd": 0.65,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUX34.47",
+      "test_scenario": "industry_dataset",
+      "count_tc": 41,
+      "count_commits": 0,
+      "apfd": 0.9390243902439025,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUX34.48",
+      "test_scenario": "industry_dataset",
+      "count_tc": 19,
+      "count_commits": 0,
+      "apfd": 0.9473684210526315,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUX34.51",
+      "test_scenario": "industry_dataset",
+      "count_tc": 11,
+      "count_commits": 0,
+      "apfd": 0.8181818181818181,
+      "time": 0.0
+    },
+    {
+      "method_name": "RETECS",
+      "build_id": "UUX34.52",
+      "test_scenario": "industry_dataset",
+      "count_tc": 12,
+      "count_commits": 0,
+      "apfd": 0.7916666666666666,
+      "time": 0.0
+    }
+  ],
+  "timing": {
+    "train_time_seconds": 25.95373511314392,
+    "eval_time_seconds": 4.268347978591919,
+    "total_time_seconds": 54.51072883605957
+  },
+  "timestamp": "2026-03-08T09:43:33.914967"
+}

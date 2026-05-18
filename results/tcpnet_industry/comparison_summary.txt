@@ -1,0 +1,25 @@
+======================================================================
+TCP-Net - Industry Dataset Results
+======================================================================
+
+Total builds analyzed: 277
+
+APFD Statistics:
+  Mean APFD:   0.6704 (PRIMARY METRIC)
+  Std:         0.2714
+  Median:      0.7500
+  Min:         0.0172
+  Max:         1.0000
+
+APFD Distribution:
+  APFD = 1.0:  23 builds
+  APFD >= 0.7: 153 builds
+  APFD >= 0.5: 212 builds
+  APFD < 0.5:  65 builds
+
+Timing:
+  Training:    585.26s
+  Evaluation:  1035.01s
+  Total:       1644.14s
+
+======================================================================

@@ -1,0 +1,27 @@
+{
+  "method": "TCP-Net",
+  "config": {
+    "data_dir": "datasets/02_rtptorrent/raw/MSR2",
+    "seed": 42,
+    "output_dir": "results/tcpnet_rtptorrent",
+    "method_name": "TCP-Net",
+    "train_ratio": 0.8,
+    "device": "cuda",
+    "epochs": 10,
+    "batch_size": 128,
+    "learning_rate": 0.001,
+    "dropout": 0.3,
+    "early_stopping_patience": 5,
+    "retrain_interval": 200
+  },
+  "summary": {
+    "mean_apfd": 0.8252964765409143,
+    "std_apfd": 0.11040746801299867,
+    "n_projects": 20,
+    "n_builds": 2937
+  },
+  "timing": {
+    "total_time_seconds": 40097.390241622925
+  },
+  "timestamp": "2026-03-08T08:10:45.747665"
+}

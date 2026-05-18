@@ -1,0 +1,223 @@
+experiment:
+  name: edge_ablation_wo_component
+  version: '3.4'
+  description: 'Edge-type ablation: w/o Component'
+  seed: 42
+data:
+  train_path: datasets/01_industry/train.csv
+  test_path: datasets/01_industry/test.csv
+  train_split: 0.8
+  val_split: 0.1
+  test_split: 0.1
+  random_seed: 42
+  binary_classification: true
+  binary_strategy: pass_vs_fail
+  binary_positive_class: Pass
+  binary_negative_class: Fail
+  smote:
+    enabled: false
+text:
+  num_commits_to_keep: 5
+  max_commit_length: 2000
+  max_summary_length: 500
+  max_steps_length: 1000
+commit:
+  max_commits_per_tc: 10
+  include_commit_metadata: true
+embedding:
+  model_name: sentence-transformers/all-mpnet-base-v2
+  embedding_dim: 768
+  combined_embedding_dim: 1536
+  max_length: 384
+  batch_size: 64
+  normalize_embeddings: true
+  device: cuda
+  use_cache: true
+  cache_dir: cache/01_industry
+semantic:
+  model_name: sentence-transformers/all-mpnet-base-v2
+  embedding_dim: 768
+  combined_embedding_dim: 1536
+  max_length: 384
+  batch_size: 64
+structural:
+  input_dim: 19
+  extractor:
+    use_v2_5: true
+    recent_window: 5
+    very_recent_window: 2
+    medium_term_window: 10
+    min_history: 2
+    cache_path: cache/01_industry/structural_features_v2_5.pkl
+coldstart:
+  enabled: true
+  cache_path: cache/01_industry/coldstart_regressor.pkl
+  hidden_dims:
+  - 512
+  - 256
+  - 128
+  dropout: 0.2
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  batch_size: 64
+  num_epochs: 100
+  patience: 10
+priority_score:
+  enabled: true
+  num_cycles: 10
+  decay_type: exponential
+  decay_factor: 0.8
+  normalize: true
+graph:
+  build_graph: true
+  use_multi_edge: true
+  edge_types:
+  - co_failure
+  - co_success
+  - semantic
+  - temporal
+  edge_weights:
+    co_failure: 1.0
+    co_success: 0.5
+    semantic: 0.3
+    temporal: 0.2
+    component: 0.4
+  min_co_occurrences: 1
+  weight_threshold: 0.03
+  semantic_top_k: 10
+  semantic_threshold: 0.65
+  cache_path: /home/acauan/iats/filo_priori_paper/cache/01_industry/multi_edge_graph_wo_component.pkl
+  type: co_failure
+model:
+  type: dual_head
+  num_classes: 2
+  semantic:
+    input_dim: 1536
+    hidden_dim: 256
+    num_layers: 2
+    dropout: 0.15
+    activation: gelu
+  structural:
+    input_dim: 19
+    hidden_dim: 64
+    dropout: 0.15
+    activation: gelu
+    num_layers: 2
+  fusion:
+    input_dim: 320
+    hidden_dim: 256
+    num_layers: 2
+    dropout: 0.15
+    activation: gelu
+  classifier:
+    input_dim: 256
+    hidden_dim: 128
+    num_classes: 2
+    dropout: 0.2
+  regressor:
+    hidden_dims:
+    - 128
+    - 64
+    dropout: 0.2
+  gnn:
+    type: GAT
+    hidden_dim: 128
+    num_layers: 1
+    num_heads: 2
+    dropout: 0.15
+    activation: elu
+training:
+  num_epochs: 80
+  epochs: 80
+  batch_size: 16
+  learning_rate: 3.0e-05
+  weight_decay: 0.0001
+  optimizer: adamw
+  scheduler:
+    type: cosine
+    eta_min: 1.0e-06
+  warmup_epochs: 5
+  gradient_clip: 1.0
+  accumulation_steps: 1
+  early_stopping:
+    patience: 15
+    min_delta: 0.001
+    monitor: val_f1_macro
+    mode: max
+  loss:
+    type: dual_head
+    dual_head:
+      alpha: 1.0
+      beta: 0.8
+      mse_nonzero_weight: 15.0
+    use_class_weights: false
+    focal_alpha: 0.75
+    focal_gamma: 2.0
+    label_smoothing: 0.0
+  sampling:
+    use_balanced_sampling: true
+    minority_weight: 1.0
+    majority_weight: 0.035
+ranking:
+  method: probability
+  reverse: true
+  apfd_calculation:
+    enabled: true
+    fault_column: verdict
+    fault_value: Fail
+  orphan_strategy:
+    enabled: true
+    method: knn_pfail
+    k_neighbors: 5
+    alpha_blend: 0.55
+    similarity_metric: euclidean
+    structural_weight: 0.35
+    temperature: 0.7
+    min_similarity: 0.05
+  historical_boost_weight: 0.55
+evaluation:
+  metrics:
+  - accuracy
+  - precision
+  - recall
+  - f1_macro
+  - f1_weighted
+  - auprc_macro
+  - auroc
+  threshold_search:
+    enabled: true
+    range:
+    - 0.05
+    - 0.9
+    step: 0.02
+    coarse_step: 0.05
+    fine_step: 0.01
+    fine_window: 0.05
+    two_phase: true
+    optimize_for: f_beta
+    beta: 2.0
+system:
+  device: cuda
+  num_workers: 2
+  pin_memory: true
+  use_amp: true
+  deterministic: true
+  benchmark: false
+hardware:
+  device: cuda
+  num_workers: 2
+logging:
+  level: INFO
+  log_dir: logs
+  tensorboard: false
+checkpoint:
+  save_best: true
+  save_last: true
+  monitor: val_f1_macro
+  mode: max
+output:
+  results_dir: /home/acauan/iats/filo_priori_paper/results/edge_type_ablation_industry/wo_component
+  save_predictions: true
+  save_rankings: true
+  save_apfd: true
+  save_plots: true

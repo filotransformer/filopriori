@@ -1,0 +1,119 @@
+%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#2563EB', 'primaryTextColor': '#fff', 'primaryBorderColor': '#1D4ED8', 'lineColor': '#64748B', 'secondaryColor': '#F1F5F9', 'tertiaryColor': '#E2E8F0', 'fontSize': '13px'}}}%%
+
+graph TD
+    %% ============================================================
+    %% INPUTS
+    %% ============================================================
+    subgraph INPUTS["<b>Inputs</b>"]
+        direction LR
+        I1["19 Structural Features<br/><i>(failure rate, recency, trend, ...)</i>"]
+        I2["Test Relationship Graph<br/><i>(co-failure base + optional edge types)</i>"]
+        I3["Text Embeddings<br/><i>(SBERT, 768 or 1536-dim)</i>"]
+    end
+
+    %% ============================================================
+    %% CORE ARCHITECTURE (shaded, dominant)
+    %% ============================================================
+    subgraph CORE["<b>Core Architecture</b> (dominant contributor)"]
+        direction TB
+
+        subgraph GATV2["<b>GATv2 Structural Stream</b><br/>+17.0%, p &lt; 0.001"]
+            G1["Input Projection<br/>19 features &rarr; 128-dim"]
+            G2["GATv2 Layer<br/>1 layer, 2 heads, 128-dim"]
+            G3["Structural Repr.<br/>256-dim"]
+            G1 --> G2
+            G2 --> G3
+        end
+
+        subgraph GRAPH["<b>Configurable Test Relationship Graph</b>"]
+            direction LR
+            E1["Co-Failure<br/><i>w=1.0, always</i>"]
+            E2["Co-Success<br/><i>w=0.5</i>"]
+            E3["Component<br/><i>w=0.4</i>"]
+            E4["Semantic<br/><i>w=0.3</i>"]
+            E5["Temporal<br/><i>w=0.2</i>"]
+        end
+    end
+
+    %% ============================================================
+    %% INVESTIGATED COMPONENTS (dashed, non-significant)
+    %% ============================================================
+    subgraph INVEST["<b>Investigated Components</b> (non-significant, p=0.309)"]
+        direction TB
+        S1["Semantic Stream<br/><i>SBERT &rarr; FFN + Residual</i><br/>256-dim"]
+        CA["Cross-Attention Fusion<br/><i>Bidirectional MHA, 4 heads</i><br/>512-dim"]
+    end
+
+    %% ============================================================
+    %% CLASSIFIER
+    %% ============================================================
+    CLS["<b>Classifier MLP</b><br/>[128 &rarr; 64 &rarr; 2]<br/>P(Fail) per test"]
+
+    %% ============================================================
+    %% SCORING VARIANTS
+    %% ============================================================
+    subgraph SCORING["<b>Scoring Pipeline</b> (variant-dependent)"]
+        direction TB
+
+        subgraph FULL["<b>Filo-Priori-Full</b><br/><i>(Industrial, rich metadata)</i>"]
+            F1["GNN Probability"]
+            F2["KNN Orphan<br/>Node Imputation"]
+            F3["Final Score"]
+            F1 --> F3
+            F2 --> F3
+        end
+
+        subgraph ENS["<b>Filo-Priori-Ensemble</b><br/><i>(RTPTorrent, sparse metadata)</i>"]
+            EN1["GNN Score"]
+            EN2["DeepOrder DNN<br/><i>3 layers: 64, 32, 16</i><br/><i>Per-test temporal features</i>"]
+            EN3["&alpha;-Blending<br/><i>validation-optimized</i>"]
+            EN1 --> EN3
+            EN2 --> EN3
+        end
+    end
+
+    %% ============================================================
+    %% OUTPUT
+    %% ============================================================
+    OUT["<b>Ranked Test List</b><br/><i>Ordered by P(Fail), descending</i>"]
+
+    %% ============================================================
+    %% CONNECTIONS
+    %% ============================================================
+    I1 --> G1
+    I2 --> GRAPH
+    GRAPH --> G2
+    I3 -.-> S1
+
+    G3 --> CA
+    S1 -.-> CA
+    G3 --> CLS
+    CA -.-> CLS
+
+    CLS --> FULL
+    CLS --> ENS
+    I1 --> EN2
+
+    F3 --> OUT
+    EN3 --> OUT
+
+    %% ============================================================
+    %% STYLING
+    %% ============================================================
+    style CORE fill:#DBEAFE,stroke:#2563EB,stroke-width:3px
+    style GATV2 fill:#BFDBFE,stroke:#1D4ED8,stroke-width:2px
+    style GRAPH fill:#E0F2FE,stroke:#0284C7,stroke-width:1px
+
+    style INVEST fill:#FFF7ED,stroke:#F97316,stroke-width:2px,stroke-dasharray: 8 4
+    style S1 fill:#FFF7ED,stroke:#F97316,stroke-dasharray: 5 3
+    style CA fill:#FFF7ED,stroke:#F97316,stroke-dasharray: 5 3
+
+    style FULL fill:#F0FDF4,stroke:#16A34A,stroke-width:2px
+    style ENS fill:#F0FDF4,stroke:#16A34A,stroke-width:2px
+
+    style CLS fill:#F8FAFC,stroke:#475569,stroke-width:2px
+    style OUT fill:#1E293B,stroke:#0F172A,stroke-width:2px,color:#fff
+
+    style I1 fill:#F1F5F9,stroke:#64748B
+    style I2 fill:#F1F5F9,stroke:#64748B
+    style I3 fill:#F1F5F9,stroke:#64748B,stroke-dasharray: 5 3

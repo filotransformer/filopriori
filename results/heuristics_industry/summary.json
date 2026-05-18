@@ -1,0 +1,38 @@
+{
+  "dataset": "industrial",
+  "n_test_builds_with_failures": 277,
+  "filo_priori_apfd": 0.7611,
+  "results": {
+    "Random": {
+      "mean_apfd": 0.5372009246354712,
+      "std_apfd": 0.2719334288884158,
+      "n_builds": 277,
+      "median_apfd": 0.5
+    },
+    "Recency": {
+      "mean_apfd": 0.41999343164802594,
+      "std_apfd": 0.31258736197638287,
+      "n_builds": 277,
+      "median_apfd": 0.36111111111111105
+    },
+    "RecentFailureRate": {
+      "mean_apfd": 0.6580466716273184,
+      "std_apfd": 0.26922588262905395,
+      "n_builds": 277,
+      "median_apfd": 0.7045454545454546
+    },
+    "FailureRate": {
+      "mean_apfd": 0.6640889774641213,
+      "std_apfd": 0.26896027242524007,
+      "n_builds": 277,
+      "median_apfd": 0.7222222222222222
+    },
+    "GreedyHistorical": {
+      "mean_apfd": 0.657011657143529,
+      "std_apfd": 0.27354391779219156,
+      "n_builds": 277,
+      "median_apfd": 0.7
+    }
+  },
+  "timestamp": "2026-04-01T00:10:34.360805"
+}

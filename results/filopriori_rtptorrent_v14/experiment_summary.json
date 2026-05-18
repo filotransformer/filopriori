@@ -1,0 +1,95 @@
+{
+  "method": "Filo-Priori",
+  "config": {
+    "data_dir": "datasets/02_rtptorrent/raw/MSR2",
+    "seed": 42,
+    "output_dir": "results/filopriori_rtptorrent_v14",
+    "method_name": "Filo-Priori",
+    "train_ratio": 0.8,
+    "val_ratio": 0.1,
+    "device": "cuda",
+    "max_train_rows": 500000,
+    "sbert_model": "sentence-transformers/all-mpnet-base-v2",
+    "sbert_batch_size": 64,
+    "embedding_dim": 768,
+    "model": {
+      "type": "dual_stream_v8",
+      "semantic": {
+        "input_dim": 768,
+        "hidden_dim": 256,
+        "num_layers": 2,
+        "dropout": 0.3,
+        "activation": "gelu"
+      },
+      "structural": {
+        "input_dim": 19,
+        "hidden_dim": 128,
+        "num_heads": 4,
+        "dropout": 0.3,
+        "activation": "elu",
+        "use_edge_weights": true
+      },
+      "fusion": {
+        "type": "cross_attention",
+        "hidden_dim": 256,
+        "num_heads": 4,
+        "dropout": 0.1
+      },
+      "classifier": {
+        "hidden_dims": [
+          128,
+          64
+        ],
+        "dropout": 0.4
+      },
+      "num_classes": 2
+    },
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "max_epochs": 30,
+    "patience": 7,
+    "focal_gamma": 2.0,
+    "max_pos_weight": 10.0,
+    "do_dnn": {
+      "hidden_dims": [
+        64,
+        32,
+        16
+      ],
+      "dropout": 0.2,
+      "learning_rate": 0.001,
+      "epochs": 15,
+      "batch_size": 128,
+      "history_window": 10
+    },
+    "max_do_train_builds": 5000,
+    "max_dnn_pos_weight": 50.0,
+    "graph_type": "co_failure",
+    "min_co_occurrences": 2,
+    "weight_threshold": 0.1,
+    "alpha_search_range": [
+      0.0,
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9
+    ],
+    "min_val_failure_builds": 3,
+    "min_tcs_for_model": 30
+  },
+  "summary": {
+    "mean_apfd": 0.8383791517815794,
+    "std_apfd": 0.11239626829638526,
+    "n_projects": 20,
+    "n_builds": 2937
+  },
+  "timing": {
+    "total_time_seconds": 11234.143816232681
+  },
+  "timestamp": "2026-03-19T17:38:00.727276"
+}

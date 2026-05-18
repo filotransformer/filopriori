@@ -1,0 +1,2534 @@
+{
+  "method": "FailRank-BB",
+  "config": {
+    "train_path": "datasets/01_industry/train.csv",
+    "test_path": "datasets/01_industry/test.csv",
+    "build_col": "Build_ID",
+    "test_col": "TC_Key",
+    "result_col": "TE_Test_Result",
+    "duration_col": null,
+    "tc_text_col": "TC_Steps",
+    "commit_text_col": "commit",
+    "sbert_model_name": "google-bert/bert-base-uncased",
+    "max_iter": 1000,
+    "use_historical_features": false,
+    "batch_size": 64,
+    "seed": 42,
+    "output_dir": "results/failrank_bb_industry",
+    "method_name": "FailRank-BB",
+    "test_scenario": "industry_dataset"
+  },
+  "summary": {
+    "mean_apfd": 0.6012822961243667,
+    "std_apfd": 0.25903573208935843,
+    "median_apfd": 0.6111111111111112,
+    "min_apfd": 0.045454545454545456,
+    "max_apfd": 1.0,
+    "n_builds": 277,
+    "builds_apfd_1.0": 23,
+    "builds_apfd_gte_0.7": 107,
+    "builds_apfd_gte_0.5": 186,
+    "builds_apfd_lt_0.5": 91
+  },
+  "build_results": [
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "S2SD32.21-85-3-2-1",
+      "test_scenario": "industry_dataset",
+      "count_tc": 15,
+      "count_commits": 38,
+      "apfd": 0.9,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "S3RO32.16",
+      "test_scenario": "industry_dataset",
+      "count_tc": 15,
+      "count_commits": 20,
+      "apfd": 0.8333333333333334,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "S3RW32.138-29-5",
+      "test_scenario": "industry_dataset",
+      "count_tc": 110,
+      "count_commits": 120,
+      "apfd": 0.36818181818181817,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "S3RYA32.16",
+      "test_scenario": "industry_dataset",
+      "count_tc": 10,
+      "count_commits": 24,
+      "apfd": 0.65,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "S3RYA32.35",
+      "test_scenario": "industry_dataset",
+      "count_tc": 5,
+      "count_commits": 105,
+      "apfd": 0.29999999999999993,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "S3RYA32.49-7",
+      "test_scenario": "industry_dataset",
+      "count_tc": 12,
+      "count_commits": 3,
+      "apfd": 0.875,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "S3RYA32.49-8",
+      "test_scenario": "industry_dataset",
+      "count_tc": 12,
+      "count_commits": 4,
+      "apfd": 0.8333333333333333,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "S3SG32.39-90-1",
+      "test_scenario": "industry_dataset",
+      "count_tc": 40,
+      "count_commits": 365,
+      "apfd": 0.1375,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T1RD33.116-13",
+      "test_scenario": "industry_dataset",
+      "count_tc": 40,
+      "count_commits": 2,
+      "apfd": 0.85,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T1RD33.116-15",
+      "test_scenario": "industry_dataset",
+      "count_tc": 12,
+      "count_commits": 5,
+      "apfd": 0.37500000000000006,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T1RG33.135-109-1",
+      "test_scenario": "industry_dataset",
+      "count_tc": 25,
+      "count_commits": 4,
+      "apfd": 0.62,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T1RG33.135-56",
+      "test_scenario": "industry_dataset",
+      "count_tc": 18,
+      "count_commits": 6,
+      "apfd": 0.5833333333333334,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T1RG33.135-89",
+      "test_scenario": "industry_dataset",
+      "count_tc": 12,
+      "count_commits": 1,
+      "apfd": 0.37500000000000006,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T1RM33.1-110-4",
+      "test_scenario": "industry_dataset",
+      "count_tc": 19,
+      "count_commits": 35,
+      "apfd": 0.39473684210526316,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T1RM33.1-54",
+      "test_scenario": "industry_dataset",
+      "count_tc": 27,
+      "count_commits": 60,
+      "apfd": 0.5740740740740741,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T1RM33.1-89",
+      "test_scenario": "industry_dataset",
+      "count_tc": 25,
+      "count_commits": 1,
+      "apfd": 0.45999999999999996,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T1RM33.1-92",
+      "test_scenario": "industry_dataset",
+      "count_tc": 10,
+      "count_commits": 1,
+      "apfd": 0.75,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T1SJC33.51-6",
+      "test_scenario": "industry_dataset",
+      "count_tc": 8,
+      "count_commits": 4,
+      "apfd": 0.6875,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T1SQ33.15-11-77",
+      "test_scenario": "industry_dataset",
+      "count_tc": 26,
+      "count_commits": 4,
+      "apfd": 0.9423076923076924,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T1SQ33.15-11-80",
+      "test_scenario": "industry_dataset",
+      "count_tc": 10,
+      "count_commits": 4,
+      "apfd": 0.75,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T1SQ33.15-11-85",
+      "test_scenario": "industry_dataset",
+      "count_tc": 47,
+      "count_commits": 3,
+      "apfd": 0.5957446808510638,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T1SSM33.1-100",
+      "test_scenario": "industry_dataset",
+      "count_tc": 2,
+      "count_commits": 1,
+      "apfd": 0.75,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T1SSM33.1-49",
+      "test_scenario": "industry_dataset",
+      "count_tc": 7,
+      "count_commits": 5,
+      "apfd": 0.6428571428571428,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T1SU33.1-124-4",
+      "test_scenario": "industry_dataset",
+      "count_tc": 25,
+      "count_commits": 4,
+      "apfd": 0.5,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T1TGN33.60-23",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 2,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T1TH33.75-12-6",
+      "test_scenario": "industry_dataset",
+      "count_tc": 10,
+      "count_commits": 12,
+      "apfd": 0.9500000000000001,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T1TH33.75-2",
+      "test_scenario": "industry_dataset",
+      "count_tc": 42,
+      "count_commits": 5,
+      "apfd": 0.5476190476190476,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T1TH33.75-3",
+      "test_scenario": "industry_dataset",
+      "count_tc": 6,
+      "count_commits": 15,
+      "apfd": 0.9166666666666667,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T1TR33.4-30-75",
+      "test_scenario": "industry_dataset",
+      "count_tc": 15,
+      "count_commits": 1,
+      "apfd": 0.8333333333333334,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T1TR33.43-20-24",
+      "test_scenario": "industry_dataset",
+      "count_tc": 4,
+      "count_commits": 26,
+      "apfd": 0.375,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T1TR33.43-40",
+      "test_scenario": "industry_dataset",
+      "count_tc": 50,
+      "count_commits": 41,
+      "apfd": 0.9566666666666667,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T1TZ33.3-50",
+      "test_scenario": "industry_dataset",
+      "count_tc": 16,
+      "count_commits": 5,
+      "apfd": 0.28125,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T1TZ33.3-52",
+      "test_scenario": "industry_dataset",
+      "count_tc": 23,
+      "count_commits": 16,
+      "apfd": 0.5434782608695652,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T1TZ33.3-60",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 9,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T1TZ33.3-62-29",
+      "test_scenario": "industry_dataset",
+      "count_tc": 16,
+      "count_commits": 1,
+      "apfd": 0.53125,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2RK33.71",
+      "test_scenario": "industry_dataset",
+      "count_tc": 20,
+      "count_commits": 6,
+      "apfd": 0.22499999999999995,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2SA33.9",
+      "test_scenario": "industry_dataset",
+      "count_tc": 6,
+      "count_commits": 36,
+      "apfd": 0.08333333333333333,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2SD33.21",
+      "test_scenario": "industry_dataset",
+      "count_tc": 9,
+      "count_commits": 29,
+      "apfd": 0.1666666666666667,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2SD33.26",
+      "test_scenario": "industry_dataset",
+      "count_tc": 32,
+      "count_commits": 11,
+      "apfd": 0.734375,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2SD33.27",
+      "test_scenario": "industry_dataset",
+      "count_tc": 41,
+      "count_commits": 37,
+      "apfd": 0.25609756097560976,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2SE33.73-8",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 4,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2SR33.35",
+      "test_scenario": "industry_dataset",
+      "count_tc": 12,
+      "count_commits": 6,
+      "apfd": 0.7916666666666666,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2SR33.54",
+      "test_scenario": "industry_dataset",
+      "count_tc": 6,
+      "count_commits": 7,
+      "apfd": 0.08333333333333333,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2ST33.105-15",
+      "test_scenario": "industry_dataset",
+      "count_tc": 45,
+      "count_commits": 2,
+      "apfd": 0.21111111111111105,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2ST33.92",
+      "test_scenario": "industry_dataset",
+      "count_tc": 28,
+      "count_commits": 37,
+      "apfd": 0.23214285714285715,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2SV33.40",
+      "test_scenario": "industry_dataset",
+      "count_tc": 16,
+      "count_commits": 30,
+      "apfd": 0.34375,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2SV33.42",
+      "test_scenario": "industry_dataset",
+      "count_tc": 12,
+      "count_commits": 2,
+      "apfd": 0.6249999999999999,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2TT33.60-3",
+      "test_scenario": "industry_dataset",
+      "count_tc": 119,
+      "count_commits": 11,
+      "apfd": 0.8823529411764706,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2TT33.60-5",
+      "test_scenario": "industry_dataset",
+      "count_tc": 9,
+      "count_commits": 7,
+      "apfd": 0.9444444444444444,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2TT33.60-7",
+      "test_scenario": "industry_dataset",
+      "count_tc": 12,
+      "count_commits": 2,
+      "apfd": 0.875,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2TV33.10",
+      "test_scenario": "industry_dataset",
+      "count_tc": 73,
+      "count_commits": 61,
+      "apfd": 0.8972602739726028,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2TV33.11",
+      "test_scenario": "industry_dataset",
+      "count_tc": 26,
+      "count_commits": 154,
+      "apfd": 0.4807692307692308,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2TV33.12",
+      "test_scenario": "industry_dataset",
+      "count_tc": 70,
+      "count_commits": 1,
+      "apfd": 0.7071428571428571,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2TV33.13",
+      "test_scenario": "industry_dataset",
+      "count_tc": 88,
+      "count_commits": 37,
+      "apfd": 0.5511363636363636,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2TV33.14",
+      "test_scenario": "industry_dataset",
+      "count_tc": 66,
+      "count_commits": 41,
+      "apfd": 0.41161616161616166,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2TV33.31",
+      "test_scenario": "industry_dataset",
+      "count_tc": 48,
+      "count_commits": 7,
+      "apfd": 0.4548611111111111,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2TV33.32",
+      "test_scenario": "industry_dataset",
+      "count_tc": 9,
+      "count_commits": 26,
+      "apfd": 0.7222222222222223,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2TV33.33",
+      "test_scenario": "industry_dataset",
+      "count_tc": 16,
+      "count_commits": 45,
+      "apfd": 0.84375,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2TV33.34",
+      "test_scenario": "industry_dataset",
+      "count_tc": 27,
+      "count_commits": 43,
+      "apfd": 0.05555555555555561,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2TV33.35",
+      "test_scenario": "industry_dataset",
+      "count_tc": 3,
+      "count_commits": 30,
+      "apfd": 0.5,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2TV33.45-10-20",
+      "test_scenario": "industry_dataset",
+      "count_tc": 21,
+      "count_commits": 4,
+      "apfd": 0.3571428571428572,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2TV33.45-10-4",
+      "test_scenario": "industry_dataset",
+      "count_tc": 10,
+      "count_commits": 10,
+      "apfd": 0.45,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2TV33.45-10-5",
+      "test_scenario": "industry_dataset",
+      "count_tc": 4,
+      "count_commits": 6,
+      "apfd": 0.625,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2TV33.45-110",
+      "test_scenario": "industry_dataset",
+      "count_tc": 8,
+      "count_commits": 2,
+      "apfd": 0.4375,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2TV33.45-31",
+      "test_scenario": "industry_dataset",
+      "count_tc": 15,
+      "count_commits": 8,
+      "apfd": 0.43333333333333335,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2TV33.45-5",
+      "test_scenario": "industry_dataset",
+      "count_tc": 13,
+      "count_commits": 17,
+      "apfd": 0.11538461538461534,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2TV33.45-74",
+      "test_scenario": "industry_dataset",
+      "count_tc": 4,
+      "count_commits": 8,
+      "apfd": 0.625,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2TV33.45-8",
+      "test_scenario": "industry_dataset",
+      "count_tc": 53,
+      "count_commits": 8,
+      "apfd": 0.47358490566037736,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2TV33.45-9",
+      "test_scenario": "industry_dataset",
+      "count_tc": 52,
+      "count_commits": 47,
+      "apfd": 0.4519230769230769,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2TV33.7",
+      "test_scenario": "industry_dataset",
+      "count_tc": 8,
+      "count_commits": 39,
+      "apfd": 0.5625,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2TV33.8",
+      "test_scenario": "industry_dataset",
+      "count_tc": 6,
+      "count_commits": 40,
+      "apfd": 0.9166666666666667,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2TZ33.10",
+      "test_scenario": "industry_dataset",
+      "count_tc": 62,
+      "count_commits": 38,
+      "apfd": 0.6564516129032258,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2TZ33.18-16-17",
+      "test_scenario": "industry_dataset",
+      "count_tc": 2,
+      "count_commits": 1,
+      "apfd": 0.75,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T2TZ33.18-59",
+      "test_scenario": "industry_dataset",
+      "count_tc": 13,
+      "count_commits": 5,
+      "apfd": 0.26923076923076916,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T3SG33.102",
+      "test_scenario": "industry_dataset",
+      "count_tc": 19,
+      "count_commits": 26,
+      "apfd": 0.4473684210526315,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T3SG33.92",
+      "test_scenario": "industry_dataset",
+      "count_tc": 12,
+      "count_commits": 13,
+      "apfd": 0.5416666666666666,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T3SL33.16",
+      "test_scenario": "industry_dataset",
+      "count_tc": 62,
+      "count_commits": 157,
+      "apfd": 0.4838709677419355,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T3SL33.16-11",
+      "test_scenario": "industry_dataset",
+      "count_tc": 15,
+      "count_commits": 3,
+      "apfd": 0.7000000000000001,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T3SL33.16-9",
+      "test_scenario": "industry_dataset",
+      "count_tc": 80,
+      "count_commits": 3,
+      "apfd": 0.54375,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T3SL33.5",
+      "test_scenario": "industry_dataset",
+      "count_tc": 26,
+      "count_commits": 31,
+      "apfd": 0.5192307692307693,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T3SL33.8",
+      "test_scenario": "industry_dataset",
+      "count_tc": 9,
+      "count_commits": 12,
+      "apfd": 0.33333333333333337,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T3TB33.2-24",
+      "test_scenario": "industry_dataset",
+      "count_tc": 4,
+      "count_commits": 4,
+      "apfd": 0.875,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T3TB33.2-5",
+      "test_scenario": "industry_dataset",
+      "count_tc": 17,
+      "count_commits": 1,
+      "apfd": 0.6470588235294118,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T3TC33.10",
+      "test_scenario": "industry_dataset",
+      "count_tc": 8,
+      "count_commits": 23,
+      "apfd": 0.0625,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T3TD33.10",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 55,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T3TDC33.16-12",
+      "test_scenario": "industry_dataset",
+      "count_tc": 23,
+      "count_commits": 30,
+      "apfd": 0.3695652173913043,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T3TDC33.16-14",
+      "test_scenario": "industry_dataset",
+      "count_tc": 13,
+      "count_commits": 3,
+      "apfd": 0.9615384615384616,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T3TDC33.3",
+      "test_scenario": "industry_dataset",
+      "count_tc": 2,
+      "count_commits": 56,
+      "apfd": 0.75,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T3TF33.11",
+      "test_scenario": "industry_dataset",
+      "count_tc": 21,
+      "count_commits": 96,
+      "apfd": 0.21428571428571427,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T3TF33.13",
+      "test_scenario": "industry_dataset",
+      "count_tc": 22,
+      "count_commits": 54,
+      "apfd": 0.9772727272727273,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T3TF33.14",
+      "test_scenario": "industry_dataset",
+      "count_tc": 12,
+      "count_commits": 78,
+      "apfd": 0.9583333333333333,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T3TF33.19",
+      "test_scenario": "industry_dataset",
+      "count_tc": 5,
+      "count_commits": 53,
+      "apfd": 0.4,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T3TF33.36",
+      "test_scenario": "industry_dataset",
+      "count_tc": 5,
+      "count_commits": 36,
+      "apfd": 0.9,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T3TF33.66-56",
+      "test_scenario": "industry_dataset",
+      "count_tc": 16,
+      "count_commits": 52,
+      "apfd": 0.96875,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T3TM33.23-10",
+      "test_scenario": "industry_dataset",
+      "count_tc": 20,
+      "count_commits": 16,
+      "apfd": 0.975,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T3TM33.7",
+      "test_scenario": "industry_dataset",
+      "count_tc": 6,
+      "count_commits": 13,
+      "apfd": 0.08333333333333333,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "T3TP33.2",
+      "test_scenario": "industry_dataset",
+      "count_tc": 5,
+      "count_commits": 18,
+      "apfd": 0.5,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "TSH33.179",
+      "test_scenario": "industry_dataset",
+      "count_tc": 27,
+      "count_commits": 17,
+      "apfd": 0.5185185185185185,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "TTC33.18",
+      "test_scenario": "industry_dataset",
+      "count_tc": 47,
+      "count_commits": 32,
+      "apfd": 0.29787234042553196,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "TTC33.19",
+      "test_scenario": "industry_dataset",
+      "count_tc": 15,
+      "count_commits": 8,
+      "apfd": 0.3666666666666667,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "TTD33.16",
+      "test_scenario": "industry_dataset",
+      "count_tc": 12,
+      "count_commits": 64,
+      "apfd": 0.9583333333333333,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "TTD33.20",
+      "test_scenario": "industry_dataset",
+      "count_tc": 25,
+      "count_commits": 48,
+      "apfd": 0.78,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "TTD33.21",
+      "test_scenario": "industry_dataset",
+      "count_tc": 57,
+      "count_commits": 37,
+      "apfd": 0.7236842105263158,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "TTDC33.16",
+      "test_scenario": "industry_dataset",
+      "count_tc": 24,
+      "count_commits": 60,
+      "apfd": 0.6875000000000001,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "TTM33.1",
+      "test_scenario": "industry_dataset",
+      "count_tc": 17,
+      "count_commits": 2554,
+      "apfd": 0.8529411764705882,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "TTM33.15",
+      "test_scenario": "industry_dataset",
+      "count_tc": 12,
+      "count_commits": 61,
+      "apfd": 0.875,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U1RD34.43",
+      "test_scenario": "industry_dataset",
+      "count_tc": 3,
+      "count_commits": 2,
+      "apfd": 0.16666666666666666,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U1SH34.15",
+      "test_scenario": "industry_dataset",
+      "count_tc": 8,
+      "count_commits": 50,
+      "apfd": 0.625,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U1SJ34.2-54",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 2,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U1SQ34.53-12",
+      "test_scenario": "industry_dataset",
+      "count_tc": 4,
+      "count_commits": 1,
+      "apfd": 0.375,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U1SQ34.53-14",
+      "test_scenario": "industry_dataset",
+      "count_tc": 6,
+      "count_commits": 2,
+      "apfd": 0.7500000000000001,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U1TC34.22-12",
+      "test_scenario": "industry_dataset",
+      "count_tc": 9,
+      "count_commits": 4,
+      "apfd": 0.33333333333333337,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U1TC34.42",
+      "test_scenario": "industry_dataset",
+      "count_tc": 4,
+      "count_commits": 23,
+      "apfd": 0.875,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U1TD34.100-7",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 1,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U1TD34.74",
+      "test_scenario": "industry_dataset",
+      "count_tc": 6,
+      "count_commits": 8,
+      "apfd": 0.7500000000000001,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U1TDC34.9-2",
+      "test_scenario": "industry_dataset",
+      "count_tc": 25,
+      "count_commits": 1,
+      "apfd": 0.6000000000000001,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U1TDC34.9-34",
+      "test_scenario": "industry_dataset",
+      "count_tc": 21,
+      "count_commits": 7,
+      "apfd": 0.21428571428571427,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U1TF34.44",
+      "test_scenario": "industry_dataset",
+      "count_tc": 37,
+      "count_commits": 11,
+      "apfd": 0.5,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U1TF34.67",
+      "test_scenario": "industry_dataset",
+      "count_tc": 7,
+      "count_commits": 14,
+      "apfd": 0.5,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U1TGN34.42-19",
+      "test_scenario": "industry_dataset",
+      "count_tc": 61,
+      "count_commits": 2,
+      "apfd": 0.7950819672131147,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U1TGN34.42-67",
+      "test_scenario": "industry_dataset",
+      "count_tc": 7,
+      "count_commits": 2,
+      "apfd": 0.6428571428571428,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U1TM34.81",
+      "test_scenario": "industry_dataset",
+      "count_tc": 11,
+      "count_commits": 22,
+      "apfd": 0.5909090909090908,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U1TM34.84",
+      "test_scenario": "industry_dataset",
+      "count_tc": 25,
+      "count_commits": 4,
+      "apfd": 0.62,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U1TM34.85",
+      "test_scenario": "industry_dataset",
+      "count_tc": 2,
+      "count_commits": 19,
+      "apfd": 0.5,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U1TO34.1-33",
+      "test_scenario": "industry_dataset",
+      "count_tc": 4,
+      "count_commits": 1,
+      "apfd": 0.625,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U1TP34.29-18",
+      "test_scenario": "industry_dataset",
+      "count_tc": 5,
+      "count_commits": 4,
+      "apfd": 0.29999999999999993,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U1TPN34.18",
+      "test_scenario": "industry_dataset",
+      "count_tc": 6,
+      "count_commits": 31,
+      "apfd": 0.9166666666666667,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U1TR34.8-30",
+      "test_scenario": "industry_dataset",
+      "count_tc": 41,
+      "count_commits": 1,
+      "apfd": 0.8414634146341463,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U1TR34.8-7",
+      "test_scenario": "industry_dataset",
+      "count_tc": 40,
+      "count_commits": 2,
+      "apfd": 0.7374999999999999,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U1TT34.126",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 18,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U1UD34.11",
+      "test_scenario": "industry_dataset",
+      "count_tc": 5,
+      "count_commits": 7,
+      "apfd": 0.1,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U1UD34.16-7",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 4,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U1UFN34.18",
+      "test_scenario": "industry_dataset",
+      "count_tc": 5,
+      "count_commits": 27,
+      "apfd": 0.1,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U1UFN34.36",
+      "test_scenario": "industry_dataset",
+      "count_tc": 2,
+      "count_commits": 12,
+      "apfd": 0.5,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U1UFN34.41-23",
+      "test_scenario": "industry_dataset",
+      "count_tc": 22,
+      "count_commits": 3,
+      "apfd": 0.75,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U1UG34.23-23-5",
+      "test_scenario": "industry_dataset",
+      "count_tc": 3,
+      "count_commits": 7,
+      "apfd": 0.8333333333333334,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U1UG34.23-55",
+      "test_scenario": "industry_dataset",
+      "count_tc": 2,
+      "count_commits": 2,
+      "apfd": 0.75,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U1UG34.23-85",
+      "test_scenario": "industry_dataset",
+      "count_tc": 2,
+      "count_commits": 3,
+      "apfd": 0.75,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U2SL34.1-17",
+      "test_scenario": "industry_dataset",
+      "count_tc": 3,
+      "count_commits": 4,
+      "apfd": 0.16666666666666666,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U2SL34.1-4",
+      "test_scenario": "industry_dataset",
+      "count_tc": 26,
+      "count_commits": 34,
+      "apfd": 0.5192307692307693,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U2TB34.26",
+      "test_scenario": "industry_dataset",
+      "count_tc": 16,
+      "count_commits": 43,
+      "apfd": 0.90625,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U2TR34.23",
+      "test_scenario": "industry_dataset",
+      "count_tc": 4,
+      "count_commits": 25,
+      "apfd": 0.75,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U2UAN34.72-35",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 4,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U2UB34.42",
+      "test_scenario": "industry_dataset",
+      "count_tc": 6,
+      "count_commits": 27,
+      "apfd": 0.7500000000000001,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U2UB34.43",
+      "test_scenario": "industry_dataset",
+      "count_tc": 12,
+      "count_commits": 72,
+      "apfd": 0.3333333333333333,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U2UB34.44-20",
+      "test_scenario": "industry_dataset",
+      "count_tc": 5,
+      "count_commits": 5,
+      "apfd": 0.1,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U2UB34.44-42",
+      "test_scenario": "industry_dataset",
+      "count_tc": 10,
+      "count_commits": 7,
+      "apfd": 0.9500000000000001,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U2UB34.44-71",
+      "test_scenario": "industry_dataset",
+      "count_tc": 7,
+      "count_commits": 12,
+      "apfd": 0.3571428571428571,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U2UM34.12",
+      "test_scenario": "industry_dataset",
+      "count_tc": 4,
+      "count_commits": 21,
+      "apfd": 0.625,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U2UM34.27-8",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 41,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U2UU34.1",
+      "test_scenario": "industry_dataset",
+      "count_tc": 2,
+      "count_commits": 35,
+      "apfd": 0.5,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U2UU34.17",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 35,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U2UU34.2",
+      "test_scenario": "industry_dataset",
+      "count_tc": 5,
+      "count_commits": 28,
+      "apfd": 0.5,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U2UU34.40-14-1",
+      "test_scenario": "industry_dataset",
+      "count_tc": 3,
+      "count_commits": 21,
+      "apfd": 0.8333333333333334,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U2UU34.40-5",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 8,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U2UUI34.40-6",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 10,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3TB34.26",
+      "test_scenario": "industry_dataset",
+      "count_tc": 8,
+      "count_commits": 35,
+      "apfd": 0.625,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3TR34.8",
+      "test_scenario": "industry_dataset",
+      "count_tc": 6,
+      "count_commits": 15,
+      "apfd": 0.5277777777777778,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3TV34.1-19",
+      "test_scenario": "industry_dataset",
+      "count_tc": 94,
+      "count_commits": 8,
+      "apfd": 0.6613475177304965,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3TV34.1-43",
+      "test_scenario": "industry_dataset",
+      "count_tc": 5,
+      "count_commits": 6,
+      "apfd": 0.5,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3TV34.1-48",
+      "test_scenario": "industry_dataset",
+      "count_tc": 32,
+      "count_commits": 1,
+      "apfd": 0.078125,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3TV34.1-51",
+      "test_scenario": "industry_dataset",
+      "count_tc": 9,
+      "count_commits": 1,
+      "apfd": 0.5185185185185185,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3TZ34.2-18",
+      "test_scenario": "industry_dataset",
+      "count_tc": 109,
+      "count_commits": 1,
+      "apfd": 0.7782874617737002,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3TZ34.2-20",
+      "test_scenario": "industry_dataset",
+      "count_tc": 52,
+      "count_commits": 6,
+      "apfd": 0.6185897435897436,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3TZ34.2-22",
+      "test_scenario": "industry_dataset",
+      "count_tc": 19,
+      "count_commits": 4,
+      "apfd": 0.4473684210526315,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3TZ34.2-38",
+      "test_scenario": "industry_dataset",
+      "count_tc": 31,
+      "count_commits": 8,
+      "apfd": 0.9193548387096774,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3TZ34.2-58",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 2,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3TZ34.4",
+      "test_scenario": "industry_dataset",
+      "count_tc": 22,
+      "count_commits": 12,
+      "apfd": 0.5227272727272727,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3TZ34.5",
+      "test_scenario": "industry_dataset",
+      "count_tc": 28,
+      "count_commits": 28,
+      "apfd": 0.49999999999999994,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3TZ34.6",
+      "test_scenario": "industry_dataset",
+      "count_tc": 133,
+      "count_commits": 22,
+      "apfd": 0.7575187969924813,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3TZ34.67",
+      "test_scenario": "industry_dataset",
+      "count_tc": 9,
+      "count_commits": 15,
+      "apfd": 0.6111111111111112,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UC34.32",
+      "test_scenario": "industry_dataset",
+      "count_tc": 24,
+      "count_commits": 4,
+      "apfd": 0.3958333333333333,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UC34.33",
+      "test_scenario": "industry_dataset",
+      "count_tc": 9,
+      "count_commits": 1,
+      "apfd": 0.1666666666666667,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UC34.56",
+      "test_scenario": "industry_dataset",
+      "count_tc": 22,
+      "count_commits": 57,
+      "apfd": 0.6742424242424242,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UC34.63-23",
+      "test_scenario": "industry_dataset",
+      "count_tc": 13,
+      "count_commits": 45,
+      "apfd": 0.6538461538461539,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UC34.63-24",
+      "test_scenario": "industry_dataset",
+      "count_tc": 28,
+      "count_commits": 7,
+      "apfd": 0.41071428571428575,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UC34.63-26",
+      "test_scenario": "industry_dataset",
+      "count_tc": 41,
+      "count_commits": 34,
+      "apfd": 0.5609756097560976,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UC34.63-31",
+      "test_scenario": "industry_dataset",
+      "count_tc": 19,
+      "count_commits": 27,
+      "apfd": 0.6578947368421052,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UC34.8",
+      "test_scenario": "industry_dataset",
+      "count_tc": 52,
+      "count_commits": 68,
+      "apfd": 0.37500000000000006,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UC34.9",
+      "test_scenario": "industry_dataset",
+      "count_tc": 64,
+      "count_commits": 69,
+      "apfd": 0.8359375,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UFN34.1",
+      "test_scenario": "industry_dataset",
+      "count_tc": 4,
+      "count_commits": 22,
+      "apfd": 0.625,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UO34.49-15",
+      "test_scenario": "industry_dataset",
+      "count_tc": 17,
+      "count_commits": 20,
+      "apfd": 0.7941176470588235,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UO34.49-36",
+      "test_scenario": "industry_dataset",
+      "count_tc": 9,
+      "count_commits": 4,
+      "apfd": 0.9444444444444444,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UV34.26-2",
+      "test_scenario": "industry_dataset",
+      "count_tc": 64,
+      "count_commits": 51,
+      "apfd": 0.9609375,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UV34.26-25",
+      "test_scenario": "industry_dataset",
+      "count_tc": 19,
+      "count_commits": 37,
+      "apfd": 0.49122807017543857,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UV34.26-27",
+      "test_scenario": "industry_dataset",
+      "count_tc": 14,
+      "count_commits": 74,
+      "apfd": 0.27380952380952384,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UV34.26-3",
+      "test_scenario": "industry_dataset",
+      "count_tc": 15,
+      "count_commits": 45,
+      "apfd": 0.7000000000000001,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UV34.26-5",
+      "test_scenario": "industry_dataset",
+      "count_tc": 14,
+      "count_commits": 38,
+      "apfd": 0.1785714285714286,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UW34.19",
+      "test_scenario": "industry_dataset",
+      "count_tc": 7,
+      "count_commits": 36,
+      "apfd": 0.7857142857142857,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UW34.27",
+      "test_scenario": "industry_dataset",
+      "count_tc": 18,
+      "count_commits": 23,
+      "apfd": 0.08333333333333336,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UW34.44",
+      "test_scenario": "industry_dataset",
+      "count_tc": 9,
+      "count_commits": 48,
+      "apfd": 0.7222222222222223,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UW34.67-6",
+      "test_scenario": "industry_dataset",
+      "count_tc": 32,
+      "count_commits": 7,
+      "apfd": 0.546875,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UX34.1",
+      "test_scenario": "industry_dataset",
+      "count_tc": 29,
+      "count_commits": 54,
+      "apfd": 0.396551724137931,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UX34.29",
+      "test_scenario": "industry_dataset",
+      "count_tc": 6,
+      "count_commits": 11,
+      "apfd": 0.4166666666666667,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UX34.3",
+      "test_scenario": "industry_dataset",
+      "count_tc": 18,
+      "count_commits": 80,
+      "apfd": 0.4722222222222222,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UX34.30",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 68,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UX34.5",
+      "test_scenario": "industry_dataset",
+      "count_tc": 52,
+      "count_commits": 77,
+      "apfd": 0.30448717948717946,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UX34.54",
+      "test_scenario": "industry_dataset",
+      "count_tc": 34,
+      "count_commits": 8,
+      "apfd": 0.4044117647058823,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UX34.56",
+      "test_scenario": "industry_dataset",
+      "count_tc": 7,
+      "count_commits": 56,
+      "apfd": 0.7857142857142857,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UX34.56-1",
+      "test_scenario": "industry_dataset",
+      "count_tc": 76,
+      "count_commits": 90,
+      "apfd": 0.569078947368421,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UX34.56-17",
+      "test_scenario": "industry_dataset",
+      "count_tc": 13,
+      "count_commits": 29,
+      "apfd": 0.8076923076923076,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UX34.56-19",
+      "test_scenario": "industry_dataset",
+      "count_tc": 13,
+      "count_commits": 66,
+      "apfd": 0.6153846153846153,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UX34.56-2",
+      "test_scenario": "industry_dataset",
+      "count_tc": 57,
+      "count_commits": 25,
+      "apfd": 0.5315789473684212,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UX34.56-20",
+      "test_scenario": "industry_dataset",
+      "count_tc": 9,
+      "count_commits": 73,
+      "apfd": 0.8333333333333334,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UX34.56-22",
+      "test_scenario": "industry_dataset",
+      "count_tc": 4,
+      "count_commits": 55,
+      "apfd": 0.25,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UX34.56-23",
+      "test_scenario": "industry_dataset",
+      "count_tc": 13,
+      "count_commits": 9,
+      "apfd": 0.5615384615384614,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UX34.56-3",
+      "test_scenario": "industry_dataset",
+      "count_tc": 38,
+      "count_commits": 44,
+      "apfd": 0.5236842105263159,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UX34.56-37",
+      "test_scenario": "industry_dataset",
+      "count_tc": 4,
+      "count_commits": 24,
+      "apfd": 0.375,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UX34.7",
+      "test_scenario": "industry_dataset",
+      "count_tc": 69,
+      "count_commits": 100,
+      "apfd": 0.35024154589371975,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UX34.8",
+      "test_scenario": "industry_dataset",
+      "count_tc": 13,
+      "count_commits": 98,
+      "apfd": 0.5,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "U3UX34.9",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 62,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "USH34.104",
+      "test_scenario": "industry_dataset",
+      "count_tc": 9,
+      "count_commits": 20,
+      "apfd": 0.8333333333333334,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "USH34.151",
+      "test_scenario": "industry_dataset",
+      "count_tc": 24,
+      "count_commits": 43,
+      "apfd": 0.5625000000000001,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "USQ34.227",
+      "test_scenario": "industry_dataset",
+      "count_tc": 14,
+      "count_commits": 20,
+      "apfd": 0.6071428571428571,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "USQ34.230",
+      "test_scenario": "industry_dataset",
+      "count_tc": 5,
+      "count_commits": 14,
+      "apfd": 0.6,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UST34.30",
+      "test_scenario": "industry_dataset",
+      "count_tc": 21,
+      "count_commits": 4,
+      "apfd": 0.6428571428571429,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UST34.88",
+      "test_scenario": "industry_dataset",
+      "count_tc": 13,
+      "count_commits": 4,
+      "apfd": 0.423076923076923,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UST34.90",
+      "test_scenario": "industry_dataset",
+      "count_tc": 11,
+      "count_commits": 24,
+      "apfd": 0.045454545454545456,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UTB34.291",
+      "test_scenario": "industry_dataset",
+      "count_tc": 31,
+      "count_commits": 3,
+      "apfd": 0.553763440860215,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UTB34.292",
+      "test_scenario": "industry_dataset",
+      "count_tc": 22,
+      "count_commits": 20,
+      "apfd": 0.38636363636363635,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UTB34.309",
+      "test_scenario": "industry_dataset",
+      "count_tc": 27,
+      "count_commits": 65,
+      "apfd": 0.8518518518518519,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UTO34.163",
+      "test_scenario": "industry_dataset",
+      "count_tc": 5,
+      "count_commits": 1,
+      "apfd": 0.1,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UTO34.265",
+      "test_scenario": "industry_dataset",
+      "count_tc": 20,
+      "count_commits": 16,
+      "apfd": 0.5583333333333333,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UTO34.266",
+      "test_scenario": "industry_dataset",
+      "count_tc": 28,
+      "count_commits": 30,
+      "apfd": 0.5535714285714286,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UTP34.79",
+      "test_scenario": "industry_dataset",
+      "count_tc": 17,
+      "count_commits": 2,
+      "apfd": 0.26470588235294124,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UTP34.83",
+      "test_scenario": "industry_dataset",
+      "count_tc": 47,
+      "count_commits": 37,
+      "apfd": 0.07446808510638296,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UTP34.84",
+      "test_scenario": "industry_dataset",
+      "count_tc": 19,
+      "count_commits": 19,
+      "apfd": 0.7631578947368421,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UTPN34.116",
+      "test_scenario": "industry_dataset",
+      "count_tc": 63,
+      "count_commits": 5,
+      "apfd": 0.6111111111111112,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UTPN34.141",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 11,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UTPN34.147",
+      "test_scenario": "industry_dataset",
+      "count_tc": 16,
+      "count_commits": 14,
+      "apfd": 0.28125,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UTPN34.176",
+      "test_scenario": "industry_dataset",
+      "count_tc": 3,
+      "count_commits": 23,
+      "apfd": 0.16666666666666666,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UTR34.116",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 59,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UTR34.153",
+      "test_scenario": "industry_dataset",
+      "count_tc": 23,
+      "count_commits": 18,
+      "apfd": 0.19565217391304346,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UTR34.173",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 47,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UTR34.88",
+      "test_scenario": "industry_dataset",
+      "count_tc": 19,
+      "count_commits": 44,
+      "apfd": 0.4473684210526315,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UTR34.92",
+      "test_scenario": "industry_dataset",
+      "count_tc": 24,
+      "count_commits": 57,
+      "apfd": 0.7291666666666666,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UTR34.93",
+      "test_scenario": "industry_dataset",
+      "count_tc": 66,
+      "count_commits": 48,
+      "apfd": 0.8409090909090909,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UTR34.96",
+      "test_scenario": "industry_dataset",
+      "count_tc": 52,
+      "count_commits": 36,
+      "apfd": 0.7019230769230769,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UTT34.104",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 4,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UTZ34.31",
+      "test_scenario": "industry_dataset",
+      "count_tc": 5,
+      "count_commits": 5,
+      "apfd": 0.5,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUB34.22",
+      "test_scenario": "industry_dataset",
+      "count_tc": 7,
+      "count_commits": 25,
+      "apfd": 0.9285714285714286,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUB34.24",
+      "test_scenario": "industry_dataset",
+      "count_tc": 50,
+      "count_commits": 9,
+      "apfd": 0.39,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUB34.27",
+      "test_scenario": "industry_dataset",
+      "count_tc": 53,
+      "count_commits": 32,
+      "apfd": 0.6415094339622641,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUB34.30",
+      "test_scenario": "industry_dataset",
+      "count_tc": 11,
+      "count_commits": 48,
+      "apfd": 0.6818181818181818,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUB34.31",
+      "test_scenario": "industry_dataset",
+      "count_tc": 12,
+      "count_commits": 52,
+      "apfd": 0.6666666666666666,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUB34.4",
+      "test_scenario": "industry_dataset",
+      "count_tc": 4,
+      "count_commits": 15,
+      "apfd": 0.875,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUC34.37",
+      "test_scenario": "industry_dataset",
+      "count_tc": 24,
+      "count_commits": 34,
+      "apfd": 0.4583333333333333,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUC34.59",
+      "test_scenario": "industry_dataset",
+      "count_tc": 9,
+      "count_commits": 82,
+      "apfd": 0.5,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUC34.7",
+      "test_scenario": "industry_dataset",
+      "count_tc": 3,
+      "count_commits": 27,
+      "apfd": 0.8333333333333334,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUFN34.11",
+      "test_scenario": "industry_dataset",
+      "count_tc": 36,
+      "count_commits": 2,
+      "apfd": 0.9583333333333333,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUFN34.170",
+      "test_scenario": "industry_dataset",
+      "count_tc": 4,
+      "count_commits": 4,
+      "apfd": 0.375,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUFN34.192",
+      "test_scenario": "industry_dataset",
+      "count_tc": 9,
+      "count_commits": 3,
+      "apfd": 0.7222222222222223,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUFN34.24",
+      "test_scenario": "industry_dataset",
+      "count_tc": 7,
+      "count_commits": 48,
+      "apfd": 0.21428571428571433,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUFN34.25",
+      "test_scenario": "industry_dataset",
+      "count_tc": 8,
+      "count_commits": 3342,
+      "apfd": 0.1875,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUFN34.26",
+      "test_scenario": "industry_dataset",
+      "count_tc": 15,
+      "count_commits": 24,
+      "apfd": 0.30000000000000004,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUFN34.27",
+      "test_scenario": "industry_dataset",
+      "count_tc": 8,
+      "count_commits": 13,
+      "apfd": 0.9375,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUG34.20",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 17,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUG34.23",
+      "test_scenario": "industry_dataset",
+      "count_tc": 13,
+      "count_commits": 24,
+      "apfd": 0.34615384615384615,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUG34.27",
+      "test_scenario": "industry_dataset",
+      "count_tc": 11,
+      "count_commits": 19,
+      "apfd": 0.5,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUI34.31",
+      "test_scenario": "industry_dataset",
+      "count_tc": 7,
+      "count_commits": 75,
+      "apfd": 0.6428571428571428,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUI34.32",
+      "test_scenario": "industry_dataset",
+      "count_tc": 6,
+      "count_commits": 80,
+      "apfd": 0.49999999999999994,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUI34.37",
+      "test_scenario": "industry_dataset",
+      "count_tc": 2,
+      "count_commits": 168,
+      "apfd": 0.75,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUM34.23",
+      "test_scenario": "industry_dataset",
+      "count_tc": 18,
+      "count_commits": 32,
+      "apfd": 0.8055555555555556,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUM34.28",
+      "test_scenario": "industry_dataset",
+      "count_tc": 5,
+      "count_commits": 41,
+      "apfd": 0.29999999999999993,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUU34.15",
+      "test_scenario": "industry_dataset",
+      "count_tc": 6,
+      "count_commits": 48,
+      "apfd": 0.49999999999999994,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUU34.21",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 49,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUU34.25",
+      "test_scenario": "industry_dataset",
+      "count_tc": 1,
+      "count_commits": 46,
+      "apfd": 1.0,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUV34.54",
+      "test_scenario": "industry_dataset",
+      "count_tc": 12,
+      "count_commits": 30,
+      "apfd": 0.5916666666666667,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUV34.57",
+      "test_scenario": "industry_dataset",
+      "count_tc": 20,
+      "count_commits": 172,
+      "apfd": 0.525,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUV34.58",
+      "test_scenario": "industry_dataset",
+      "count_tc": 27,
+      "count_commits": 1,
+      "apfd": 0.9444444444444444,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUV34.59",
+      "test_scenario": "industry_dataset",
+      "count_tc": 36,
+      "count_commits": 54,
+      "apfd": 0.7291666666666666,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUV34.63",
+      "test_scenario": "industry_dataset",
+      "count_tc": 25,
+      "count_commits": 103,
+      "apfd": 0.62,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUV34.66",
+      "test_scenario": "industry_dataset",
+      "count_tc": 10,
+      "count_commits": 51,
+      "apfd": 0.45,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUX34.47",
+      "test_scenario": "industry_dataset",
+      "count_tc": 41,
+      "count_commits": 71,
+      "apfd": 0.7195121951219512,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUX34.48",
+      "test_scenario": "industry_dataset",
+      "count_tc": 19,
+      "count_commits": 99,
+      "apfd": 0.6578947368421052,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUX34.51",
+      "test_scenario": "industry_dataset",
+      "count_tc": 11,
+      "count_commits": 73,
+      "apfd": 0.5,
+      "time": 0.0
+    },
+    {
+      "method_name": "FailRank-BB",
+      "build_id": "UUX34.52",
+      "test_scenario": "industry_dataset",
+      "count_tc": 12,
+      "count_commits": 130,
+      "apfd": 0.4166666666666667,
+      "time": 0.0
+    }
+  ],
+  "timing": {
+    "train_time_seconds": 178.0823392868042,
+    "eval_time_seconds": 7.578557968139648,
+    "total_time_seconds": 268.9520080089569
+  },
+  "timestamp": "2026-03-08T10:18:51.986876"
+}

@@ -1,0 +1,30 @@
+{
+  "experiment": "Filo-Priori Random-Fixed Embeddings (Industrial)",
+  "date": "2026-04-01T18:38:56.944785",
+  "seed": 42,
+  "device": "cuda",
+  "sbert_baseline_apfd": 0.7611,
+  "random_fixed_apfd": 0.7560287929671147,
+  "delta": -0.005071207032885328,
+  "delta_pct": -0.6662997021265704,
+  "total_builds": 277,
+  "best_val_f1": 0.5304646335092379,
+  "total_time_seconds": 8662.567776441574,
+  "train_time_seconds": 8456.39816236496,
+  "embedding_dim": 1536,
+  "embedding_type": "random_fixed_hash_based",
+  "apfd_summary": {
+    "total_builds": 277,
+    "mean_apfd": 0.7560287929671147,
+    "median_apfd": 0.7727272727272727,
+    "std_apfd": 0.1808908310924786,
+    "min_apfd": 0.045454545454545435,
+    "max_apfd": 1.0,
+    "total_test_cases": 5085,
+    "mean_tc_per_build": 18.357400722021662,
+    "builds_apfd_1.0": 23,
+    "builds_apfd_gte_0.7": 182,
+    "builds_apfd_gte_0.5": 254,
+    "builds_apfd_lt_0.5": 23
+  }
+}

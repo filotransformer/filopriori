@@ -1,0 +1,26 @@
+======================================================================
+RETECS - Industry Dataset Results
+======================================================================
+
+Agent: network, Reward: tcfail
+Total builds analyzed: 277
+
+APFD Statistics:
+  Mean APFD:   0.6405 (PRIMARY METRIC)
+  Std:         0.2821
+  Median:      0.7222
+  Min:         0.0312
+  Max:         1.0000
+
+APFD Distribution:
+  APFD = 1.0:  23 builds
+  APFD >= 0.7: 144 builds
+  APFD >= 0.5: 194 builds
+  APFD < 0.5:  83 builds
+
+Timing:
+  Training:    25.95s
+  Evaluation:  4.27s
+  Total:       54.51s
+
+======================================================================

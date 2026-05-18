@@ -1,0 +1,406 @@
+#!/usr/bin/env python3
+"""
+DeepOrder Experiment for RTPTorrent Dataset
+
+Runs DeepOrder (Chen et al., ICSME 2021) on the 02_rtptorrent dataset,
+iterating over all projects in MSR2/.
+
+Each project uses temporal split: 80% train, 20% test.
+Only evaluates on test builds with at least 1 failure.
+
+Usage:
+    python experiments/run_deeporder_rtptorrent.py
+"""
+
+import gc
+import json
+import logging
+import random
+import sys
+import time
+from datetime import datetime
+from pathlib import Path
+from typing import Dict, List, Optional, Tuple
+
+import numpy as np
+import pandas as pd
+import torch
+
+# Add project root to path
+PROJECT_ROOT = Path(__file__).parent.parent
+sys.path.insert(0, str(PROJECT_ROOT))
+
+from src.baselines.deeporder import DeepOrderModel
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
+DEFAULT_DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
+
+
+# =============================================================================
+# CONFIGURATION
+# =============================================================================
+
+CONFIG = {
+    'data_dir': 'datasets/02_rtptorrent/raw/MSR2',
+    'seed': 42,
+    'output_dir': 'results/deeporder_rtptorrent',
+    'method_name': 'DeepOrder',
+    'train_ratio': 0.8,
+    'device': DEFAULT_DEVICE,
+    'hidden_dims': [64, 32, 16],
+    'dropout': 0.2,
+    'learning_rate': 0.001,
+    'epochs': 10,  # Reduced from 50 - RTPTorrent projects have large training sets
+    'batch_size': 128,  # Increased from 32 - faster training with fewer gradient updates
+    'history_window': 10,
+}
+
+SKIP_DIRS = {'repo'}
+
+
+# =============================================================================
+# APFD CALCULATION — Identical to Filo-Priori
+# =============================================================================
+
+def calculate_apfd_single_build(ranks: np.ndarray, labels: np.ndarray) -> Optional[float]:
+    labels_arr = np.array(labels)
+    ranks_arr = np.array(ranks)
+
+    n_tests = int(len(labels_arr))
+    fail_indices = np.where(labels_arr.astype(int) != 0)[0]
+    n_failures = len(fail_indices)
+
+    if n_failures == 0:
+        return None
+    if n_tests == 1:
+        return 1.0
+
+    failure_ranks = ranks_arr[fail_indices]
+    apfd = 1.0 - float(failure_ranks.sum()) / float(n_failures * n_tests) + 1.0 / float(2.0 * n_tests)
+    return float(np.clip(apfd, 0.0, 1.0))
+
+
+# =============================================================================
+# DATA LOADING
+# =============================================================================
+
+def get_project_dirs(data_dir: Path) -> List[Path]:
+    projects = []
+    for d in sorted(data_dir.iterdir()):
+        if d.is_dir() and d.name not in SKIP_DIRS:
+            csv_file = d / f"{d.name}.csv"
+            if csv_file.exists():
+                projects.append(d)
+    return projects
+
+
+def load_project_data(project_dir: Path) -> pd.DataFrame:
+    csv_path = project_dir / f"{project_dir.name}.csv"
+    df = pd.read_csv(csv_path)
+    df['is_failure'] = ((df['failures'] > 0) | (df['errors'] > 0)).astype(int)
+    return df
+
+
+# =============================================================================
+# PER-PROJECT EXPERIMENT
+# =============================================================================
+
+def run_project(project_dir: Path, config: Dict) -> Optional[Dict]:
+    project_name = project_dir.name
+    logger.info(f"\n{'='*50}")
+    logger.info(f"Project: {project_name}")
+    logger.info(f"{'='*50}")
+
+    try:
+        df = load_project_data(project_dir)
+    except Exception as e:
+        logger.warning(f"Failed to load {project_name}: {e}")
+        return None
+
+    builds = df['travisJobId'].unique().tolist()
+    n_builds = len(builds)
+
+    if n_builds < 5:
+        logger.warning(f"Skipping {project_name}: only {n_builds} builds")
+        return None
+
+    train_idx = int(n_builds * config['train_ratio'])
+    train_builds = builds[:train_idx]
+    test_builds = builds[train_idx:]
+
+    logger.info(f"  Total builds: {n_builds}, Train: {len(train_builds)}, Test: {len(test_builds)}")
+
+    # Prepare training DataFrame in the format DeepOrderModel expects
+    train_df = df[df['travisJobId'].isin(train_builds)].copy()
+    train_df['Build_ID'] = train_df['travisJobId'].astype(str)
+    train_df['TC_Key'] = train_df['testName']
+    train_df['TE_Test_Result'] = train_df['is_failure'].apply(lambda x: 'Fail' if x == 1 else 'Pass')
+
+    device = config.get('device', DEFAULT_DEVICE)
+
+    # Initialize DeepOrder
+    model = DeepOrderModel(
+        hidden_dims=config['hidden_dims'],
+        dropout=config['dropout'],
+        learning_rate=config['learning_rate'],
+        epochs=config['epochs'],
+        batch_size=config['batch_size'],
+        history_window=config['history_window'],
+        device=device
+    )
+
+    # Training phase
+    train_start = time.time()
+    model.train(
+        df=train_df,
+        build_col='Build_ID',
+        test_col='TC_Key',
+        result_col='TE_Test_Result',
+        duration_col='duration'
+    )
+    train_time = time.time() - train_start
+    logger.info(f"  Training completed in {train_time:.2f}s")
+
+    # Free training DataFrame
+    del train_df
+    gc.collect()
+
+    # Pre-filter and group test data — O(n) total instead of O(n_builds * n)
+    test_set = set(test_builds)
+    test_df = df[df['travisJobId'].isin(test_set)]
+    del df
+    gc.collect()
+
+    test_grouped = test_df.groupby('travisJobId')
+
+    # Evaluation phase
+    eval_start = time.time()
+    build_results = []
+    all_apfd_scores = []
+    n_test = len(test_builds)
+    log_interval = max(1, n_test // 20)
+
+    for i, build_id in enumerate(test_builds):
+        if build_id not in test_grouped.groups:
+            continue
+
+        build_df = test_grouped.get_group(build_id)
+
+        # Vectorized verdict and duration aggregation
+        verdicts = build_df.groupby('testName')['is_failure'].max().to_dict()
+        durations = build_df.groupby('testName')['duration'].last().to_dict()
+        test_ids = list(verdicts.keys())
+
+        n_failures = sum(verdicts.values())
+
+        if n_failures == 0:
+            test_results = {tc: (verdicts[tc], durations.get(tc, 1.0)) for tc in test_ids}
+            model.update_history(str(build_id), test_results)
+            continue
+
+        ranking = model.prioritize(test_ids)
+        labels = np.array([verdicts[tc] for tc in ranking])
+        ranks = np.arange(1, len(ranking) + 1)
+        apfd = calculate_apfd_single_build(ranks, labels)
+
+        if apfd is not None:
+            all_apfd_scores.append(apfd)
+            build_results.append({
+                'method_name': config['method_name'],
+                'project': project_name,
+                'build_id': build_id,
+                'test_scenario': 'rtptorrent',
+                'count_tc': len(test_ids),
+                'count_commits': 0,
+                'apfd': apfd,
+                'time': 0.0
+            })
+
+        # Update history for online learning
+        test_results = {tc: (verdicts[tc], durations.get(tc, 1.0)) for tc in test_ids}
+        model.update_history(str(build_id), test_results)
+
+        # Progress logging
+        if (i + 1) % log_interval == 0 or (i + 1) == n_test:
+            elapsed = time.time() - eval_start
+            rate = (i + 1) / elapsed if elapsed > 0 else 0
+            eta = (n_test - i - 1) / rate if rate > 0 else 0
+            logger.info(f"  Eval progress: {i+1}/{n_test} builds "
+                       f"({len(all_apfd_scores)} with failures) "
+                       f"[{elapsed:.0f}s elapsed, ETA {eta:.0f}s]")
+
+    eval_time = time.time() - eval_start
+
+    # Free test data
+    del test_df, test_grouped
+    gc.collect()
+
+    if not all_apfd_scores:
+        logger.warning(f"No builds with failures in test set for {project_name}")
+        return None
+
+    project_result = {
+        'project': project_name,
+        'n_builds_total': n_builds,
+        'n_builds_train': len(train_builds),
+        'n_builds_test': len(test_builds),
+        'n_builds_with_failures': len(all_apfd_scores),
+        'mean_apfd': float(np.mean(all_apfd_scores)),
+        'std_apfd': float(np.std(all_apfd_scores)),
+        'median_apfd': float(np.median(all_apfd_scores)),
+        'min_apfd': float(np.min(all_apfd_scores)),
+        'max_apfd': float(np.max(all_apfd_scores)),
+        'build_results': build_results,
+        'train_time': train_time,
+        'eval_time': eval_time,
+    }
+
+    logger.info(f"  Builds with failures: {len(all_apfd_scores)}")
+    logger.info(f"  Mean APFD: {project_result['mean_apfd']:.4f}")
+
+    return project_result
+
+
+# =============================================================================
+# MAIN
+# =============================================================================
+
+def _save_results(output_dir, all_project_results, all_build_results, total_start):
+    """Save current results incrementally."""
+    total_time = time.time() - total_start
+
+    if all_build_results:
+        build_df = pd.DataFrame(all_build_results)
+        build_df.to_csv(output_dir / 'apfd_per_build_FULL_testcsv.csv', index=False)
+
+    if all_project_results:
+        project_summary = pd.DataFrame([{
+            'project': r['project'],
+            'n_builds_total': r['n_builds_total'],
+            'n_builds_with_failures': r['n_builds_with_failures'],
+            'mean_apfd': r['mean_apfd'],
+            'std_apfd': r['std_apfd'],
+            'median_apfd': r['median_apfd'],
+        } for r in all_project_results])
+        project_summary.to_csv(output_dir / 'per_project_apfd.csv', index=False)
+
+    all_apfd = [r['mean_apfd'] for r in all_project_results]
+    aggregate = {
+        'method': CONFIG['method_name'],
+        'n_projects': len(all_project_results),
+        'n_builds_total': sum(r['n_builds_with_failures'] for r in all_project_results),
+        'grand_mean_apfd': float(np.mean(all_apfd)) if all_apfd else 0.0,
+        'grand_std_apfd': float(np.std(all_apfd)) if all_apfd else 0.0,
+        'grand_median_apfd': float(np.median(all_apfd)) if all_apfd else 0.0,
+        'total_time_seconds': total_time,
+        'timestamp': datetime.now().isoformat(),
+        'per_project': [{k: v for k, v in r.items() if k != 'build_results'}
+                        for r in all_project_results]
+    }
+
+    with open(output_dir / 'aggregate_results.json', 'w') as f:
+        json.dump(aggregate, f, indent=2, default=str)
+
+    summary = {
+        'method': CONFIG['method_name'],
+        'config': {k: str(v) if isinstance(v, Path) else v for k, v in CONFIG.items()},
+        'summary': {
+            'mean_apfd': aggregate['grand_mean_apfd'],
+            'std_apfd': aggregate['grand_std_apfd'],
+            'n_projects': aggregate['n_projects'],
+            'n_builds': aggregate['n_builds_total'],
+        },
+        'timing': {'total_time_seconds': total_time},
+        'timestamp': datetime.now().isoformat()
+    }
+    with open(output_dir / 'experiment_summary.json', 'w') as f:
+        json.dump(summary, f, indent=2, default=str)
+
+    with open(output_dir / 'comparison_summary.txt', 'w') as f:
+        f.write("=" * 70 + "\n")
+        f.write("DeepOrder - RTPTorrent Dataset Results\n")
+        f.write("=" * 70 + "\n\n")
+        f.write(f"Projects analyzed: {aggregate['n_projects']}\n")
+        f.write(f"Total builds with failures: {aggregate['n_builds_total']}\n\n")
+        f.write(f"Grand Mean APFD: {aggregate['grand_mean_apfd']:.4f} (PRIMARY METRIC)\n")
+        f.write(f"Grand Std APFD:  {aggregate['grand_std_apfd']:.4f}\n\n")
+        f.write(f"Per-project results:\n")
+        for r in all_project_results:
+            f.write(f"  {r['project']:40s} APFD={r['mean_apfd']:.4f} "
+                    f"(n={r['n_builds_with_failures']})\n")
+        f.write(f"\nTotal time: {total_time:.2f}s\n")
+        f.write("=" * 70 + "\n")
+
+
+def main():
+    print("\n" + "=" * 70)
+    print("DeepOrder Experiment - RTPTorrent Dataset")
+    print("=" * 70 + "\n")
+
+    np.random.seed(CONFIG['seed'])
+    random.seed(CONFIG['seed'])
+    torch.manual_seed(CONFIG['seed'])
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(CONFIG['seed'])
+
+    data_dir = PROJECT_ROOT / CONFIG['data_dir']
+    output_dir = PROJECT_ROOT / CONFIG['output_dir']
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    projects = get_project_dirs(data_dir)
+    logger.info(f"Found {len(projects)} projects")
+
+    total_start = time.time()
+    all_project_results = []
+    all_build_results = []
+
+    for proj_idx, project_dir in enumerate(projects, 1):
+        logger.info(f"\n[{proj_idx}/{len(projects)}] Starting {project_dir.name}...")
+
+        result = run_project(project_dir, CONFIG)
+        if result is not None:
+            all_project_results.append(result)
+            all_build_results.extend(result['build_results'])
+
+            # Save incrementally after each project (in case of crash)
+            _save_results(output_dir, all_project_results, all_build_results, total_start)
+
+        # Clean up between projects
+        gc.collect()
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+
+    total_time = time.time() - total_start
+
+    # Final save
+    _save_results(output_dir, all_project_results, all_build_results, total_start)
+
+    # Print results
+    print("\n" + "=" * 70)
+    print("DeepOrder - RTPTorrent Results Summary")
+    print("=" * 70)
+
+    all_apfd = [r['mean_apfd'] for r in all_project_results]
+    if all_apfd:
+        print(f"\nProjects: {len(all_project_results)}")
+        print(f"Grand Mean APFD: {np.mean(all_apfd):.4f} <<< PRIMARY METRIC")
+        print(f"Grand Std APFD:  {np.std(all_apfd):.4f}")
+        print(f"\nPer-project:")
+        for r in all_project_results:
+            print(f"  {r['project']:40s} APFD={r['mean_apfd']:.4f} "
+                  f"(n={r['n_builds_with_failures']}, "
+                  f"train={r['train_time']:.0f}s, eval={r['eval_time']:.0f}s)")
+
+    print(f"\nTotal time: {total_time:.1f}s ({total_time/60:.1f} min)")
+    print(f"Results saved to: {CONFIG['output_dir']}/")
+    print("=" * 70)
+
+
+if __name__ == '__main__':
+    main()

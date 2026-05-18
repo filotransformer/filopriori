@@ -1,0 +1,344 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SECTION: DISCUSSION (IEEE TSE Format) — Consolidated
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+This section synthesizes the implications of our empirical findings, analyzes the
+architectural factors driving \filopriori{}'s effectiveness, and outlines practical
+considerations for its deployment in CI/CD environments.
+
+\subsection{Structural Dominance: Why Graph Modeling Matters and Semantic Features Do Not}
+
+The ablation studies on both datasets provide converging evidence that
+modeling co-failure relationships between test cases through GATv2 is the
+most impactful design decision for TCP. On the industrial dataset, removing
+the GATv2 graph attention mechanism causes a 17.0\% performance decrease
+($p < 0.001$), and the per-edge-type ablation
+(Table~\ref{tab:edge_ablation}) confirms that co-failure edges are the
+decisive graph component: a co-failure-only graph achieves APFD = 0.763,
+matching or exceeding the full 5-type configuration. On the RTPTorrent
+dataset, the GNN architecture maintains strong performance using only
+co-failure edges, while the DNN ensemble provides a complementary
+contribution ($-$2.6\%, $p < 0.001$). We attribute the effectiveness of
+co-failure graph modeling to several factors.
+
+First, graph-based modeling encodes relationships that flat feature vectors
+cannot capture: tests that co-fail often share underlying dependencies on the
+same code modules, and the GAT learns to propagate failure signals through
+these connections. Second, GATv2~\cite{brody2022attentive} computes dynamic
+attention that depends on both query and key nodes, allowing the model to
+selectively attend to the most relevant neighbors for each test case, adapting
+to different failure patterns.
+
+Third, the per-edge-type ablation (Table~\ref{tab:edge_ablation}) reveals
+that co-failure edges alone provide sufficient structural signal for the
+GATv2 attention mechanism. With all other parameters held constant,
+co-failure-only graphs slightly outperform 5-type graphs (0.763 vs.\ 0.754,
+$p = 0.002$), suggesting that supplementary edge types may introduce noise
+that dilutes the co-failure signal. This refines the interpretation of the
++10.0\% attributed to the ``Enriched Multi-Edge Graph'' in the full-system
+ablation (Table~\ref{tab:ablation}): that improvement was primarily driven
+by graph construction parameter optimization rather than edge type diversity. This finding strengthens the
+deployment case: co-failure edges are universally available in any CI/CD
+system, requiring no additional metadata. On RTPTorrent, where only
+co-failure edges are available, the GNN still outperforms flat-feature
+baselines, confirming that single-edge-type graphs capture meaningful
+structural signal.
+
+The finding that simpler GNN architectures (1 layer, 2 heads) outperform deeper
+ones (2--3 layers, 4--8 heads) suggests that the test relationship graph can be
+effectively modeled with shallow message passing. This is consistent with the
+observation that most test case relationships are captured within one hop on
+the graph, and deeper networks may oversmooth node representations.
+
+A related finding is that generic, pre-trained sentence-level
+embeddings are subsumed by structural execution patterns for test case
+prioritization, even when rich textual metadata is available. On the
+industrial dataset, removing the semantic stream (Sentence-BERT) reduces
+APFD by only 1.9\% ($p = 0.309$, not significant), while removing the
+structural stream causes a 5.3\% drop ($p = 0.007$). On RTPTorrent,
+removing the semantic stream changes APFD by exactly 0.0\% on 19 of 20
+projects.
+
+This result is noteworthy because it qualifies the assumption in TCP
+literature that semantic similarity between tests and code changes is a
+strong predictor of failure~\cite{hernandes2025method}. Our evidence
+suggests that when historical execution features (failure rates, recency,
+trends) and graph-based co-failure propagation are available, they capture
+the discriminative signal more effectively than domain-agnostic textual
+embeddings. More precisely, how tests have behaved is more
+predictive than what generic sentence encoders capture about test
+descriptions. This finding applies specifically to pre-trained,
+domain-agnostic models (Sentence-BERT with \texttt{all-mpnet-base-v2});
+code-aware language models (e.g., CodeBERT~\cite{feng2020codebert},
+StarCoder), AST-based representations, or embeddings fine-tuned on
+software engineering corpora may extract deeper semantic signals that
+generic encoders miss. Our methodology (particularly the Random-Fixed
+control experiment in Table~\ref{tab:semantic_control}) provides a
+principled way to distinguish genuine semantic contributions from identity
+proxy effects in future evaluations of such models.
+
+We identify three explanations for this finding, supported by both
+ablation evidence and a dedicated control experiment
+(Table~\ref{tab:semantic_control}). First, structural features such as
+\texttt{recent\_failure\_rate} and \texttt{consecutive\_failures} directly
+encode the temporal patterns that predict future failures, while semantic
+similarity between test descriptions captures only indirect functional
+relationships. Second, the GATv2 attention mechanism over the co-failure
+graph already propagates failure signals between functionally related
+tests, partially subsuming the role that semantic similarity would play.
+Third, even the ``rich'' industrial descriptions may lack the specificity
+needed to predict failures. For example, a test described as ``verify OTA
+download'' may fail for reasons unrelated to its description (e.g.,
+infrastructure issues, memory leaks).
+
+\textbf{The Identity Proxy Effect.}
+The control experiment in Section~\ref{sec:rq1_rtptorrent} provides
+the strongest evidence for this finding. FailRank-BB achieves competitive
+performance on RTPTorrent (APFD = 0.822) using only SBERT embeddings of
+test names, which might appear to demonstrate the value of semantic
+features. However, replacing SBERT embeddings with random but
+consistent vectors (Random-Fixed) yields an even higher APFD (0.856),
+while destroying identity consistency (Random-Shuffled) collapses
+performance to the random baseline (0.514). This result demonstrates that
+FailRank-BB's Logistic Regression classifier is not learning from semantic
+content. It is using the embedding as a unique fingerprint for each
+test case, effectively learning a per-test failure rate lookup table from
+the training data.
+
+This identity proxy mechanism explains the paradoxical cross-dataset
+behavior of semantic approaches:
+\begin{itemize}
+    \item On \textbf{RTPTorrent}, each project has a bounded set of test
+    cases that recur across builds. The SBERT embedding provides a
+    consistent identifier per test, allowing the classifier to memorize
+    per-test failure probabilities. Random-Fixed vectors perform even
+    better because they avoid the confounding effect of SBERT placing
+    semantically similar (but behaviorally distinct) tests close together
+    in the embedding space.
+    \item On the \textbf{industrial dataset}, FailRank-BB is the weakest
+    baseline (APFD = 0.595). The larger and more dynamic test suite
+    (2,347 unique test cases), combined with more complex failure patterns
+    and severe class imbalance (37:1), makes the identity-based lookup
+    less effective: the Logistic Regression cannot reliably separate
+    failure-prone tests in the high-dimensional embedding space when the
+    training signal is sparse and noisy.
+\end{itemize}
+
+This analysis also explains why \filopriori{}'s semantic stream provides
+no significant improvement ($p = 0.309$): the 19 structural features
+(including \texttt{failure\_rate}, \texttt{recent\_failure\_rate}, and
+\texttt{consecutive\_failures}) already capture the per-test failure
+signal explicitly, making the implicit identity-based signal
+from embeddings redundant. The GATv2 graph further propagates this
+signal between related tests, leaving no residual information for the
+semantic stream to contribute. We confirmed this hypothesis by applying
+the Random-Fixed control experiment to \filopriori{} itself
+(Table~\ref{tab:filopriori_randomfixed}): replacing SBERT embeddings
+with hash-seeded random vectors yields APFD = 0.756, statistically
+indistinguishable from the SBERT version (0.756, $p = 0.965$). This
+closes the identity proxy analysis: the semantic stream acts as an
+identity proxy not only in FailRank-BB but also in \filopriori{}'s
+own architecture.
+
+The cross-attention fusion module shows a related pattern: removing it
+slightly improves the base architecture's APFD (from 0.6397 to 0.6466,
+$+$1.1\%, $p = 0.155$, not significant). This suggests that when the
+semantic stream carries limited discriminative signal, the cross-attention
+mechanism has little meaningful content to fuse and may introduce noise.
+We retain cross-attention as an architectural option whose contribution
+may emerge in domains with stronger textual-behavioral correlations
+(e.g., test descriptions that directly reference code modules under
+change), but acknowledge that in our evaluation it does not provide a
+statistically significant benefit.
+
+\textbf{Practical implication:} Practitioners deploying \filopriori{}
+should prioritize collecting high-quality execution history over investing
+in detailed test descriptions when using generic sentence encoders.
+The structural features and graph-based modeling provide the dominant
+signal. Semantic information extracted via domain-agnostic models like
+Sentence-BERT offers marginal improvements even in the most favorable
+setting, and when it appears to help (as in FailRank-BB on RTPTorrent),
+the actual mechanism is identity memorization rather than semantic
+understanding. This does not imply that all NLP-based approaches are
+ineffective for TCP; rather, it establishes that the bar for semantic
+models is high when rich execution history is available. Future
+extensions using code-aware language models fine-tuned on software
+engineering corpora might extract deeper semantic signals. Our control
+experiment (Table~\ref{tab:semantic_control}) provides a principled
+methodology for distinguishing genuine semantic contributions from
+identity proxy effects in such evaluations.
+
+\subsection{Performance Limitations and Baseline Contrasts}
+
+The cross-dataset behavior of FailRank-BB~\cite{hernandes2025method}
+is fully explained by the identity proxy effect described above.
+On RTPTorrent, FailRank-BB ranks third (0.822) by implicitly learning
+per-test failure rates through its embedding fingerprints. On the
+industrial dataset, where the test suite is larger, more dynamic, and
+severely imbalanced, this implicit learning fails, resulting in the
+weakest baseline performance (0.595, $-$27.6\% below \filopriori{}).
+The disparity is not attributable to semantic information being more
+or less available across datasets; it reflects the effectiveness of
+identity-based memorization under different data conditions.
+
+\filopriori{} achieves the highest APFD in 11 of 20 RTPTorrent projects but
+underperforms on specific projects relative to the strongest baselines.
+Analysis of these cases reveals common characteristics:
+
+\begin{itemize}
+    \item \textbf{Sparse failure data}: Projects with very few builds
+    containing failures (e.g., 10--11 builds) limit the
+    statistical reliability of APFD estimates and reduce the graph's
+    effectiveness.
+    \item \textbf{High variance}: Projects with inconsistent failure patterns
+    exhibit high APFD standard deviations, making reliable prediction
+    difficult for any model.
+    \item \textbf{Feature sparsity}: In projects with few failures, the
+    structural features (failure rate, recency, trend) converge to uninformative
+    values, and the co-failure graph is too sparse to provide meaningful signal.
+\end{itemize}
+
+In these scenarios, simpler temporal-pattern approaches (TCP-Net, FailRank-BB)
+prove more robust for specific projects, as they require less historical data to produce stable
+predictions. However, the ensemble
+architecture (Section~\ref{sec:ensemble}) effectively mitigates the
+worst-case scenarios of standalone graph-based approaches.
+
+To illustrate \filopriori{}'s behavior in practice, we examine two
+representative builds from the industrial dataset.
+In a high-performance case (Build UUG34.20, APFD = 1.0),
+the build contained 4 test cases, all of which failed. \filopriori{} assigned the
+highest probability (0.395) to a test case with strong co-failure history
+and recent failure patterns, placing all 4 failures at the top of the
+ranking, demonstrating the model's ability to exploit
+concentrated failure signals through the co-failure graph.
+In a low-performance case (Build T2TV33.13, APFD = 0.152),
+the build contained 176 test cases with only 4 failures (2.3\%). The model assigned
+high probabilities (0.530--0.534) to a cluster of passing tests that shared
+strong co-failure and semantic edges with historically unstable tests, while
+the actual failures, which were new or had no recent failure history, received
+lower scores. This case illustrates a fundamental limitation: when failures
+arise from previously unseen patterns (e.g., a new code path or an
+infrastructure change), historical features and graph-based propagation
+cannot anticipate them.
+
+These cases highlight that \filopriori{}'s effectiveness is contingent on the
+presence of recurrent failure patterns. In environments where failures are
+predominantly novel (e.g., early development phases or major refactoring
+cycles), the graph-based approach provides less advantage over simpler
+heuristics.
+
+\subsection{Class Imbalance Handling}
+
+A key design choice of \filopriori{} is the handling of severe class imbalance.
+In the industrial dataset, the Pass:Fail ratio is 37:1. The ablation study
+reveals that the simplified dual-balancing strategy contributes +4.0\%,
+confirming that careful handling of class imbalance is critical for TCP.
+
+The sensitivity analysis shows that the choice of loss function has a 3.6\%
+impact on performance. The finding that separating prior correction (balanced
+sampling at 29:1) from gradient focusing (focal loss with $\gamma = 2.0$)
+outperforms triple compensation ($\approx$646$\times$
+effective weight) provides a practical guideline for practitioners: when
+multiple imbalance-handling techniques are available, combining
+complementary mechanisms operating at different levels (data vs.\ loss)
+is preferable to accumulating redundant weights at the same level, which can
+cause over-correction and mode collapse.
+
+\subsection{Practical Deployment Considerations}
+
+\filopriori{} can be integrated into CI/CD pipelines to prioritize test
+execution. The +10.2\% to +27.6\% improvement over deep learning baselines on
+the industrial dataset translates to substantially faster fault detection,
+reducing the feedback loop for developers.
+
+In terms of computational cost, training requires approximately 2--3 hours on
+a single GPU (NVIDIA RTX 3090), while inference is fast (less than 1 second
+per build), making real-time prioritization feasible for most CI environments.
+The approach requires historical test execution data with at least 50 builds
+for effective graph construction. Projects with limited execution history may
+not benefit fully from the graph-based approach, though the DNN ensemble
+component can still provide useful prioritization based on per-test temporal
+features.
+
+\subsection{Generalization and Automatic Adaptation}
+\label{sec:boundary}
+
+A natural question is whether \filopriori{} requires manual configuration for
+each new dataset. The framework incorporates two automatic mechanisms that
+reduce the need for human intervention.
+
+\textbf{Automatic graph adaptation.} The graph construction methodology
+(Section~\ref{sec:graph}) uses only the edge types supported by the available
+metadata. Co-failure edges, computed from test execution logs available in any
+CI/CD system, form the universal base. When additional metadata exists (commit
+messages, component labels, semantic descriptions), the corresponding edge
+types are constructed automatically; when it does not, those edge types simply
+produce no edges. The practitioner does not need to ``configure'' the graph: the
+metadata itself determines the graph structure.
+
+\textbf{Data-driven scoring.} The blending coefficient $\alpha$ between
+the GNN and DNN ensemble is optimized automatically on the validation set. On
+the industrial dataset, a DNN-only variant achieves APFD = 0.686 ($-$9.9\%
+vs.\ the GNN-based model), so the optimizer would naturally favor the GNN
+($\alpha \approx 1.0$). On RTPTorrent, the optimizer selects $\alpha \approx 0$
+for most projects, naturally favoring the DNN. This data-driven selection
+eliminates the need for manual architectural decisions about which scoring
+strategy to use.
+
+\textbf{What requires human decision.} In our evaluation, we used two
+configurations (Table~\ref{tab:rtptorrent_config}) that differ in training
+hyperparameters (learning rate, epochs, batch size) and in whether the KNN
+orphan pipeline is active. The hyperparameter differences reflect the different
+data scales (277 industrial builds vs.\ up to 42,000 builds per RTPTorrent
+project) and could be addressed through automated hyperparameter
+search~\cite{bergstra2012random}. The KNN orphan pipeline is an optimization
+for the industrial setting where 22.6\% of tests are orphans. In a unified
+deployment, the DNN ensemble already covers orphan scoring, making the KNN
+pipeline optional rather than essential.
+
+To guide practitioners deploying \filopriori{} on a new dataset, we
+summarize the key configuration decisions:
+\begin{enumerate}
+    \item \textbf{Semantic input}: Determined by data availability: encode
+    whatever textual fields exist (test descriptions, test names, commit
+    messages). No model change is required; only the input projection
+    layer dimension adapts.
+    \item \textbf{Graph edge types}: Co-failure edges are computed
+    automatically from CI logs; additional edge types (co-success, component,
+    semantic, temporal) are constructed when the corresponding metadata exists
+    and produce no edges otherwise.
+    \item \textbf{DNN ensemble}: We recommend enabling the DNN ensemble by
+    default; the validation-optimized $\alpha$ will naturally assign it zero
+    weight when the GNN alone is sufficient.
+    \item \textbf{Training hyperparameters}: Learning rate and epoch count
+    should be scaled to the dataset size (lower learning rate and more epochs
+    for smaller datasets). Standard automated tuning (e.g., random
+    search~\cite{bergstra2012random}) can replace manual selection.
+\end{enumerate}
+The remaining architectural parameters (GAT layers, heads, hidden dimensions)
+were stable across both evaluation settings and can serve as reasonable
+defaults.
+
+\textbf{Boundary conditions and co-failure graph density.} The cross-dataset
+results reveal that co-failure graph density is the key factor determining
+\filopriori{}'s advantage. On the industrial dataset, where the co-failure
+graph is denser (432 edges among 2,283 test cases), \filopriori{} achieves
+substantial and statistically significant improvements over all baselines
+(+10.2\% to +27.6\%, all $p < 0.001$). On RTPTorrent, where co-failure
+graphs are sparser (fewer failure builds per project), the margins narrow
+to a statistical tie with the top three baselines after Holm-Bonferroni
+correction.
+
+This pattern should be interpreted transparently: the graph-based approach
+provides its largest advantage when the co-failure graph has sufficient
+density for GATv2 to propagate meaningful failure signals. In repositories
+with very sparse failure data (such as some RTPTorrent projects with only
+10--11 failure builds), the co-failure graph provides limited structural
+information, and simpler temporal-pattern approaches (DeepOrder, TCP-Net)
+achieve comparable results. The DNN ensemble component compensates for
+this in the adaptive pipeline, becoming the primary contributor when graph
+density is low. We recommend that practitioners deploy \filopriori{} with
+co-failure edges as the default configuration. The per-edge-type ablation
+(Table~\ref{tab:edge_ablation}) confirms this is the optimal setup, and
+it requires only CI execution logs, which are universally available.

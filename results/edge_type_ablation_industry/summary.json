@@ -1,0 +1,78 @@
+{
+  "full": {
+    "label": "Full (all 5 edge types)",
+    "edge_types": [
+      "co_failure",
+      "co_success",
+      "semantic",
+      "temporal",
+      "component"
+    ],
+    "mean_apfd": 0.7537853112010116,
+    "median_apfd": 0.7827380952380952,
+    "std_apfd": 0.194589033943316,
+    "num_builds": 277
+  },
+  "wo_cosuccess": {
+    "label": "w/o Co-Success",
+    "edge_types": [
+      "co_failure",
+      "semantic",
+      "temporal",
+      "component"
+    ],
+    "mean_apfd": 0.7470098654189099,
+    "median_apfd": 0.7857142857142857,
+    "std_apfd": 0.198078543561787,
+    "num_builds": 277
+  },
+  "wo_component": {
+    "label": "w/o Component",
+    "edge_types": [
+      "co_failure",
+      "co_success",
+      "semantic",
+      "temporal"
+    ],
+    "mean_apfd": 0.7495251674203689,
+    "median_apfd": 0.7796610169491525,
+    "std_apfd": 0.19706219795714888,
+    "num_builds": 277
+  },
+  "wo_semantic": {
+    "label": "w/o Semantic",
+    "edge_types": [
+      "co_failure",
+      "co_success",
+      "temporal",
+      "component"
+    ],
+    "mean_apfd": 0.7463604434384407,
+    "median_apfd": 0.7749999999999999,
+    "std_apfd": 0.1932314892104526,
+    "num_builds": 277
+  },
+  "wo_temporal": {
+    "label": "w/o Temporal",
+    "edge_types": [
+      "co_failure",
+      "co_success",
+      "semantic",
+      "component"
+    ],
+    "mean_apfd": 0.7530358681758781,
+    "median_apfd": 0.7954545454545454,
+    "std_apfd": 0.19496785137688666,
+    "num_builds": 277
+  },
+  "cofailure_only": {
+    "label": "Co-failure only",
+    "edge_types": [
+      "co_failure"
+    ],
+    "mean_apfd": 0.7627643621589975,
+    "median_apfd": 0.7859848484848485,
+    "std_apfd": 0.18766389832838024,
+    "num_builds": 277
+  }
+}

@@ -1,0 +1,20 @@
+======================================================================
+Filo-Priori: Random-Fixed vs SBERT Embeddings
+Dataset: Industrial QTA (277 builds)
+======================================================================
+
+SBERT Baseline APFD:   0.7611
+Random-Fixed APFD:     0.7560
+Delta:                 -0.0051 (-0.7%)
+
+Total builds:          277
+Best Val F1:           0.5305
+Training time:         8456.4s
+Total time:            8662.6s
+
+APFD Statistics:
+  Mean:   0.7560
+  Std:    0.1809
+  Median: 0.7727
+  Min:    0.0455
+  Max:    1.0000
