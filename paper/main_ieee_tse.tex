@@ -106,38 +106,31 @@
 %------------------------------------------------------------------------------
 \IEEEtitleabstractindextext{%
 \begin{abstract}
-In Continuous Integration (CI) environments, growing test suites make exhaustive
-testing impractical, motivating Test Case Prioritization (TCP) to maximize early
-fault detection. Existing TCP approaches typically deal with test cases as independent
-entities, ignoring the structural relationships inherent in real-world test
-suites: tests that co-fail share underlying dependencies, and temporal execution
-patterns reveal systematic connections. In this paper, we present \filopriori{}, a graph-based
-deep learning framework for TCP that models inter-test relationships through
-Graph Attention Networks (GATv2) operating over a co-failure test relationship
-graph, complemented by a Deep Neural Network (DNN)
+In Continuous Integration (CI), growing test suites make exhaustive testing
+impractical, motivating Test Case Prioritization (TCP) to maximize early
+fault detection. Existing TCP approaches typically treat tests as independent
+entities, ignoring structural relationships: tests that co-fail share
+underlying dependencies, and execution patterns reveal systematic connections.
+We present \filopriori{}, a graph-based deep learning framework for TCP that
+models inter-test relationships through Graph Attention Networks (GATv2)
+over a co-failure graph, complemented by a Deep Neural Network (DNN)
 ensemble with data-driven blending for semantically-sparse settings. We
-compare \filopriori{} with five baselines on two complementary datasets: an
-industrial CI pipeline (52,102 test executions from 2,347 unique test cases
-across 1,339 builds) and the RTPTorrent benchmark (20 open-source Java
-projects totaling over 100,000 builds with 2,937 containing failures). On
-the industrial dataset, \filopriori{} achieves an APFD of 0.761 with
-statistically significant improvements over all five baselines ($+10.2\%$ to
-$+27.6\%$, $p < 0.001$). On
-RTPTorrent, \filopriori{} achieves the highest numerical APFD of 0.854. However,
-after Holm-Bonferroni correction only the improvements over two baselines
-remain statistically robust, while margins over the top three
-baselines represent a statistical tie, indicating that the framework's
-substantial advantage requires sufficient co-failure graph density. Moreover, ablation
-studies reveal that co-failure edges alone are the decisive graph component
-($+17.0\%$ in isolation, $p < 0.001$); supplementary edge types do not
-improve aggregate performance. The evaluation yields two notable
-results: (1)~generic semantic embeddings (Sentence-BERT) provide no
-statistically significant improvement ($p = 0.309$), confirmed by a
-Random-Fixed control on both a baseline and \filopriori{} itself
-($p = 0.965$); and (2)~\filopriori{}'s dual-balancing strategy is not
-transferable to flat-feature architectures, confirming that the gain is
-structural, not methodological. In addition, temporal cross-validation and sensitivity
-analysis confirm robustness across time periods and hyperparameter choices.
+compare \filopriori{} with five baselines on two datasets: an industrial CI
+pipeline (52,102 executions across 1,339 builds) and the RTPTorrent
+benchmark (20 Java projects, 2,937 builds with failures). On the industrial
+dataset, \filopriori{} achieves APFD~$=$~0.761 with significant improvements
+over all five baselines ($+10.2\%$ to $+27.6\%$, $p < 0.001$). On RTPTorrent,
+it achieves the highest numerical APFD of 0.854; after Holm-Bonferroni
+correction, only gains over two baselines remain robust, indicating that
+the advantage requires sufficient co-failure graph density. Ablation studies
+show co-failure edges are the decisive component ($+17.0\%$ in isolation,
+$p < 0.001$); supplementary edge types do not improve aggregate performance.
+Two notable findings emerge: (1)~generic Sentence-BERT embeddings provide
+no significant improvement ($p = 0.309$), confirmed by a Random-Fixed
+control ($p = 0.965$); and (2)~\filopriori{}'s dual-balancing strategy is
+not transferable to flat-feature architectures, confirming the gain is
+structural. Temporal cross-validation and sensitivity analysis confirm
+robustness across time periods and hyperparameter choices.
 \end{abstract}
 
 %------------------------------------------------------------------------------
@@ -1757,7 +1750,7 @@ CI pipelines.
 
 \textbf{Data Availability.} Our replication package, including source code,
 trained models, configuration files, and anonymized dataset, is available at:
-\url{https://github.com/[anonymized]/filo-priori}
+\url{https://github.com/filotransformer/filopriori}
 
 %------------------------------------------------------------------------------
 % ACKNOWLEDGMENTS
@@ -1768,6 +1761,28 @@ Aperfei\c{c}oamento de Pessoal de N\'{i}vel Superior (CAPES) -- Finance
 Code 001, and by Motorola Mobility Com\'{e}rcio de Produtos Eletr\^{o}nicos
 Ltda., under the auspices of the Brazilian Federal Law No.\ 8387/1991,
 which also provided access to the industrial dataset used in this study.
+
+\textbf{Conflicts of Interest.} Author Jose Nascimento is employed by
+Motorola Mobility Com\'{e}rcio de Produtos Eletr\^{o}nicos Ltda., which
+provided the industrial dataset analyzed in this study and supported the
+research under the Brazilian Federal Law No.\ 8387/1991. The remaining
+authors declare no competing interests. Motorola Mobility had no role in
+study design, data analysis, interpretation of results, or the decision
+to submit this manuscript for publication.
+
+\textbf{Generative AI Disclosure.} In accordance with the IEEE policy on
+the use of artificial intelligence in publications, the authors disclose
+that Anthropic's Claude (Opus 4.x family, accessed via Claude Code CLI)
+and OpenAI's GPT-4 were used during manuscript preparation. AI assistance
+was limited to: (i)~polishing English writing and improving clarity in
+all sections of the manuscript; (ii)~suggesting LaTeX formatting for
+tables and figure layouts; and (iii)~drafting initial templates for the
+documentation files in the replication package. All technical content,
+experimental design, data analysis, results, interpretations, and
+scientific claims were generated, verified, and approved by the authors,
+who take full responsibility for the integrity and originality of the
+submitted work. No AI system was used to generate, modify, or analyze
+experimental data, model code, or quantitative results.
 
 %------------------------------------------------------------------------------
 % REFERENCES

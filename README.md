@@ -1,31 +1,39 @@
-# Filo-Priori: A Multi-Edge Graph Attention Approach to Test Case Prioritization
+# Filo-Priori: Co-Failure Graph Attention for Test Case Prioritization in Continuous Integration
 
 ![Python](https://img.shields.io/badge/python-3.8+-blue.svg)
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-red.svg)
 ![PyG](https://img.shields.io/badge/PyG-2.3+-orange.svg)
-![APFD](https://img.shields.io/badge/APFD-0.761-brightgreen.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
+![APFD-Industrial](https://img.shields.io/badge/APFD%20Industrial-0.761-brightgreen.svg)
+![APFD-RTPTorrent](https://img.shields.io/badge/APFD%20RTPTorrent-0.854-brightgreen.svg)
+![Status](https://img.shields.io/badge/Status-Submitted%20to%20IEEE%20TSE-blue.svg)
 
-A **graph-based deep learning framework** for intelligent test case prioritization in CI/CD pipelines. Centers on GATv2 graph attention over configurable test relationship graphs, complemented by a DNN ensemble for semantically-sparse settings.
+A **graph-based deep learning framework** for intelligent test case prioritization in CI/CD pipelines. Centers on **GATv2 graph attention over a co-failure test relationship graph**, complemented by a DNN ensemble with data-driven blending for semantically-sparse settings.
 
 **Target Journal:** IEEE Transactions on Software Engineering (IEEE TSE)
+**Submission Type:** Regular (Journal First)
+**Replication Package:** https://github.com/filotransformer/filopriori
 
 **Authors:** Acauan C. Ribeiro, Eduardo L. Feitosa, Andre L. da Costa Carvalho, Eulanda M. dos Santos, Bruno F. Gadelha, Yan R. Soares, and Jose Nascimento
 
-**Affiliation:** Instituto de Computacao (IComp) - Universidade Federal do Amazonas (UFAM) / Motorola Mobility LLC
+**Affiliations:**
+- Instituto de Computação (IComp), Universidade Federal do Amazonas (UFAM), Manaus, AM, Brazil
+- Motorola Mobility Comércio de Produtos Eletrônicos Ltda., Manaus, AM, Brazil
 
 ---
 
 ## Abstract
 
-Test Case Prioritization (TCP) aims to order test cases to maximize early fault detection in Continuous Integration (CI) environments. Existing approaches treat test cases as independent entities, ignoring the structural relationships that characterize real-world testing.
+In Continuous Integration (CI), growing test suites make exhaustive testing impractical, motivating Test Case Prioritization (TCP) to maximize early fault detection. Existing TCP approaches typically treat tests as independent entities, ignoring structural relationships: tests that co-fail share underlying dependencies, and execution patterns reveal systematic connections.
 
-**Filo-Priori** is a graph-based deep learning framework that explicitly models test case relationships through two evaluated variants:
+**Filo-Priori** is a graph-based deep learning framework that models inter-test relationships through Graph Attention Networks (GATv2) over a co-failure graph, complemented by a Deep Neural Network (DNN) ensemble with data-driven blending for semantically-sparse settings. The framework provides two evaluated configurations:
 
-1. **Filo-Priori-Full** (rich metadata): GATv2 over a multi-edge graph (up to 5 edge types) with KNN orphan node imputation
-2. **Filo-Priori-Ensemble** (sparse metadata): GATv2 over co-failure graph + DeepOrder-inspired DNN with validation-optimized α-blending
-3. **Key negative result**: Generic semantic embeddings (Sentence-BERT) provide no statistically significant improvement (p=0.309), indicating that graph-based structural modeling subsumes the need for textual features in TCP
-4. **Simplified Dual-Balancing**: Balanced sampling (29:1) + Focal Loss (α_f=0.75, γ=2.0) for severe class imbalance
+1. **Filo-Priori-Full** (metadata-rich setting): GATv2 over a multi-edge graph (up to 5 edge types) with KNN orphan node imputation. GNN probability is the final score.
+2. **Filo-Priori-Ensemble** (metadata-sparse setting): GATv2 over a co-failure graph + DeepOrder-inspired DNN with validation-optimized α-blending.
+
+**Key Findings:**
+- **Co-failure edges are the decisive graph component** (+17.0% in isolation, p < 0.001); supplementary edge types do not improve aggregate performance.
+- **Negative result on semantic features:** Generic Sentence-BERT embeddings provide no statistically significant improvement (p = 0.309), confirmed by a Random-Fixed control experiment (p = 0.965).
+- **Simplified Dual-Balancing**: Balanced sampling (29:1) + Focal Loss (α_f=0.75, γ=2.0) prevents mode collapse observed under triple-compensation.
 
 ---
 
@@ -33,46 +41,37 @@ Test Case Prioritization (TCP) aims to order test cases to maximize early fault 
 
 ### Summary Across Two Datasets
 
-| Experiment | APFD | vs. Best Baseline |
-|---|---|---|
-| Industrial QTA | **0.761** | +10.2% (DeepOrder) |
-| RTPTorrent (20 projects) | **0.854** | +1.6% (TCP-Net) |
-| **Overall Average** | **0.799** | -- |
-
-### Industrial Dataset - 277 Builds with Failures
-
-| Method | APFD | Std | vs Filo-Priori |
+| Experiment | Variant | APFD | vs. Best Baseline |
 |---|---|---|---|
-| **Filo-Priori** | **0.7611** | **0.189** | -- |
-| DeepOrder | 0.6890 | 0.266 | +10.2% |
-| TCP-Net | 0.6704 | 0.271 | +13.3% |
-| NodeRank | 0.6609 | 0.270 | +14.9% |
-| RETECS | 0.6406 | 0.281 | +18.6% |
-| FailRank-BB | 0.5953 | 0.263 | +27.6% |
+| Industrial QTA | Filo-Priori-Full | **0.761** | +10.2% (DeepOrder, p<0.001) |
+| RTPTorrent (20 projects) | Filo-Priori-Ensemble | **0.854** | +1.6% (TCP-Net, ns after correction) |
+| **Overall Average** | -- | **0.800** | -- |
 
-### RTPTorrent - 20 Open-Source Java Projects
+### Industrial Dataset — 277 Builds with Failures
 
-#### Deep Learning Baselines
+| Method | APFD | Std | p-value | Cliff's δ | Δ |
+|---|---|---|---|---|---|
+| **Filo-Priori-Full** | **0.761** | **0.189** | -- | -- | -- |
+| DeepOrder | 0.689 | 0.266 | <0.001 | 0.10 (N) | +10.2% |
+| TCP-Net | 0.670 | 0.271 | <0.001 | 0.14 (N) | +13.3% |
+| NodeRank | 0.661 | 0.270 | <0.001 | 0.14 (N) | +14.9% |
+| RETECS | 0.641 | 0.281 | <0.001 | 0.21 (S) | +18.6% |
+| FailRank-BB | 0.595 | 0.263 | <0.001 | 0.35 (M) | +27.6% |
 
-| Method | APFD | Std | vs Filo-Priori |
-|---|---|---|---|
-| **Filo-Priori** | **0.8540** | 0.112 | -- |
-| TCP-Net | 0.8253 | 0.110 | +1.6% |
-| FailRank-BB | 0.8218 | 0.092 | +2.0% |
-| DeepOrder | 0.8136 | 0.104 | +3.0% |
-| NodeRank | 0.8038 | 0.109 | +4.3% |
-| RETECS | 0.6791 | 0.156 | +23.5% |
+All industrial comparisons significant at p<0.001 and survive Bonferroni correction.
 
-#### Heuristic Baselines
+### RTPTorrent — 20 Open-Source Java Projects
 
-| Method | APFD | vs Filo-Priori |
-|---|---|---|
-| **Filo-Priori** | **0.8540** | -- |
-| recently_failed | 0.8209 | +2.1% |
-| optimal_duration | 0.5934 | +41.3% |
-| matrix_naive | 0.5693 | +47.3% |
-| random | 0.4940 | +69.7% |
-| optimal_failure (oracle) | 0.9249 | -9.3% |
+| Method | APFD | p-value | Holm-Bonferroni | Δ |
+|---|---|---|---|---|
+| **Filo-Priori-Ensemble** | **0.854** | -- | -- | -- |
+| TCP-Net | 0.825 | 0.087 | ns | +1.6% |
+| FailRank-BB | 0.822 | 0.046 | ns (adj ≈0.18) | +2.0% |
+| DeepOrder | 0.814 | 0.018 | marginal (adj ≈0.054) | +3.0% |
+| NodeRank | 0.809 | 0.009 | **sig** | +5.6% |
+| RETECS | 0.679 | <0.001 | **sig** | +23.5% |
+
+After Holm-Bonferroni correction, only NodeRank and RETECS remain significant. Narrow margins over TCP-Net, FailRank-BB, and DeepOrder represent a statistical tie.
 
 ---
 
@@ -80,26 +79,29 @@ Test Case Prioritization (TCP) aims to order test cases to maximize early fault 
 
 | RQ | Question | Answer |
 |---|---|---|
-| **RQ1** | Can modeling structural relationships between test cases through graph neural networks improve fault detection compared to approaches that treat tests independently? | **Industrial:** APFD 0.761, +10.2% to +27.6% over all baselines (p<0.001). **RTPTorrent:** APFD 0.854, highest among all methods; robust improvements over NodeRank (+4.3%) and RETECS (+23.5%), narrow margins over TCP-Net (+1.6%), FailRank-BB (+2.0%), DeepOrder (+3.0%) |
-| **RQ2** | Which architectural components contribute most to the effectiveness of graph-based test case prioritization? | **Industrial:** Graph (+10.0%), Orphan KNN (+5.9%), Balancing (+4.0%). **RTPTorrent:** DNN ensemble (+13.1%), all others non-significant. Cross-dataset: architecture adapts to metadata richness |
-| **RQ3** | How robust is the proposed approach when applied to builds from different time periods than those used for training? | **Industrial:** Temporal CV APFD 0.663 (-12.9% vs standard). **RTPTorrent:** Temporal CV APFD 0.816 (-2.7% vs standard). Both stable across folds, no concept drift |
-| **RQ4** | How sensitive is the approach to the choice of key hyperparameters? | **Industrial:** Max impact 3.6% (loss function). **RTPTorrent:** Max impact 1.6% (excl. degenerate alpha=1.0). Both datasets confirm robustness to hyperparameter choices |
+| **RQ1** | Can modeling structural relationships between test cases through graph neural networks improve fault detection compared to approaches that treat tests independently? | **Industrial:** APFD 0.761, +10.2% to +27.6% over all baselines (p<0.001). **RTPTorrent:** APFD 0.854, highest among all methods; robust improvements over NodeRank (+5.6%) and RETECS (+23.5%) after correction |
+| **RQ2** | Which architectural components contribute most to the effectiveness of graph-based test case prioritization? | **Industrial:** GATv2 graph (+17.0%, p<0.001), Orphan KNN (+5.9%), Balancing (+4.0%). **RTPTorrent:** DNN ensemble (-2.6% without it, p<0.001). Semantic stream non-significant on both datasets |
+| **RQ3** | How robust is the proposed approach when applied to builds from different time periods than those used for training? | **Industrial:** Temporal CV APFD 0.619-0.663 (13-19% degradation, expected). **RTPTorrent:** Grand Mean APFD 0.816 (-2.7% vs standard). No concept drift |
+| **RQ4** | How sensitive is the approach to the choice of key hyperparameters? | **Industrial:** Max impact 3.6%. **RTPTorrent:** Max impact 1.6% (excl. degenerate alpha=1.0). Both datasets confirm robustness to continuous hyperparameters |
 
 ---
 
 ## Quick Start
 
 ```bash
+# Activate venv
+source venv/bin/activate
+
 # Install dependencies
 pip install -r requirements.txt
 
-# Run best configuration (Industrial Dataset)
+# Run best configuration (Industrial Dataset) — APFD 0.7611
 python main.py --config configs/experiment_industry_optimized_v3.yaml
 
-# Run RTPTorrent evaluation (V15 — produces APFD 0.8540)
-python experiments/run_filopriori_rtptorrent_v15.py
+# Run RTPTorrent evaluation (V14, produces APFD 0.8540)
+python experiments/run_filopriori_rtptorrent_v14.py
 
-# Run RTPTorrent ablation + sensitivity + temporal CV
+# Run RTPTorrent ablation + sensitivity + temporal CV (~14h)
 python experiments/run_rtptorrent_ablation_sensitivity.py --all
 
 # Run DNN ensemble verification on Industrial dataset
@@ -117,23 +119,25 @@ python experiments/run_dnn_ensemble_industry.py
 |                                                                        |
 |  +-------------------+                     +-------------------+       |
 |  |  SEMANTIC INPUT   |                     | STRUCTURAL INPUT  |       |
-|  |  (depends on      |                     |  19 Features      |       |
-|  |   metadata:       |                     |  (10 base +       |       |
-|  |   768 or 1536-dim)|                     |   9 DeepOrder)    |       |
+|  |  (optional)       |                     |  19 Features      |       |
+|  |  768 or 1536-dim  |                     |  (10 base +       |       |
+|  |                   |                     |   9 DeepOrder)    |       |
 |  +--------+----------+                     +--------+----------+       |
 |           |                                         |                  |
 |           v                                         v                  |
 |  +-------------------+                     +-------------------+       |
-|  |  SBERT Encoder    |                     |  Test Relationship|       |
-|  |  all-mpnet-base-v2|                     |  Graph (1-5 edge  |       |
-|  |                   |                     |  types by metadata)|      |
+|  |  SBERT Encoder    |                     |  Co-Failure Graph |       |
+|  |  all-mpnet-base-v2|                     |  (CORE — always   |       |
+|  |  (no significant  |                     |   available)      |       |
+|  |   benefit, p=0.309)|                    |  + 4 optional     |       |
+|  |                   |                     |  edge types       |       |
 |  +--------+----------+                     +--------+----------+       |
 |           |                                         |                  |
 |           v                                         v                  |
 |  +-------------------+                     +-------------------+       |
 |  | SEMANTIC STREAM   |                     |STRUCTURAL STREAM  |       |
 |  | FFN + residual    |                     | GATv2 attention   |       |
-|  | (complementary)   |                     | (primary signal)  |       |
+|  | (exploratory)     |                     | (PRIMARY signal)  |       |
 |  +--------+----------+                     +--------+----------+       |
 |           |                                         |                  |
 |           +----------------+--------------------+                      |
@@ -154,11 +158,12 @@ python experiments/run_dnn_ensemble_industry.py
 |  +-------------------+            +-------------------+                |
 |  | ORPHAN HANDLING   |            |  DNN ENSEMBLE     |                |
 |  | KNN pipeline      |            |  DeepOrder DNN    |                |
-|  | (rich metadata)   |            |  + alpha blending |                |
-|  +--------+----------+            |  (sparse metadata)|                |
+|  | (Filo-Priori-Full)|            |  + α-blending     |                |
+|  +--------+----------+            | (Filo-Priori-     |                |
+|           |                       |  Ensemble)        |                |
 |           |                       +--------+----------+                |
 |           v                                v                           |
-|        P(Fail) -----> alpha-optimized blending -----> Ranked List      |
+|        P(Fail) ----> α-optimized blending ----> Ranked List            |
 |                                                                        |
 +------------------------------------------------------------------------+
 ```
@@ -167,69 +172,69 @@ python experiments/run_dnn_ensemble_industry.py
 
 ## Key Innovations
 
-### 1. Configurable Test Relationship Graph
+### 1. Co-Failure Test Relationship Graph (Core)
 
-Co-failure edges form the universal base (available from any CI logs). When richer metadata exists, the graph extends to 5 edge types:
+Co-failure edges are universally available from CI logs and provide the decisive predictive signal. When richer metadata exists, the graph extends to 5 edge types:
 
-| Edge Type | Weight | Available When |
-|---|---|---|
-| Co-Failure | 1.0 | Always (CI logs) |
-| Co-Success | 0.5 | Always (CI logs) |
-| Component | 0.4 | Component labels exist |
-| Semantic | 0.3 | Rich test descriptions |
-| Temporal | 0.2 | Execution order data |
+| Edge Type | Weight | Available When | Per-edge-type ablation impact |
+|---|---|---|---|
+| **Co-Failure** | 1.0 | Always (CI logs) | **+17.0%** in isolation (p<0.001) |
+| Co-Success | 0.5 | Always (CI logs) | -0.7% (ns) when added |
+| Component | 0.4 | Component labels exist | ns when added |
+| Semantic | 0.3 | Rich test descriptions | ns when added |
+| Temporal | 0.2 | Execution order data | ns when added |
 
-With all types: density 0.02% → 0.5-1.0%, **77.4%** of tests connected.
+With all edge types: density 0.02% → 0.5-1.0%, **77.4%** of tests connected (vs 50-60% with co-failure alone). However, the per-edge-type ablation confirms co-failure edges alone are sufficient for optimal aggregate performance.
 
 ### 2. GATv2 Structural Stream + DNN Ensemble
 
-- **Structural Stream** (primary): GATv2 (1 layer, 2 heads) over 19 features on the test graph → 256-dim
+- **Structural Stream** (primary): GATv2 (1 layer, 2 heads) over 19 features on the co-failure graph → 256-dim
 - **DNN Ensemble** (Filo-Priori-Ensemble): DeepOrder-inspired DNN with validation-optimized α-blending
-- **Semantic Stream** (investigated): SBERT embeddings + cross-attention fusion — ablation shows no significant benefit (p=0.309)
+- **Semantic Stream** (exploratory): SBERT embeddings + cross-attention fusion — ablation shows no significant benefit (p=0.309 industrial; ns on RTPTorrent)
 
 ### 3. Simplified Dual-Balancing
 
 Avoids mode collapse by separating prior correction (sampling) from gradient focusing (focal loss):
 
-| Mechanism | Triple-Comp. | Dual-Balancing |
+| Mechanism | Triple-Comp. (broken) | Dual-Balancing (used) |
 |---|---|---|
 | Class weights in loss | 19x | **Disabled** |
 | Focal α_f | 0.85 (1.7x) | 0.75 (mild) |
 | Balanced sampling | 20x | 29x (only) |
-| Effective weight | ~646x | **29x** |
+| Effective weight | ~646x → mode collapse | **29x** → stable |
 
 ### 4. Deployment-Specific Extensions
 
-**Orphan Handling** (rich metadata): 4-stage KNN pipeline (k=5, cosine similarity, T=0.7, alpha=0.55). Restores orphan score variance from 0.0 to 0.046.
+**Orphan Handling** (Filo-Priori-Full): 4-stage KNN pipeline (k=5, cosine similarity, T=0.7, α_o=0.55). Restores orphan score variance from 0.0 (uniform) to 0.046.
 
-**DNN Ensemble** (sparse metadata): DeepOrder DNN + alpha blending. Alpha auto-optimized per project on validation set. DNN-only achieves APFD 0.686 on industrial (-9.9% vs GNN), confirming GNN superiority when metadata is rich.
+**DNN Ensemble** (Filo-Priori-Ensemble): DeepOrder-inspired DNN + α-blending. α auto-optimized per project on validation set. DNN-only achieves APFD 0.686 on Industrial (-9.9% vs GNN), confirming GNN superiority when metadata is rich.
 
 ---
 
 ## Ablation Study (RQ2)
 
-### Industrial Dataset
+### Industrial Dataset (Filo-Priori-Full)
 
 | Configuration | APFD | Delta | p-value |
 |---|---|---|---|
 | Full Model | 0.7611 | -- | -- |
-| w/o Enriched Multi-Edge Graph | 0.6835 | -10.0% | <0.001*** |
+| w/o Co-Failure Graph (GNN→MLP) | 0.6508 | -17.0% | <0.001*** |
 | w/o Orphan KNN Scoring | 0.7145 | -5.9% | <0.001*** |
-| w/o Single Balancing | 0.7291 | -4.0% | <0.001*** |
+| w/o Dual-Balancing | 0.7291 | -4.0% | <0.001*** |
 | w/o DeepOrder Features | 0.7443 | -2.0% | 0.003** |
 | w/o Threshold Optimization | 0.7519 | -1.0% | 0.042* |
 
-### RTPTorrent (20 Projects)
+### RTPTorrent — 20 Projects (Filo-Priori-Ensemble)
 
 | Configuration | APFD | Delta | Sig. |
 |---|---|---|---|
-| Full Model | 0.8540 | -- | -- |
+| Full Ensemble (V14) | 0.8540 | -- | -- |
 | w/o DNN Ensemble | 0.8322 | -2.6% | p<0.001*** |
 | w/o GATv2 | 0.8451 | -1.0% | p<0.05* |
 | w/o Semantic Stream | 0.8450 | -1.1% | ns |
 | w/o Multi-Edge Graph | 0.8513 | -0.3% | ns |
 
-**Cross-dataset insight:** On Industrial data, the graph and GATv2 are dominant (+10%, +17%). On RTPTorrent, the DNN ensemble is the primary driver, though the improved GNN substantially reduced reliance on it (drop without DNN went from -13.1% to -2.6%). **Negative result**: Semantic stream provides no significant improvement on either dataset.
+**Cross-dataset insight:** On Industrial data, the co-failure graph and GATv2 attention dominate (+17.0%). On RTPTorrent, the DNN ensemble is the primary driver, though the V14 execution-level temporal GNN substantially reduced reliance on it (drop went from -13.1% to -2.6%). **Negative result:** Semantic stream provides no significant improvement on either dataset.
 
 ---
 
@@ -253,7 +258,7 @@ Avoids mode collapse by separating prior correction (sampling) from gradient foc
 | Fold progression | 0.790 → 0.816 → 0.823 → 0.834 |
 | Projects with APFD ≥ 0.80 | 14/20 |
 
-**Cross-dataset insight:** Both datasets show graceful degradation under temporal constraints with no concept drift. RTPTorrent's smaller drop (-2.7% vs -12.9%) reflects larger training sets in multi-project evaluation.
+**Cross-dataset insight:** Both datasets show graceful degradation under temporal constraints with no concept drift. RTPTorrent's smaller drop (-2.7% vs -13-19%) reflects larger training sets in multi-project evaluation.
 
 ---
 
@@ -272,11 +277,11 @@ Avoids mode collapse by separating prior correction (sampling) from gradient foc
 
 | Parameter | Values Tested | Best | Impact |
 |---|---|---|---|
-| Alpha (GNN-DNN blend) | 0.0, 0.3, 0.5, 0.7, 1.0 | 0.0-0.7 (stable) | 13.1% (alpha=1.0 critical) |
+| α (GNN-DNN blend) | 0.0, 0.3, 0.5, 0.7, 1.0 | 0.0-0.7 (stable) | 13.1% (α=1.0 critical) |
 | DNN Epochs | 5, 10, 15, 20 | 15-20 | 0.8% |
 | Max pos_weight | 10, 25, 50, 100 | 50-100 | 1.6% |
 
-**Cross-dataset insight:** Both datasets confirm robustness to continuous hyperparameters. Industrial max range: 3.6%. RTPTorrent max range: 1.6% (excl. degenerate alpha=1.0). The most impactful decision is architectural (including the DNN ensemble), not hyperparameter tuning.
+**Cross-dataset insight:** Both datasets confirm robustness to continuous hyperparameters. Industrial max range: 3.6%. RTPTorrent max range: 1.6% (excl. degenerate α=1.0). The most impactful decision is architectural (including the DNN ensemble), not hyperparameter tuning.
 
 ---
 
@@ -326,6 +331,7 @@ Avoids mode collapse by separating prior correction (sampling) from gradient foc
 | Pass:Fail Ratio | 37:1 |
 | Semantic Info | Rich (descriptions, steps, commits, diffs) |
 | Structural Info | Execution history, failure patterns |
+| Access | Anonymized version in replication package |
 
 ### Dataset 2: RTPTorrent
 
@@ -333,9 +339,10 @@ Avoids mode collapse by separating prior correction (sampling) from gradient foc
 |---|---|
 | Projects | 20 Java projects |
 | Total Builds | >100,000 |
-| Source | Travis CI build logs |
-| Semantic Info | Limited (test names only) |
-| License | CC BY 4.0 |
+| Builds with Failures | 2,937 |
+| Source | Travis CI build logs (MSR 2020) |
+| Semantic Info | Limited (test class/method names only) |
+| License | CC BY 4.0 (publicly available) |
 
 ---
 
@@ -344,13 +351,14 @@ Avoids mode collapse by separating prior correction (sampling) from gradient foc
 ```
 filo-priori/
 ├── CLAUDE.md                        # AI agent instructions + frozen parameters
+├── README.md                        # This file
 ├── main.py                          # Main entry point (Industrial dataset)
 ├── requirements.txt                 # Dependencies
 ├── configs/
-│   └── experiment_industry_optimized_v3.yaml  # Industry config (APFD 0.7611) - FROZEN
+│   └── experiment_industry_optimized_v3.yaml  # Industry config (APFD 0.7611) — FROZEN
 ├── experiments/
-│   ├── run_filopriori_rtptorrent_v15.py       # Filo-Priori V15 (APFD 0.8540) - FROZEN
-│   ├── run_rtptorrent_ablation_sensitivity.py # Ablation + Sensitivity + Temporal CV (RTPTorrent)
+│   ├── run_filopriori_rtptorrent_v14.py       # Filo-Priori-Ensemble (APFD 0.8540) — FROZEN
+│   ├── run_rtptorrent_ablation_sensitivity.py # Ablation + Sensitivity + Temporal CV
 │   ├── run_dnn_ensemble_industry.py           # DNN ensemble verification on Industrial
 │   ├── run_deeporder_*.py                     # DeepOrder baselines
 │   ├── run_noderank_*.py                      # NodeRank baselines
@@ -359,11 +367,14 @@ filo-priori/
 │   ├── run_failrank_bb_*.py                   # FailRank-BB baselines
 │   └── archived/                              # Old Filo-Priori versions (not in paper)
 ├── paper/
-│   ├── main_ieee_tse.tex            # IEEE TSE paper
+│   ├── main_ieee_tse.tex            # IEEE TSE manuscript (Regular Journal First)
+│   ├── main_ieee_tse.pdf            # Compiled PDF
 │   ├── references_ieee.bib          # Bibliography
-│   ├── figures/                     # Paper figures (PDF + LaTeX source)
+│   ├── cover_letter.md              # Cover letter for ScholarOne
+│   ├── novelty_statement.md         # 200-word Novelty Statement (Journal First)
+│   ├── figures/                     # Paper figures (PDF)
 │   ├── sections/                    # Paper sections (results, discussion, threats)
-│   └── tables/                      # LaTeX tables
+│   └── Computer_Society_LaTeX_template/  # Official IEEE CS template reference
 ├── src/
 │   ├── models/
 │   │   ├── dual_stream_v8.py        # Main dual-stream model
@@ -392,7 +403,7 @@ filo-priori/
 │   └── 02_rtptorrent/               # RTPTorrent open-source dataset
 ├── results/
 │   ├── experiment_industry_optimized_v3/   # Industry results (APFD 0.7611)
-│   ├── filopriori_rtptorrent_v15/          # RTPTorrent V15 results (APFD 0.8540)
+│   ├── filopriori_rtptorrent_v14/          # RTPTorrent V14 results (APFD 0.8540)
 │   ├── rtptorrent_ablation_sensitivity/    # RTPTorrent ablation + sensitivity + temporal CV
 │   ├── dnn_ensemble_industry/              # DNN ensemble verification (APFD 0.686)
 │   ├── deeporder_*/                        # DeepOrder baseline results
@@ -400,36 +411,58 @@ filo-priori/
 │   ├── retecs_*/                           # RETECS baseline results
 │   ├── tcpnet_*/                           # TCP-Net baseline results
 │   └── failrank_bb_*/                      # FailRank-BB baseline results
-├── docs/
-│   ├── BASELINE_RESULTS.md          # Baseline comparison (all datasets)
-│   ├── STABLE_MODEL_PARAMETERS.md   # Frozen hyperparameters reference
-│   ├── TECHNICAL_REPORT_APFD_0.7611.md
-│   └── PIPELINE_ARCHITECTURE.md
+├── docs/                            # Technical documentation
 └── cache/                           # Pre-computed embeddings and graphs
 ```
 
 ---
 
-## Training Configuration (Industrial — Filo-Priori-Full)
+## Training Configuration
+
+### Filo-Priori-Full (Industrial, APFD 0.7611)
 
 | Parameter | Value |
 |---|---|
 | Framework | PyTorch 2.0, PyTorch Geometric 2.3 |
-| Hardware | NVIDIA RTX 3090 (24GB VRAM) |
+| Hardware | NVIDIA RTX 3090 (24 GB VRAM) |
 | Optimizer | AdamW (weight_decay=1e-4) |
 | Learning Rate | 3e-5 with cosine annealing |
 | Batch Size | 16 |
 | Epochs | 80 (early stop patience=15) |
 | Loss | Focal Loss (α_f=0.75, γ=2.0) |
 | Balanced Sampling | 29:1 (minority:majority) |
-| Gradient Clipping | max norm 1.0 |
+| GNN | GATv2, 1 layer, 2 heads, hidden_dim=128 |
 | Monitoring | val_f1_macro |
+
+### Filo-Priori-Ensemble (RTPTorrent, APFD 0.8540)
+
+| Parameter | Value |
+|---|---|
+| Learning Rate | 1e-3 |
+| Batch Size | 16 |
+| Max Epochs | 30 (early stop patience=7) |
+| GNN | GATv2, hidden_dim=128, 4 heads |
+| DNN Architecture | [64, 32, 16] with sigmoid output |
+| DNN Epochs | 15 (V15 sensitivity) |
+| Max pos_weight (DNN) | 50.0 (clamp for rare-failure projects) |
+| α-blending | Grid search over [0.0, 0.1, ..., 0.9] per project |
+| Min val failure builds | 3 (guard against degenerate α) |
+
+> **CRITICAL:** All parameters are FROZEN. See `CLAUDE.md` for the full configuration and the rationale behind each choice.
 
 ---
 
 ## Baselines
 
-### Heuristic Baselines
+### Deep Learning Baselines
+
+- **DeepOrder** (Chen et al., 2023): DNN with 8 historical features
+- **NodeRank** (Li et al., 2024): Mutation-based analysis with ensemble learning
+- **RETECS** (Spieker et al., 2017): Reinforcement learning for TCP in CI
+- **TCP-Net** (Abdelkarim et al., 2022): End-to-end DNN with temporal execution features
+- **FailRank-BB** (Hernandes et al., 2025): BERT embeddings + Logistic Regression
+
+### Heuristic Baselines (Reference)
 
 - **Random**: Random ordering (APFD ~ 0.5)
 - **Recency**: Prioritizes recently failed tests
@@ -437,19 +470,23 @@ filo-priori/
 - **FailureRate**: Overall historical failure rate
 - **GreedyHistorical**: Multi-heuristic greedy selection
 
-### ML Baselines
+---
 
-- **Logistic Regression**: Linear classifier on structural features
-- **Random Forest**: Ensemble decision trees
-- **XGBoost**: Gradient boosting
+## Submission Package (IEEE TSE)
 
-### Deep Learning Baselines
+Materials prepared for IEEE TSE submission via ScholarOne (`mc.manuscriptcentral.com/tse-cs`):
 
-- **DeepOrder**: DNN with 8 historical features
-- **NodeRank**: Mutation-based analysis with ensemble learning
-- **RETECS**: Reinforcement learning for TCP in CI
-- **TCP-Net**: End-to-end DNN with temporal execution features
-- **FailRank-BB**: BERT embeddings + LogisticRegression (Hernandes et al., 2024)
+| File | Purpose |
+|---|---|
+| [`paper/main_ieee_tse.tex`](paper/main_ieee_tse.tex) | Main manuscript (LaTeX source) |
+| [`paper/main_ieee_tse.pdf`](paper/main_ieee_tse.pdf) | Compiled PDF |
+| [`paper/references_ieee.bib`](paper/references_ieee.bib) | Bibliography |
+| [`paper/cover_letter.md`](paper/cover_letter.md) | Cover letter for the Editor-in-Chief |
+| [`paper/novelty_statement.md`](paper/novelty_statement.md) | 200-word Novelty Statement (Regular Journal First) |
+| `paper/figures/` | 6 paper figures (PDF) |
+| `paper/sections/` | Modular paper sections |
+
+**Submission type:** Regular (Journal First) — eligible for presentation at the ICSE Journal-First track, at the journal's and ICSE's discretion.
 
 ---
 
@@ -458,11 +495,9 @@ filo-priori/
 | Document | Description |
 |---|---|
 | [CLAUDE.md](CLAUDE.md) | AI agent instructions, frozen parameters, valid experiments |
-| [Paper (LaTeX)](paper/main_ieee_tse.tex) | Full IEEE TSE paper |
-| [BASELINE_RESULTS.md](docs/BASELINE_RESULTS.md) | Baseline comparison (all datasets) |
-| [STABLE_MODEL_PARAMETERS.md](docs/STABLE_MODEL_PARAMETERS.md) | Frozen hyperparameters reference |
-| [TECHNICAL_REPORT_APFD_0.7611.md](docs/TECHNICAL_REPORT_APFD_0.7611.md) | Detailed APFD analysis |
-| [PIPELINE_ARCHITECTURE.md](docs/PIPELINE_ARCHITECTURE.md) | Visual diagrams (Mermaid) |
+| [paper/main_ieee_tse.tex](paper/main_ieee_tse.tex) | Full IEEE TSE manuscript |
+| [paper/cover_letter.md](paper/cover_letter.md) | Cover letter draft |
+| [paper/novelty_statement.md](paper/novelty_statement.md) | Journal First Novelty Statement |
 
 ---
 
@@ -472,8 +507,8 @@ filo-priori/
 
 | Component | Minimum | Recommended |
 |---|---|---|
-| RAM | 16GB | 32GB |
-| GPU VRAM | 8GB | 12GB+ |
+| RAM | 16 GB | 32 GB |
+| GPU VRAM | 8 GB | 12 GB+ |
 | CUDA | 11.8+ | 12.1+ |
 
 ### Software
@@ -490,20 +525,22 @@ scipy>=1.10.0
 PyYAML>=6.0
 ```
 
+See [`requirements.txt`](requirements.txt) for the complete pinned environment.
+
 ---
 
 ## Citation
 
 ```bibtex
 @article{ribeiro2026filopriori,
-  title={Filo-Priori: A Multi-Edge Graph Attention Approach to
-         Test Case Prioritization},
-  author={Ribeiro, Acauan C. and Feitosa, Eduardo L. and
-          Carvalho, Andre L. da Costa and Santos, Eulanda M. dos and
-          Gadelha, Bruno F. and Soares, Yan R. and Nascimento, Jose},
-  journal={IEEE Transactions on Software Engineering},
-  year={2026},
-  note={Under Review}
+  title   = {Filo-Priori: Co-Failure Graph Attention for Test Case
+             Prioritization in Continuous Integration},
+  author  = {Ribeiro, Acauan C. and Feitosa, Eduardo L. and
+             Carvalho, Andre L. da Costa and Santos, Eulanda M. dos and
+             Gadelha, Bruno F. and Soares, Yan R. and Nascimento, Jose},
+  journal = {IEEE Transactions on Software Engineering},
+  year    = {2026},
+  note    = {Submitted (Regular Journal First)}
 }
 ```
 
@@ -511,17 +548,29 @@ PyYAML>=6.0
 
 ## References
 
-- **GAT**: Velickovic, P., et al. (2018). Graph Attention Networks. ICLR.
+- **GAT**: Veličković, P., et al. (2018). Graph Attention Networks. ICLR.
 - **GATv2**: Brody, S., et al. (2022). How Attentive are Graph Attention Networks? ICLR.
 - **Focal Loss**: Lin, T., et al. (2017). Focal Loss for Dense Object Detection. ICCV.
-- **SBERT**: Reimers, N., & Gurevych, I. (2019). Sentence-BERT. EMNLP.
+- **SBERT**: Reimers, N., and Gurevych, I. (2019). Sentence-BERT. EMNLP.
 - **DeepOrder**: Chen, J., et al. (2023). Deep Learning for TCP in CI Testing. TSE.
 - **NodeRank**: Li, Z., et al. (2024). NodeRank: Test Input Prioritization for GNNs.
 - **RTPTorrent**: Mattis, T., et al. (2020). RTPTorrent: An Open-Source Dataset. MSR.
-- **Hernandes et al.**: Hernandes, V., et al. (2025). A Method for Regression Testing Plan Ordering.
+- **FailRank-BB**: Hernandes, V., et al. (2025). A Method for Regression Testing Plan Ordering.
+
+---
+
+## Acknowledgments
+
+This work was partially supported by the Coordenação de Aperfeiçoamento de Pessoal de Nível Superior (CAPES) — Finance Code 001, and by Motorola Mobility Comércio de Produtos Eletrônicos Ltda., under the auspices of the Brazilian Federal Law No. 8.387/1991, which also provided access to the industrial dataset used in this study.
+
+**Conflicts of Interest:** Author Jose Nascimento is employed by Motorola Mobility Comércio de Produtos Eletrônicos Ltda. The remaining authors declare no competing interests. Motorola Mobility had no role in study design, data analysis, interpretation of results, or the decision to submit this manuscript for publication.
 
 ---
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) for details.
+- **Code:** Released under permissive academic-use terms for the purposes of replication and validation of the IEEE TSE paper.
+- **RTPTorrent dataset:** CC BY 4.0 (original authors).
+- **Industrial QTA dataset:** Anonymized version in the replication package; raw industrial data is proprietary to Motorola Mobility under the Brazilian Federal Law No. 8.387/1991.
+
+For licensing inquiries beyond academic replication, contact the corresponding author: acauan.ribeiro@icomp.ufam.edu.br
