@@ -1,4 +1,4 @@
-# Novelty Statement — Regular (Journal First) Submission
+# Novelty Statement - Regular (Journal First) Submission
 
 **Manuscript:** Filo-Priori: Co-Failure Graph Attention for Test Case Prioritization in Continuous Integration
 
@@ -12,42 +12,43 @@
 
 ## Statement of Novelty (200 words)
 
-This manuscript reports completely new research results that have not been
-previously published in any peer-reviewed venue, in any form. No preliminary
-version, conference paper, workshop paper, technical report, thesis chapter,
-or preprint of this work has been disseminated; the entirety of the
-contributions presented herein is original to this submission.
+This manuscript reports completely new research results for Test Case
+Prioritization (TCP) in Continuous Integration and is not a previously
+published, posted, or submitted conference/workshop extension. No preliminary
+version, technical report, thesis chapter, or preprint has been disseminated.
+The submission is not under consideration elsewhere.
 
-The novel contributions include: (1)~a graph-based test case prioritization
-framework that models inter-test relationships through GATv2 attention over a
-co-failure test relationship graph, complemented by a DNN ensemble with
-data-driven alpha blending for semantically-sparse settings; (2)~a rigorous
-empirical demonstration that generic pre-trained sentence embeddings
-(Sentence-BERT) provide no statistically significant improvement
-($p = 0.309$) when structural features and co-failure propagation are
-available, confirmed through Random-Fixed control experiments
-($p = 0.965$), constituting a notable negative result for the TCP
-community; (3)~cross-domain validation across an industrial CI pipeline
-(52,102 executions) and 20 open-source Java projects from RTPTorrent
-(2,937 builds with failures); and (4)~a per-edge-type ablation establishing
-co-failure edges as the decisive graph component, with ablation, temporal
-cross-validation, and sensitivity analyses confirming robustness across
-time periods and hyperparameter choices.
+The novelty is substantive relative to IEEE TSE's Journal First criteria.
+Filo-Priori introduces a TCP framework that treats tests as related entities
+rather than independent instances, using GATv2 attention over a co-failure test
+relationship graph and a DNN ensemble with validation-optimized alpha blending
+for metadata-sparse settings. The study also contributes an explicit negative
+result: generic Sentence-BERT embeddings do not significantly improve
+prioritization when structural features and co-failure propagation are
+available (p = 0.309), and a Random-Fixed control confirms that the apparent
+semantic signal behaves as a stable identity proxy (p = 0.965). Empirically,
+the work evaluates five strong baselines across an industrial CI pipeline
+(52,102 executions, 1,339 builds) and RTPTorrent (20 Java projects, 2,937
+failure builds). Finally, ablation, temporal validation, sensitivity analysis,
+and per-edge-type experiments identify co-failure edges as the decisive graph
+component and clarify the boundary conditions under which graph-based TCP
+outperforms flat-feature models. These results are new, complete, and central
+to the paper.
 
 ---
 
 **Word count:** 200 words
 
-**Confirmation of originality:** The authors confirm that 100% of the
-content of this manuscript constitutes new contributions to the field of
-Test Case Prioritization. The work has not been submitted simultaneously
-to any other journal, conference, or workshop. Should this work be accepted
-for publication in IEEE TSE, the authors agree to make it eligible, at the
-journal's and ICSE's discretion, for presentation under the ICSE
-Journal-First track.
+**Confirmation of originality:** The authors confirm that the manuscript
+contains new contributions to the field of Test Case Prioritization. The work
+has not been published, posted as a preprint, submitted elsewhere, or derived
+from a preliminary conference/workshop version. Should the work be accepted by
+IEEE TSE, the authors understand that any ICSE Journal-First presentation
+invitation would be handled under the journal's and conference's applicable
+policies.
 
 ---
 
 **Contact (Corresponding Author):** Acauan C. Ribeiro
-(acauan.ribeiro@icomp.ufam.edu.br) — Instituto de Computação (IComp),
+(acauan.ribeiro@icomp.ufam.edu.br), Instituto de Computacao (IComp),
 Universidade Federal do Amazonas (UFAM), Manaus, AM, Brazil.
