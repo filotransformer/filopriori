@@ -77,21 +77,47 @@ Full details, ablations, and sensitivity tables are in the paper (`paper/main_ie
 
 ## Quick Start
 
+The **RTPTorrent** dataset is public (CC BY 4.0) and is the recommended path to reproduce the paper's open-source results. The **Industrial QTA** dataset is proprietary and **cannot be redistributed** (see [Datasets](#datasets) below).
+
+### 1. Environment setup
+
 ```bash
-# Activate venv
 source venv/bin/activate
-
-# Install dependencies
 pip install -r requirements.txt
+```
 
-# Industrial dataset (Filo-Priori-Full) — APFD 0.7611
-python main.py --config configs/experiment_industry_optimized_v3.yaml
+### 2. Download and preprocess RTPTorrent (public dataset)
 
-# RTPTorrent (Filo-Priori-Ensemble, V14) — APFD 0.8540
+Full download and preprocessing instructions are in [`datasets/02_rtptorrent/README.md`](datasets/02_rtptorrent/README.md).
+
+```bash
+# Download (~4.1 GB from Zenodo) + preprocess
+python scripts/preprocessing/download_rtptorrent.py
+python scripts/preprocessing/preprocess_rtptorrent.py
+```
+
+### 3. Reproduce RTPTorrent results
+
+```bash
+# Main result (Filo-Priori-Ensemble, V14) — APFD 0.8540
 python experiments/run_filopriori_rtptorrent_v14.py
 
-# RTPTorrent ablation + sensitivity + temporal CV (~14h)
+# Ablation + sensitivity + temporal CV (~14h)
 python experiments/run_rtptorrent_ablation_sensitivity.py --all
+
+# Baselines on RTPTorrent
+python experiments/run_deeporder_rtptorrent.py
+python experiments/run_tcpnet_rtptorrent.py
+python experiments/run_noderank_rtptorrent.py
+python experiments/run_retecs_rtptorrent.py
+python experiments/run_failrank_bb_rtptorrent.py
+```
+
+### 4. Industrial dataset (proprietary, internal use only)
+
+```bash
+# Requires the proprietary Motorola/QTA CSVs in datasets/01_industry/
+python main.py --config configs/experiment_industry_optimized_v3.yaml
 ```
 
 ---
@@ -119,8 +145,22 @@ Filo-Priori-Full: + KNN orphan imputation (k=5, T=0.7, α_o=0.55)
 
 | Dataset | Builds | With Failures | Tests | Pass:Fail | Access |
 |---|---|---|---|---|---|
-| Industrial QTA | 1,339 | 277 (20.7%) | 2,347 | 37:1 | Anonymized in replication package |
-| RTPTorrent (20 Java projects) | >100,000 | 2,937 | -- | varies | CC BY 4.0 (public) |
+| Industrial QTA | 1,339 | 277 (20.7%) | 2,347 | 37:1 | **Proprietary — not downloadable** |
+| RTPTorrent (20 Java projects) | >100,000 | 2,937 | -- | varies | **CC BY 4.0 — public download** |
+
+### Industrial QTA (proprietary)
+
+Real test execution data from a Motorola mobile-device CI/CD pipeline, collected through the Qodo Test Automation (QTA) system. This dataset is **commercial and confidential**, governed by Brazilian Federal Law No. 8.387/1991 (SUFRAMA), and **cannot be redistributed**. It is used in the paper only for internal validation. Field schema and statistics are documented in [`datasets/01_industry/README.md`](datasets/01_industry/README.md).
+
+External readers cannot reproduce the Industrial experiments without access to the proprietary CSV files. All other paper artifacts (RTPTorrent results, ablation, sensitivity, temporal CV) are fully reproducible from the public dataset.
+
+### RTPTorrent (public, CC BY 4.0)
+
+Open-source dataset from MSR 2020 (Mattis et al.) with >100,000 Travis CI build logs across 20 Java projects on GitHub. The dataset is hosted on Zenodo and can be downloaded directly:
+
+- **Zenodo:** https://zenodo.org/records/3712290
+- **Paper:** https://doi.org/10.1145/3379597.3387458
+- **Local instructions:** [`datasets/02_rtptorrent/README.md`](datasets/02_rtptorrent/README.md) — covers download, preprocessing, expected directory layout, and how to run Filo-Priori-Ensemble on it.
 
 ---
 
