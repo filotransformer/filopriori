@@ -96,7 +96,7 @@ def load_rtptorrent_per_build(results_dir):
 
 
 def main():
-    base = Path("/home/acauan/iats/filo_priori_paper/results")
+    base = Path(__file__).resolve().parent.parent / "results"
 
     # =========================================================================
     # INDUSTRIAL DATASET (277 builds)

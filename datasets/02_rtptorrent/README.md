@@ -39,22 +39,23 @@ The dataset includes 20 open-source Java projects:
 
 ## Download Instructions
 
-### Option 1: Automatic Download
+All commands below assume the current working directory is the repository root
+(the folder created by `git clone`). Adjust accordingly if you placed the
+repository somewhere else.
 
 ```bash
-cd /home/acauan/ufam/iats/sprint_07/filo_priori_v9
-python scripts/preprocessing/download_rtptorrent.py
-```
+# From the repository root
+mkdir -p datasets/02_rtptorrent/raw
+cd datasets/02_rtptorrent/raw
 
-### Option 2: Manual Download
-
-```bash
 # Download from Zenodo (4.1 GB)
-cd datasets/02_rtptorrent/raw/
 wget https://zenodo.org/records/3712290/files/rtp-torrent-v1.zip
 
 # Extract
 unzip rtp-torrent-v1.zip
+
+# Return to the repository root before running preprocessing
+cd ../../../
 ```
 
 ## Preprocessing

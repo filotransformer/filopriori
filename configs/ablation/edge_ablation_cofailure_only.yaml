@@ -83,7 +83,7 @@ graph:
   weight_threshold: 0.03
   semantic_top_k: 10
   semantic_threshold: 0.65
-  cache_path: /home/acauan/iats/filo_priori_paper/cache/01_industry/multi_edge_graph_cofailure_only.pkl
+  cache_path: cache/01_industry/multi_edge_graph_cofailure_only.pkl
   type: co_failure
 model:
   type: dual_head
@@ -213,7 +213,7 @@ checkpoint:
   monitor: val_f1_macro
   mode: max
 output:
-  results_dir: /home/acauan/iats/filo_priori_paper/results/edge_type_ablation_industry/cofailure_only
+  results_dir: results/edge_type_ablation_industry/cofailure_only
   save_predictions: true
   save_rankings: true
   save_apfd: true

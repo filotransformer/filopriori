@@ -92,7 +92,7 @@ print("INDUSTRIAL — Cliff's Delta (per-build, n=277)")
 print("  (Computed from per-build APFD CSVs)")
 print("=" * 70)
 
-base = Path("/home/acauan/iats/filo_priori_paper/results")
+base = Path(__file__).resolve().parent.parent / "results"
 
 fp_df = pd.read_csv(base / "experiment_industry_optimized_v3" / "apfd_per_build_FULL_testcsv.csv")
 fp_ind = fp_df.set_index('build_id')['apfd']
