@@ -14,7 +14,7 @@ A **graph-based deep learning framework** for Test Case Prioritization (TCP) in 
 **Replication Package:** https://github.com/filotransformer/filopriori
 **Corresponding Author:** Acauan C. Ribeiro (acauan.ribeiro@icomp.ufam.edu.br)
 
-**Authors:** Acauan C. Ribeiro, Eduardo L. Feitosa, Andre L. da Costa Carvalho, Eulanda M. dos Santos, Bruno F. Gadelha, Yan R. Soares, Jose Nascimento
+**Authors:** Acauan C. Ribeiro, Eduardo L. Feitosa, Andre L. da Costa Carvalho, Eulanda M. dos Santos, Bruno F. Gadelha, Yan R. Soares, Jose Carlos Rangel do Nascimento, Nícolas Riccieri Gardin Assumpção
 
 **Affiliations:** Instituto de Computação (IComp), Universidade Federal do Amazonas (UFAM) · Motorola Mobility Comércio de Produtos Eletrônicos Ltda.
 
@@ -184,7 +184,9 @@ Submitted via **ScholarOne** at https://mc.manuscriptcentral.com/tse-cs as **Reg
              Prioritization in Continuous Integration},
   author  = {Ribeiro, Acauan C. and Feitosa, Eduardo L. and
              Carvalho, Andre L. da Costa and Santos, Eulanda M. dos and
-             Gadelha, Bruno F. and Soares, Yan R. and Nascimento, Jose},
+             Gadelha, Bruno F. and Soares, Yan R. and
+             Nascimento, Jose Carlos Rangel do and
+             Assump{\c{c}}{\~a}o, N{\'i}colas Riccieri Gardin},
   journal = {IEEE Transactions on Software Engineering},
   year    = {2026},
   note    = {Submitted (Regular Journal First)}
@@ -197,7 +199,7 @@ Submitted via **ScholarOne** at https://mc.manuscriptcentral.com/tse-cs as **Reg
 
 This work was partially supported by the Coordenação de Aperfeiçoamento de Pessoal de Nível Superior (CAPES) — Finance Code 001, and by Motorola Mobility Comércio de Produtos Eletrônicos Ltda., under the auspices of the Brazilian Federal Law No. 8.387/1991, which also provided access to the industrial dataset used in this study.
 
-**Conflicts of Interest:** Author Jose Nascimento is employed by Motorola Mobility. The remaining authors declare no competing interests. Motorola Mobility had no role in study design, data analysis, interpretation of results, or the decision to submit this manuscript.
+**Conflicts of Interest:** Authors Jose Carlos Rangel do Nascimento and Nícolas Riccieri Gardin Assumpção are employed by Motorola Mobility. The remaining authors declare no competing interests. Motorola Mobility had no role in study design, data analysis, interpretation of results, or the decision to submit this manuscript.
 
 ---
 

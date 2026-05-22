@@ -8,7 +8,7 @@ Target Journal: IEEE Transactions on Software Engineering (IEEE TSE)
 
 ## Authors
 
-Acauan C. Ribeiro, Eduardo L. Feitosa, Andre L. da Costa Carvalho, Eulanda M. dos Santos, Bruno F. Gadelha, Yan R. Soares, and Jose Nascimento
+Acauan C. Ribeiro, Eduardo L. Feitosa, Andre L. da Costa Carvalho, Eulanda M. dos Santos, Bruno F. Gadelha, Yan R. Soares, Jose Carlos Rangel do Nascimento, and Nícolas Riccieri Gardin Assumpção
 
 ## Directory Structure
 

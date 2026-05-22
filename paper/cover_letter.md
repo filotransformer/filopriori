@@ -69,11 +69,12 @@ under CC BY 4.0 from its original authors.
 
 All authors have approved this submission. Funding, conflicts of interest, and
 the use of generative AI assistance are disclosed in the manuscript. In
-particular, author Jose Nascimento is employed by Motorola Mobility, which
-provided the industrial dataset and partially supported the research under the
-Brazilian Federal Law No. 8.387/1991. Motorola Mobility had no role in the
-study design, data analysis, interpretation of results, or decision to submit
-this manuscript for publication.
+particular, authors Jose Carlos Rangel do Nascimento and Nícolas Riccieri
+Gardin Assumpção are employed by Motorola Mobility, which provided the
+industrial dataset and partially supported the research under the Brazilian
+Federal Law No. 8.387/1991. Motorola Mobility had no role in the study
+design, data analysis, interpretation of results, or decision to submit this
+manuscript for publication.
 
 If ScholarOne requests suggested or non-preferred reviewers, we will provide
 them in the corresponding submission fields and will avoid individuals with

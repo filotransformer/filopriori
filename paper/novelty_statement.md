@@ -2,7 +2,7 @@
 
 **Manuscript:** Filo-Priori: Co-Failure Graph Attention for Test Case Prioritization in Continuous Integration
 
-**Authors:** Acauan C. Ribeiro, Eduardo L. Feitosa, Andre L. da Costa Carvalho, Eulanda M. dos Santos, Bruno F. Gadelha, Yan R. Soares, Jose Nascimento
+**Authors:** Acauan C. Ribeiro, Eduardo L. Feitosa, Andre L. da Costa Carvalho, Eulanda M. dos Santos, Bruno F. Gadelha, Yan R. Soares, Jose Carlos Rangel do Nascimento, Nícolas Riccieri Gardin Assumpção
 
 **Target Venue:** IEEE Transactions on Software Engineering (IEEE TSE)
 
