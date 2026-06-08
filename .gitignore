@@ -176,6 +176,8 @@ paper/*.toc
 paper/*.vrb
 paper/sections/*.aux
 paper/figures/*.aux
+paper/
+paper/*
 
 # -----------------------------------------------------------------------------
 # Temporary / scratch files
@@ -197,3 +199,4 @@ scratch/
 *.key
 secrets.json
 credentials.json
+
