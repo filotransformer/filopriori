@@ -995,8 +995,8 @@ where $H$ is the number of attention heads and $\alpha_{ij}^k$ are learned
 attention coefficients for head $k$. In both evaluation settings, we use
 $H = 2$ heads with a hidden dimension of 128, where each head produces a
 128-dimensional output that is concatenated to yield a 256-dimensional
-structural representation per test case (see Table~S7 in the supplementary
-material for the complete configuration). The sensitivity analysis (Section~\ref{sec:rq4})
+structural representation per test case (see Table~\ref{tab:arch_params}
+for the complete configuration). The sensitivity analysis (Section~\ref{sec:rq4})
 confirms that this shallow, 1-layer configuration with 2 heads outperforms
 deeper architectures (2--3 layers) and more heads (4--8), suggesting that
 test relationships can be effectively captured with a single message-passing
@@ -1146,8 +1146,9 @@ to accommodate the different data scales: the industrial configuration uses a
 lower learning rate ($3 \times 10^{-5}$) with cosine annealing and longer
 training (80 epochs, patience 15), while the RTPTorrent configuration uses a
 higher learning rate ($1 \times 10^{-3}$) with shorter training (30 epochs,
-patience 7) per project. Table~S6 in the supplementary material provides the
-complete training configuration for each setting.
+patience 7) per project. Table~\ref{tab:hyperparams} in
+Section~\ref{sec:experimental} provides the complete training configuration
+for each setting.
 
 \textbf{Threshold Optimization.}
 On the industrial dataset, we apply a two-phase threshold search on the
@@ -1605,7 +1606,7 @@ original GNN testing domain to TCP (see Section~\ref{sec:related}).
 All baseline implementations are included in the replication package for
 independent verification.
 
-Table~S6 in the supplementary material lists the training
+Table~\ref{tab:hyperparams} lists the training
 hyperparameters for each evaluation setting. On the industrial dataset, the
 GNN is trained with AdamW using cosine annealing and early stopping. On
 RTPTorrent, the GNN and the DeepOrder DNN are trained independently per
@@ -1614,9 +1615,65 @@ from all prior builds) and its own optimizer, while the GNN uses the same
 AdamW configuration with a higher learning rate suited to the per-project
 training regime.
 
-% [Table moved to supplementary material -- see Table S6]
+\begin{table}[!t]
+\centering
+\caption{Training Hyperparameters by Evaluation Setting}
+\label{tab:hyperparams}
+\footnotesize
+\begin{tabular}{lccc}
+\toprule
+ & \textbf{Industrial} & \multicolumn{2}{c}{\textbf{RTPTorrent}} \\
+\cmidrule(lr){3-4}
+\textbf{Hyperparameter} & \textbf{(GNN)} & \textbf{GNN} & \textbf{DNN} \\
+\midrule
+Optimizer & AdamW & AdamW & Adam \\
+Learning rate & $3 \times 10^{-5}$ & $1 \times 10^{-3}$ & $1 \times 10^{-3}$ \\
+Weight decay & $1 \times 10^{-4}$ & $1 \times 10^{-4}$ & -- \\
+Batch size & 16 & per-build & 128 \\
+Max epochs & 80 & 30 & 15 \\
+Early stopping & patience 15 & patience 7 & -- \\
+Scheduler & cosine & -- & -- \\
+Gradient clip & 1.0 & -- & -- \\
+\bottomrule
+\end{tabular}
+\end{table}
 
-% [Table moved to supplementary material -- see Table S7]
+\begin{table}[!t]
+\centering
+\caption{Model Architecture and Pipeline Parameters}
+\label{tab:arch_params}
+\footnotesize
+\begin{tabular}{lcc}
+\toprule
+\textbf{Parameter} & \textbf{Industrial} & \textbf{RTPTorrent} \\
+\midrule
+\multicolumn{3}{l}{\textit{GNN Architecture}} \\
+GAT layers & 1 & 1 \\
+Attention heads & 2 & 2 \\
+GAT hidden dim & 128 & 128 \\
+Structural input dim & 19 & 19 \\
+Semantic input dim & 1536 & 768 \\
+Semantic hidden dim & 256 & 256 \\
+Structural hidden dim & 64 & 64 \\
+\midrule
+\multicolumn{3}{l}{\textit{Graph Construction}} \\
+Edge types & 5 & co-failure only \\
+Semantic threshold & 0.65 & -- \\
+Max neighbors & 10 & -- \\
+\midrule
+\multicolumn{3}{l}{\textit{Class Balancing}} \\
+Balanced sampling ratio & 29:1 & -- \\
+Focal $\alpha_f$ / $\gamma$ & 0.75 / 2.0 & -- / 2.0 \\
+DNN pos\_weight (max) & -- & 50.0 \\
+\midrule
+\multicolumn{3}{l}{\textit{Pipeline}} \\
+Orphan KNN ($k$, $\alpha_o$, $T$) & 5, 0.55, 0.7 & not applied \\
+DNN hidden layers & -- & 64, 32, 16 \\
+Alpha blending range & -- & $[0.0, 0.1, \ldots, 0.9]$ \\
+Max training builds (DNN) & -- & 5,000 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 %------------------------------------------------------------------------------
 % SECTION 6: RESULTS

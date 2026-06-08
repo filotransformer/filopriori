@@ -61,7 +61,7 @@ substantially different configurations of \filopriori{}
 (Table~\ref{tab:rtptorrent_config}), including different graph edge types
 (5 vs.\ 1), presence or absence of the orphan handling pipeline and DNN
 ensemble, and different hyperparameters
-(Table~S6 in the supplementary material). While both configurations share the same core
+(Table~\ref{tab:hyperparams}). While both configurations share the same core
 GATv2-based architecture and feature engineering pipeline, deploying
 \filopriori{} on a new dataset may require configuration decisions informed by
 the available metadata (e.g., whether rich semantic descriptions exist,
@@ -170,7 +170,7 @@ To ensure reproducibility, we provide a replication package containing:
 \begin{itemize}
     \item Complete source code for \filopriori{} and all five baselines
     \item Configuration files with exact hyperparameters
-    (Tables~S6 and~S7 in the supplementary material)
+    (Tables~\ref{tab:hyperparams} and~\ref{tab:arch_params})
     \item Trained model weights for both evaluation settings
     \item Scripts to reproduce all experiments, including ablation,
     temporal cross-validation, and sensitivity analysis
