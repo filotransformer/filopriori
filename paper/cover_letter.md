@@ -57,15 +57,17 @@ workshop, and it will not be submitted elsewhere while under review by TSE. A
 separate 200-word Journal First Novelty Statement is included with this
 submission.
 
-A replication package has been prepared, including source code, trained
-models, training configurations, and the anonymized industrial artifacts that
-can be shared under the applicable confidentiality constraints. The package
-will be made publicly available at the time of publication at:
+A public replication package, including the source code for Filo-Priori and
+all baselines, trained model weights, training configurations, and scripts to
+reproduce the RTPTorrent experiments end-to-end, is available at:
 
 **https://github.com/filotransformer/filopriori**
 
-The RTPTorrent dataset used for cross-domain evaluation is publicly available
-under CC BY 4.0 from its original authors.
+The RTPTorrent dataset used for the cross-domain evaluation is publicly
+available under CC BY 4.0 from its original authors. The industrial QTA
+dataset is proprietary and governed by a non-disclosure agreement; it cannot
+be redistributed, so the industrial experiments are not externally
+reproducible. This is disclosed in the manuscript.
 
 All authors have approved this submission. Funding, conflicts of interest, and
 the use of generative AI assistance are disclosed in the manuscript. In

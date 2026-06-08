@@ -1,0 +1,264 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FILO-PRIORI - SUPPLEMENTARY MATERIAL (IEEE TSE)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Detailed tables relocated from the main manuscript to respect the page
+% budget. Tables are numbered S1..S7 and referenced as such in the main paper.
+% Upload this as a separate Supplementary Material file in ScholarOne.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[10pt,journal,compsoc]{IEEEtran}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{threeparttable}
+
+\newcommand{\filopriori}{\textsc{Filo-Priori}}
+
+% Number all tables as S1, S2, ... so they match the references in the main paper
+\renewcommand{\thetable}{S\arabic{table}}
+\setcounter{table}{0}
+
+\begin{document}
+
+\title{Supplementary Material\\
+\large Filo-Priori: Co-Failure Graph Attention for Test Case
+Prioritization in Continuous Integration}
+
+\author{Ribeiro \MakeLowercase{\textit{et al.}}}
+
+\markboth{IEEE Transactions on Software Engineering, Supplementary Material}{}
+
+\maketitle
+
+This document provides detailed tables that are referenced in the main
+manuscript and relocated here to respect the page budget: per-project
+results on RTPTorrent (Table~\ref{tab:rtptorrent_perproject}), temporal
+cross-validation (Tables~\ref{tab:temporal_cv}
+and~\ref{tab:temporal_cv_rtptorrent}), hyperparameter sensitivity
+(Tables~\ref{tab:sensitivity} and~\ref{tab:sensitivity_rtptorrent}), and the
+full training and architecture configuration (Tables~\ref{tab:hyperparams}
+and~\ref{tab:arch_params}). All numbers are identical to those reported in
+the main paper.
+
+%------------------------------------------------------------------------------
+\section{Per-Project Results (RTPTorrent)}
+%------------------------------------------------------------------------------
+
+\begin{table*}[!t]
+\centering
+\caption{Per-Project APFD Comparison (RTPTorrent, 20 Projects, Ensemble Variant). Bold indicates the best method for each project.}
+\label{tab:rtptorrent_perproject}
+\footnotesize
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Project} & \textbf{\filopriori{}} & \textbf{TCP-Net} & \textbf{FailRank-BB} & \textbf{DeepOrder} & \textbf{NodeRank} & \textbf{RETECS} \\
+\midrule
+facebook/buck & \textbf{0.9831} & 0.9149 & 0.9125 & 0.8683 & 0.9792 & 0.7437 \\
+apache/sling & \textbf{0.9710} & 0.9589 & 0.9427 & 0.9320 & 0.9540 & 0.8385 \\
+eclipse/jetty.project & \textbf{0.9719} & 0.9673 & 0.9487 & 0.9463 & 0.9702 & 0.9103 \\
+jOOQ/jOOQ & \textbf{0.9392} & 0.9311 & 0.9250 & 0.9262 & 0.9316 & 0.7755 \\
+julianhyde/optiq & 0.9135 & 0.9122 & 0.8987 & \textbf{0.9208} & 0.9058 & 0.8321 \\
+jcabi/jcabi-github & \textbf{0.9370} & 0.8431 & 0.8704 & 0.7809 & 0.8576 & 0.6513 \\
+CloudifySource/cloudify & 0.9086 & \textbf{0.9096} & 0.8731 & 0.8994 & 0.7481 & 0.7903 \\
+square/okhttp & \textbf{0.8916} & 0.8679 & 0.8680 & 0.8258 & 0.8499 & 0.7909 \\
+Graylog2/graylog2-server & \textbf{0.8940} & 0.8585 & 0.7708 & 0.8817 & 0.8837 & 0.4312 \\
+doanduyhai/Achilles & \textbf{0.8693} & 0.8242 & 0.7739 & 0.8135 & 0.7817 & 0.7040 \\
+SonarSource/sonarqube & \textbf{0.8671} & 0.8371 & 0.6934 & 0.7964 & 0.8150 & 0.7680 \\
+thinkaurelius/titan & \textbf{0.8410} & 0.8394 & 0.8350 & 0.8441 & 0.8003 & 0.7371 \\
+deeplearning4j/dl4j & 0.8361 & 0.8369 & \textbf{0.8428} & 0.8330 & 0.8049 & 0.7480 \\
+jsprit/jsprit & 0.9426 & \textbf{0.9586} & 0.8959 & 0.9305 & 0.9109 & 0.6215 \\
+dynjs/dynjs & 0.8001 & 0.6961 & \textbf{0.8294} & 0.7777 & 0.7285 & 0.4948 \\
+adamfisk/LittleProxy & 0.7196 & 0.7302 & \textbf{0.7807} & 0.6718 & 0.6879 & 0.5742 \\
+neuland/jade4j & 0.7239 & 0.7285 & 0.7141 & \textbf{0.7307} & 0.6765 & 0.5901 \\
+brettwooldridge/HikariCP & 0.6616 & 0.6497 & \textbf{0.7520} & 0.6687 & 0.6444 & 0.5685 \\
+DSpace/DSpace & 0.6841 & 0.6425 & \textbf{0.7027} & 0.6353 & 0.6521 & 0.4065 \\
+l0rdn1kk0n/wicket-bootstrap & 0.5971 & 0.5993 & \textbf{0.6056} & 0.5896 & 0.5985 & \textbf{0.6056} \\
+\midrule
+\textbf{Grand Mean} & \textbf{0.8540} & 0.8253 & 0.8218 & 0.8136 & 0.8090 & 0.6791 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\clearpage
+
+%------------------------------------------------------------------------------
+\section{Temporal Cross-Validation}
+%------------------------------------------------------------------------------
+
+\begin{table}[!t]
+\centering
+\caption{Temporal Cross-Validation Results (Industrial Dataset)}
+\label{tab:temporal_cv}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Validation Method} & \textbf{APFD} & \textbf{Std} & \textbf{N} \\
+\midrule
+Temporal 5-Fold CV & 0.6629 & 0.279 & 215 \\
+Sliding Window CV & 0.6279 & 0.272 & 248 \\
+Concept Drift Test & 0.6187 & 0.277 & 152 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[!t]
+\centering
+\caption{Temporal 4-Fold CV Results (RTPTorrent, 20 Projects)}
+\label{tab:temporal_cv_rtptorrent}
+\footnotesize
+\begin{tabular}{lccc}
+\toprule
+\textbf{Project} & \textbf{Mean APFD} & \textbf{Std} & \textbf{Folds} \\
+\midrule
+facebook/buck & 0.976 & 0.007 & 4 \\
+apache/sling & 0.970 & 0.003 & 4 \\
+eclipse/jetty.project & 0.948 & 0.018 & 4 \\
+jOOQ/jOOQ & 0.924 & 0.022 & 4 \\
+jsprit/jsprit & 0.923 & 0.030 & 4 \\
+CloudifySource/cloudify & 0.901 & 0.023 & 4 \\
+Graylog2/graylog2-server & 0.901 & 0.021 & 4 \\
+jcabi/jcabi-github & 0.888 & 0.014 & 4 \\
+square/okhttp & 0.882 & 0.008 & 4 \\
+julianhyde/optiq & 0.872 & 0.050 & 4 \\
+SonarSource/sonarqube & 0.850 & 0.014 & 4 \\
+deeplearning4j/deeplearning4j & 0.842 & 0.025 & 4 \\
+thinkaurelius/titan & 0.822 & 0.034 & 4 \\
+doanduyhai/Achilles & 0.795 & 0.046 & 4 \\
+neuland/jade4j & 0.705 & 0.021 & 4 \\
+adamfisk/LittleProxy & 0.666 & 0.034 & 4 \\
+DSpace/DSpace & 0.665 & 0.014 & 4 \\
+l0rdn1kk0n/wicket-bootstrap & 0.620 & 0.017 & 4 \\
+brettwooldridge/HikariCP & 0.599 & 0.033 & 4 \\
+dynjs/dynjs & 0.563 & 0.145 & 4 \\
+\midrule
+\textbf{Grand Mean} & \textbf{0.816} & \textbf{0.131} & \textbf{80} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\clearpage
+
+%------------------------------------------------------------------------------
+\section{Hyperparameter Sensitivity}
+%------------------------------------------------------------------------------
+
+\begin{table}[!t]
+\centering
+\caption{Hyperparameter Sensitivity Analysis (Industrial Dataset)}
+\label{tab:sensitivity}
+\scriptsize
+\begin{tabular}{llccr}
+\toprule
+\textbf{Parameter} & \textbf{Best} & \textbf{APFD} & \textbf{Worst} & \textbf{$\Delta$} \\
+\midrule
+Loss Function & Weighted CE & 0.6191 & 0.5834 & 3.6\% \\
+Learning Rate & 3e-5 & 0.6160 & 0.5890 & 2.7\% \\
+GNN Architecture & 1 layer, 2 heads & 0.6160 & 0.5890 & 2.7\% \\
+Structural Features & 10 features & 0.6171 & 0.5997 & 1.7\% \\
+Balanced Sampling & No balanced & 0.6154 & 0.5834 & 3.2\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[!t]
+\centering
+\caption{Hyperparameter Sensitivity Analysis (RTPTorrent, 20 Projects)}
+\label{tab:sensitivity_rtptorrent}
+\footnotesize
+\begin{threeparttable}
+\begin{tabular}{llcc}
+\toprule
+\textbf{Parameter} & \textbf{Value} & \textbf{APFD} & \textbf{$\Delta$ vs.\ Opt.} \\
+\midrule
+\multirow{6}{*}{$\alpha$ (GNN--DNN blend)} & 0.0 (DNN only) & 0.845 & $-$1.0\% \\
+ & 0.3 & 0.854 & $-$0.0\% \\
+ & 0.5 & 0.854 & $-$0.0\% \\
+ & 0.7 & 0.854 & $-$0.0\% \\
+ & 1.0 (GNN only) & 0.832 & $-$2.6\% \\
+ & Optimized & 0.854 & -- \\
+\midrule
+\multirow{3}{*}{DNN Epochs} & 5 & 0.837 & $-$0.3\% \\
+ & 10 & 0.843 & +0.4\% \\
+ & 20 & 0.844 & +0.5\% \\
+\midrule
+\multirow{3}{*}{Max pos\_weight} & 10 & 0.843 & +0.5\% \\
+ & 25 & 0.830 & $-$1.1\% \\
+ & 100 & 0.844 & +0.5\% \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\small
+\item Optimized = default configuration ($\alpha$ per-project optimized, 15 DNN epochs, pos\_weight $\leq$ 50).
+\item $\Delta$ vs.\ Opt.\ = relative change from optimized configuration (APFD = 0.854).
+\end{tablenotes}
+\end{threeparttable}
+\end{table}
+
+\clearpage
+
+%------------------------------------------------------------------------------
+\section{Full Training and Architecture Configuration}
+%------------------------------------------------------------------------------
+
+\begin{table}[!t]
+\centering
+\caption{Training Hyperparameters by Evaluation Setting}
+\label{tab:hyperparams}
+\footnotesize
+\begin{tabular}{lccc}
+\toprule
+ & \textbf{Industrial} & \multicolumn{2}{c}{\textbf{RTPTorrent}} \\
+\cmidrule(lr){3-4}
+\textbf{Hyperparameter} & \textbf{(GNN)} & \textbf{GNN} & \textbf{DNN} \\
+\midrule
+Optimizer & AdamW & AdamW & Adam \\
+Learning rate & $3 \times 10^{-5}$ & $1 \times 10^{-3}$ & $1 \times 10^{-3}$ \\
+Weight decay & $1 \times 10^{-4}$ & $1 \times 10^{-4}$ & -- \\
+Batch size & 16 & per-build & 128 \\
+Max epochs & 80 & 30 & 15 \\
+Early stopping & patience 15 & patience 7 & -- \\
+Scheduler & cosine & -- & -- \\
+Gradient clip & 1.0 & -- & -- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[!t]
+\centering
+\caption{Model Architecture and Pipeline Parameters}
+\label{tab:arch_params}
+\footnotesize
+\begin{tabular}{lcc}
+\toprule
+\textbf{Parameter} & \textbf{Industrial} & \textbf{RTPTorrent} \\
+\midrule
+\multicolumn{3}{l}{\textit{GNN Architecture}} \\
+GAT layers & 1 & 1 \\
+Attention heads & 2 & 2 \\
+GAT hidden dim & 128 & 128 \\
+Structural input dim & 19 & 19 \\
+Semantic input dim & 1536 & 768 \\
+Semantic hidden dim & 256 & 256 \\
+Structural hidden dim & 64 & 64 \\
+\midrule
+\multicolumn{3}{l}{\textit{Graph Construction}} \\
+Edge types & 5 & co-failure only \\
+Semantic threshold & 0.65 & -- \\
+Max neighbors & 10 & -- \\
+\midrule
+\multicolumn{3}{l}{\textit{Class Balancing}} \\
+Balanced sampling ratio & 29:1 & -- \\
+Focal $\alpha_f$ / $\gamma$ & 0.75 / 2.0 & -- / 2.0 \\
+DNN pos\_weight (max) & -- & 50.0 \\
+\midrule
+\multicolumn{3}{l}{\textit{Pipeline}} \\
+Orphan KNN ($k$, $\alpha_o$, $T$) & 5, 0.55, 0.7 & not applied \\
+DNN hidden layers & -- & 64, 32, 16 \\
+Alpha blending range & -- & $[0.0, 0.1, \ldots, 0.9]$ \\
+Max training builds (DNN) & -- & 5,000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\end{document}

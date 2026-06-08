@@ -61,7 +61,7 @@ substantially different configurations of \filopriori{}
 (Table~\ref{tab:rtptorrent_config}), including different graph edge types
 (5 vs.\ 1), presence or absence of the orphan handling pipeline and DNN
 ensemble, and different hyperparameters
-(Table~\ref{tab:hyperparams}). While both configurations share the same core
+(Table~S6 in the supplementary material). While both configurations share the same core
 GATv2-based architecture and feature engineering pipeline, deploying
 \filopriori{} on a new dataset may require configuration decisions informed by
 the available metadata (e.g., whether rich semantic descriptions exist,
@@ -170,19 +170,18 @@ To ensure reproducibility, we provide a replication package containing:
 \begin{itemize}
     \item Complete source code for \filopriori{} and all five baselines
     \item Configuration files with exact hyperparameters
-    (Tables~\ref{tab:hyperparams} and~\ref{tab:arch_params})
+    (Tables~S6 and~S7 in the supplementary material)
     \item Trained model weights for both evaluation settings
     \item Scripts to reproduce all experiments, including ablation,
     temporal cross-validation, and sensitivity analysis
 \end{itemize}
 
 \textbf{Dataset availability.} The industrial dataset is subject to a
-non-disclosure agreement and cannot be released in its raw form. We provide
-anonymized pre-computed SBERT embeddings and structural features, which are
-sufficient to reproduce the training and evaluation pipeline but do not
-allow qualitative inspection of the original test descriptions or commit
-messages. We acknowledge that this limits the community's ability to
-audit the semantic stream's behavior on the industrial data. Importantly,
+non-disclosure agreement and cannot be released, either in raw form or as
+anonymized derivatives such as pre-computed embeddings. Consequently, the
+industrial experiments cannot be reproduced by external researchers, and we
+acknowledge that this also limits the community's ability to audit the
+semantic stream's behavior on the industrial data. Importantly,
 the largest performance margins ($+10.2\%$ to $+27.6\%$ over baselines)
 are observed on this proprietary dataset, meaning that the strongest
 empirical claims cannot be independently verified from raw data.
@@ -191,20 +190,18 @@ To provide tangibility despite the NDA constraints, we include two
 representative case studies in Section~\ref{sec:discussion} (a
 high-performance build with APFD = 1.0 and a low-performance build with
 APFD = 0.152) that describe the model's behavior using masked identifiers
-and anonymized feature values. Additionally, the replication package
-includes the complete distribution of per-build APFD values, structural
-feature statistics (means, variances, correlations), and graph
-connectivity metrics (node degree distributions, edge type proportions),
-enabling the community to characterize the dataset's properties without
-accessing the raw text.
+and anonymized feature values. We additionally report aggregate
+characterizations of the industrial dataset, including the distribution of
+per-build APFD values, structural feature statistics (means, variances,
+correlations), and graph connectivity metrics (node degree distributions,
+edge type proportions), so that the community can understand the dataset's
+properties without access to the raw data.
 
 To compensate for the proprietary dataset limitation, the RTPTorrent
 evaluation, which uses a fully public dataset (CC BY 4.0
 license~\cite{mattis2020rtptorrent}), serves as the independently
 verifiable benchmark. All 20 RTPTorrent projects can be downloaded,
 processed, and evaluated end-to-end using the provided scripts without
-any access restrictions. The anonymized industrial replication package
-preserves temporal ordering, pass/fail sequences, co-occurrence patterns,
-and pre-computed embeddings, enabling reproduction of all reported metrics
-even though the original text is not available.
+any access restrictions, allowing full reproduction of every RTPTorrent
+result reported in this paper.
 

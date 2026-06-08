@@ -247,6 +247,6 @@ This work was partially supported by the Coordenação de Aperfeiçoamento de Pe
 
 - **Code:** Academic-use terms for replication and validation of the IEEE TSE paper.
 - **RTPTorrent dataset:** CC BY 4.0 (original authors).
-- **Industrial QTA dataset:** Anonymized version in the replication package; raw industrial data is proprietary to Motorola Mobility under the Brazilian Federal Law No. 8.387/1991.
+- **Industrial QTA dataset:** Proprietary and not redistributable (NDA, Brazilian Federal Law No. 8.387/1991); not included in this replication package. The industrial experiments are not externally reproducible.
 
 Licensing inquiries beyond academic replication: acauan.ribeiro@icomp.ufam.edu.br
