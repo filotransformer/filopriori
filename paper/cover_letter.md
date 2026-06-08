@@ -78,6 +78,17 @@ Federal Law No. 8.387/1991. Motorola Mobility had no role in the study
 design, data analysis, interpretation of results, or decision to submit this
 manuscript for publication.
 
+We also disclose related prior work by overlapping authors: one of our five
+baselines, FailRank-BB (reference [hernandes2025] in the manuscript), is prior
+work co-authored by a subset of the present authors. In this submission we
+treat it strictly as an external, independently reimplemented baseline.
+Filo-Priori's contributions (the co-failure GATv2 framework, the
+validation-optimized DNN-ensemble blending, and the negative result on generic
+semantic embeddings) are distinct from, and not reported in, that prior work,
+and no text, figures, or results are reused from it. We note this so that any
+authorship overlap surfaced during IEEE's integrity screening is understood in
+context.
+
 If ScholarOne requests suggested or non-preferred reviewers, we will provide
 them in the corresponding submission fields and will avoid individuals with
 actual, perceived, or potential conflicts of interest.
